@@ -4,8 +4,9 @@ class CreateFoods < ActiveRecord::Migration
       t.string :name
       t.text :composition
       t.integer :food_category_id
-      t.integer :cost. default: 0
-      t.timestamps
+      t.integer :cost, default: 0
+      t.integer :position
+
     end
   end
 end

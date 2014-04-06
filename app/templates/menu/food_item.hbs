@@ -1,0 +1,13 @@
+{{#with view.content}}
+  {{editable-field model=food field=food.name tagName='h4' classNames="list-group-item-heading"}}
+  <div class="column main">
+    {{editable-field model=food field=food.composition isText=true classNames="list-group-item-text"}}
+  </div>
+  {{editable-field model=food field=food.cost classNames="column cost"}}
+  <div class="checkbox column visibility">
+    <label>
+      {{input type='checkbox' checked=isVisible}} Отображать в меню
+    </label>
+  </div>
+  <div class="clearfix"></div>  
+{{/with}}

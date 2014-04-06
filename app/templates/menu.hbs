@@ -17,7 +17,7 @@
     <div class="panel-heading">
       {{editable-field model=category field=category.name tagName='h3' classNames="column main"}}
       <div class="column cost">
-        <a href="#" class='btn btn-default' {{action addFood}} >Новая позиция</a>
+        <a href="#" class='btn btn-primary' {{action addFood}} >Новая позиция</a>
       </div>
       <div class="checkbox column visibility">
         <label>
@@ -27,36 +27,21 @@
       <div class="clearfix"></div>
     </div>
 
-    <ul class="list-group">
-      {{#each menuFoods itemController='menu/itemMenuFood'}}
-        <li class="list-group-item">
-          {{editable-field model=food field=food.name tagName='h4' classNames="list-group-item-heading"}}
-          <div class="column main">
-            {{editable-field model=food field=food.composition isText=true classNames="list-group-item-text"}}
-          </div>
-          {{editable-field model=food field=food.cost classNames="column cost"}}
-          <div class="checkbox column visibility">
-            <label>
-              {{input type='checkbox' checked=isVisible}} Отображать в меню
-            </label>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-      {{/each}}
-    </ul>
+    {{view 'menu/foodList' contentBinding='menuFoods' itemViewClass='menu/foodListItem'}}
+
   </div>   
 {{/each}}
 
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="container">
     {{#if isAdmin}}
-      <button class="btn btn-default navbar-btn pull-right" href="#" {{action addCategory}}>Добавить категорию</button>
+      <button class="btn btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>Добавить категорию</button>
       <div class='pull-left available-menu'>
         <p class="navbar-text pull-left">Меню доступно до</p> 
         {{input value=available classNames="form-control pull-left"}}
       </div>
     {{else}}
-      <button class="btn btn-default navbar-btn pull-right" href="#">Заказать</button>
+      <button class="btn btn-primary navbar-btn pull-right" href="#">Заказать</button>
       <p class="navbar-text pull-right">сумма</p> 
     {{/if}}
   </div>
