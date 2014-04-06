@@ -1,0 +1,8 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "bootstrap": "latest",
+    "momentjs": "latest",
+    "jquery-ui": "latest"
+  }
+}
