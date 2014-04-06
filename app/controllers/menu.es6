@@ -1,11 +1,10 @@
 export default Em.ObjectController.extend({
 	isAdmin: true,
 	actions: {
-		addFood: function(category) {
-			this.store.createRecord('food', {foodCategory: category}).save()
-		},
 		addCategory: function() {
-			this.store.createRecord('foodCategory').save()			
+			this.store.createRecord('foodCategory', {
+				name: 'Кликните чтобы изменить название'
+			}).save()			
 		}
 	}  
 });

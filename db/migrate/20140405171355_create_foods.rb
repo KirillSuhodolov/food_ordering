@@ -1,10 +1,10 @@
 class CreateFoods < ActiveRecord::Migration
   def change
     create_table :foods do |t|
-      t.string :name, default: 'Кликните чтобы изменить название'
-      t.text :composition, default: 'Кликните чтобы изменить состав'
+      t.string :name
+      t.text :composition
       t.integer :food_category_id
-      t.integer :cost, default: 'Кликните чтобы изменить цену'
+      t.integer :cost. default: 0
       t.timestamps
     end
   end

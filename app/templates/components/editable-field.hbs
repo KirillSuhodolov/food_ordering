@@ -1,0 +1,8 @@
+	<div class="active-editable">
+		{{#if isText}}
+			{{textarea value=field classNames='editable-field'}}
+		{{else}}
+			{{input value=field classNames='editable-field'}}
+		{{/if}}
+	</div>
+	<span class="unactive-editable">{{field}}</span>

@@ -30,6 +30,11 @@ body {
 }
 
 .foods-admin-list {
+	.list-group-item {
+		&.placeholder {
+			height: 60px;
+		};
+	}
 	.checkbox {
 		margin: 0;
 	}
@@ -41,6 +46,7 @@ body {
 	}
 	.cost {
 		width: 20%;
+		padding: 0 10px;
 	}
 	.visibility {
 		width: 20%;
@@ -52,5 +58,12 @@ body {
 		.visibility {
 			margin-top: 10px;
 		}
+	}
+}
+
+.active-editable {
+	display: none;
+	textarea {
+		width: 100%;
 	}
 }

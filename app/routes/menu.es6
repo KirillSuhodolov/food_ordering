@@ -4,6 +4,17 @@ export default Ember.Route.extend({
 	},
 	setupController: function(controller, model) {
 		this._super(controller, model)
-		controller.set('foodCategories', this.store.find('foodCategory'))
+		this.store.find('foodCategory').then(function(categories){
+			var categoriesProxyArray = [];
+			categories.forEach(function(category){
+				categoriesProxyArray.addObject({
+					category:category, 
+					menuFoods: model.get('menuFoods').filter(function(item){
+						if ( item.get('food.foodCategory') == category ) { return true }
+					})
+				});	
+			});
+			controller.set('foodCategories', categoriesProxyArray)
+		});
 	}  
 });

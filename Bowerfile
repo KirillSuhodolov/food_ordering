@@ -1,3 +1,4 @@
 asset 'bootstrap'
 asset 'momentjs'
 asset 'jquery-ui'
+asset 'BootstrapFormHelpers', 'git@github.com:winmarkltd/BootstrapFormHelpers.git#master'

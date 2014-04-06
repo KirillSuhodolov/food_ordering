@@ -12,14 +12,12 @@
   <h1>Меню</h1>
 </div>
 
-{{#each foodCategories}}
+{{#each foodCategories itemController='menu/itemCategory' itemView='menu/itemCategory'}}
   <div class="panel panel-default foods-admin-list">
     <div class="panel-heading">
-      <h3 class="column main">
-        {{name}}
-      </h3>
+      {{editable-field model=category field=category.name tagName='h3' classNames="column main"}}
       <div class="column cost">
-        <a href="#" class='btn btn-default' {{action addFood this}} >Новая позиция</a>
+        <a href="#" class='btn btn-default' {{action addFood}} >Новая позиция</a>
       </div>
       <div class="checkbox column visibility">
         <label>
@@ -28,18 +26,15 @@
       </div>
       <div class="clearfix"></div>
     </div>
-    {{!-- <div class="panel-body"></div> --}}
 
     <ul class="list-group">
-      {{#each foods}}
+      {{#each menuFoods itemController='menu/itemMenuFood'}}
         <li class="list-group-item">
-          <h4 class="list-group-item-heading">{{name}}</h4>
+          {{editable-field model=food field=food.name tagName='h4' classNames="list-group-item-heading"}}
           <div class="column main">
-            <p class="list-group-item-text">{{composition}}</p>
+            {{editable-field model=food field=food.composition isText=true classNames="list-group-item-text"}}
           </div>
-          <div class="column cost">
-            {{cost}}
-          </div>
+          {{editable-field model=food field=food.cost classNames="column cost"}}
           <div class="checkbox column visibility">
             <label>
               {{input type='checkbox' checked=isVisible}} Отображать в меню

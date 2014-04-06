@@ -3,6 +3,7 @@
   "dependencies": {
     "bootstrap": "latest",
     "momentjs": "latest",
-    "jquery-ui": "latest"
+    "jquery-ui": "latest",
+    "BootstrapFormHelpers": "git@github.com:winmarkltd/BootstrapFormHelpers.git#master"
   }
 }

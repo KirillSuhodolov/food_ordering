@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140406131402) do
   end
 
   create_table "food_categories", force: true do |t|
-    t.string   "name"
+    t.string   "name",          default: "Кликните чтобы изменить название"
     t.integer  "food_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20140406131402) do
   end
 
   create_table "foods", force: true do |t|
-    t.string   "name"
-    t.text     "composition"
+    t.string   "name",             default: "Кликните чтобы изменить название"
+    t.text     "composition",      default: "Кликните чтобы изменить состав"
     t.integer  "food_category_id"
-    t.integer  "cost"
+    t.integer  "cost",             default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

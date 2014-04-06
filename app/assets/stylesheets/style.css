@@ -2,10 +2,12 @@
 .page-header{margin-top:0;}.page-header .calendar{margin-top:5px;}
 .available-menu input{width:initial;margin-top:8px;margin-bottom:8px;}
 body{margin-bottom:60px;}
+.foods-admin-list .list-group-item.placeholder{height:60px;}
 .foods-admin-list .checkbox{margin:0;}
 .foods-admin-list .column{float:left;}
 .foods-admin-list .main{width:60%;}
-.foods-admin-list .cost{width:20%;}
+.foods-admin-list .cost{width:20%;padding:0 10px;}
 .foods-admin-list .visibility{width:20%;}
 .foods-admin-list .panel-heading .main{margin:5px 0 0 0;}
 .foods-admin-list .panel-heading .visibility{margin-top:10px;}
+.active-editable{display:none;}.active-editable textarea{width:100%;}
