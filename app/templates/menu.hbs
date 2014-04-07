@@ -12,11 +12,17 @@
   <h1>Меню</h1>
 </div>
 
-{{#each foodCategories itemController='menu/itemCategory' itemView='menu/itemCategory'}}
-  <div class="panel panel-default foods-admin-list" data-category={{unbound category.id}}>
+{{#each arrangedContent itemController='menu/itemCategory'}}
+  <div class="panel panel-default foods-admin-list">
     <div class="panel-heading">
       {{category.position}} |
-      {{editable-field model=category field=category.name tagName='h3' classNames="column main"}}
+      <div class="column main">
+        <div class="btn-group pull-right">
+          <button type="button" {{bind-attr class=":btn :btn-success isFirstCategory:disabled"}} {{action decrementPosition}}>Вверх</button>
+          <button type="button" {{bind-attr class=":btn :btn-success isLastCategory:disabled"}} {{action incrementPosition}}>Вниз</button>
+        </div>
+        {{editable-field model=category field=category.name tagName='h3'}}
+      </div>
       <div class="column cost">
         <a href="#" class='btn btn-primary' {{action addFood}} >Новая позиция</a>
       </div>
@@ -24,6 +30,9 @@
         <label>
           {{input type='checkbox' checked=isAllSelected}} Отображать всю категорию
         </label>
+      </div>
+      <div class="column actions">
+        <a href="#" class="btn btn-danger" {{action delete}}>X</a>
       </div>
       <div class="clearfix"></div>
     </div>

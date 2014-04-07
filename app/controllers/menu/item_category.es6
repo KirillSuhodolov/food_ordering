@@ -6,7 +6,51 @@ export default Em.ObjectController.extend({
 	isAllSelectedObserver: function() {
 		this.get('model.menuFoods').setEach('isVisible', this.get('isAllSelected'));	
 	}.observes('isAllSelected'),
+
+	isFirstCategory: function() {
+		return this.get('controllers.menu.arrangedContent.firstObject.category') == this.get('model.category');	
+	}.property('model.category.position', 'controllers.menu.@each.category.position').volatile(),
+
+	isLastCategory: function() {
+		return this.get('controllers.menu.arrangedContent.lastObject.category') == this.get('model.category');	
+	}.property('model.category.position', 'controllers.menu.@each.category.position').volatile(),
+
+	sort: function() {
+		this.get('controllers.menu.arrangedContent').forEach(function (el, index) {
+			el.get('category').set('position', index);
+			if (el.get('category.isDirty')) {
+				el.get('category').save();
+			}
+		});
+	},
+
 	actions: {
+		incrementPosition: function() {
+			this.get('model.category').incrementProperty('position');
+			var index = this.get('controllers.menu.arrangedContent').indexOf(this.get('model'));
+			this.get('controllers.menu.arrangedContent').objectAt(index + 1).get('category').decrementProperty('position');
+		},
+		decrementPosition: function() {
+			this.get('model.category').decrementProperty('position');
+			var index = this.get('controllers.menu.arrangedContent').indexOf(this.get('model'));
+			this.get('controllers.menu.arrangedContent').objectAt(index - 1).get('category').incrementProperty('position');
+		},
+		delete: function() {
+			var controller = this;
+			if (this.get('model.menuFoods.length')) {
+				alert('Нельзя удалить категорию с позициями!')
+			} else {
+				this.get('model.category').deleteRecord()
+				this.get('model.category').save().then(function(){
+					controller.get('controllers.menu').removeObject(controller.get('model'));
+
+					controller.get('model.menuFoods').destroy();
+					controller.get('model').destroy();
+					controller.destroy();
+					controller.sort();
+				});	
+			}
+		},
 		addFood: function() {
 			var controller = this;
 			this.store.createRecord('food', {

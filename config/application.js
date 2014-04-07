@@ -8,7 +8,7 @@
 //= require_tree ../app
 //= require_tree ./initializers
 
-//= require momentjs
+//= require moment
 //= require bootstrap
 //= require jquery.ui.core
 //= require jquery.ui.widget

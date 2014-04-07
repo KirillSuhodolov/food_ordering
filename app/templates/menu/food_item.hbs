@@ -1,5 +1,5 @@
 {{#with view.content}}
-  {{food.position}} |
+  {{food.position}} | {{id}}
   {{editable-field model=food field=food.name tagName='h4' classNames="list-group-item-heading"}}
   <div class="column main">
     {{editable-field model=food field=food.composition isText=true classNames="list-group-item-text"}}
@@ -9,6 +9,9 @@
     <label>
       {{input type='checkbox' checked=isVisible}} Отображать в меню
     </label>
+  </div>
+  <div class="column actions">
+    <a href="#" class="btn btn-danger" {{action delete target=view}}>X</a>
   </div>
   <div class="clearfix"></div>  
 {{/with}}

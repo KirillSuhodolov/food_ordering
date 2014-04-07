@@ -3,7 +3,7 @@ export default Ember.Route.extend({
 		return this.store.find('menu', 1)
 	},
 	setupController: function(controller, model) {
-		this._super(controller, model)
+		controller.set('menu', model);
 		this.store.find('foodCategory').then(function(categories){
 			var categoriesProxyArray = [];
 			categories.forEach(function(category){
@@ -20,7 +20,7 @@ export default Ember.Route.extend({
 								})
 				);	
 			});
-			controller.set('foodCategories', categoriesProxyArray)
+			controller.set('model', categoriesProxyArray);
 		});
 	}  
 });

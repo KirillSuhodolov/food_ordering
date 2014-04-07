@@ -1,14 +1,14 @@
 export default Em.CollectionView.extend({
-  positionField: 'food.position',
+  positionField: 'position',
   startIndex:0,
   cursor: 'move',
   classNames: ['list-group'],
   tagName: 'ul',
-  newCollection: null,
   emptyView: Ember.View.extend({
     classNames: ['list-group-item empty'],
   	tagName: 'li',
   }),
+  isRemoving: false,
   didInsertElement: function() {
     var scope = this;
 		this._super();
@@ -18,10 +18,10 @@ export default Em.CollectionView.extend({
       cursor: scope.get('cursor'),
       start:function (event, ui) {
           scope.set('startIndex', ui.item.index());
-		      scope.set('newCollection', scope.get('controller.menuFoods'));
-      },
+		  },
       stop:function (event, ui) {
-      	  var objects = scope.get('newCollection'),
+        if (!scope.get('isRemoving')) {
+      	  var objects = scope.get('controller.menuFoods'),
               startIndex = scope.get('startIndex'),
               currentIndex = ui.item.index(),
               result = [],
@@ -39,31 +39,55 @@ export default Em.CollectionView.extend({
           }
 
           result.forEach(function (el, index) {
-              el.set(scope.positionField, index);
-              if (el.get('food.isDirty')) {
-              	el.get('food').save();
-              }
+            el.get('food').set(scope.positionField, index);
+            if (el.get('food.isDirty')) {
+            	el.get('food').save();
+            }
           });
+        } 
+        scope.set('isRemoving', false); 
+      },
+      remove: function(event, ui) {
+        var objects = scope.get('controller.menuFoods'),
+          currentObject = objects.objectAt(scope.get('startIndex')); 
+          
+          currentObject.get('food').set('foodCategory', null); 
+          scope.get('controller.parentController').set('movingObject', currentObject);
+          scope.get('controller.parentController').set('slicingArray', objects);
+
+          scope.set('isRemoving', true);
       },
       receive: function(event, ui) {
         var objects = scope.get('controller.menuFoods'),
-          startIndex = scope.get('startIndex'),
-          currentObject = objects.objectAt(startIndex), 
-					newCategory = scope.get('controller.parentController.foodCategories').findBy('category.id', ui.item.parent().parent().data('category').toString()),        
-        	currentCategory = scope.get('controller.content');
+          currentIndex = ui.item.index(),
+          currentObject = scope.get('controller.parentController.movingObject'), 
+        	slicingArray = scope.get('controller.parentController.slicingArray'); 
 
-        	scope.set('newCollection', newCategory.get('menuFoods'));
-        	currentObject.get('food').set('foodCategory', newCategory.get('category'));	
-        	currentCategory.get('menuFoods').removeObject(currentObject);
-        	currentCategory.get('menuFoods').forEach(function(item, index){
-        		item.set('food.position', index);
-        		if (item.get('food.isDirty')) {
-        			item.save()
-        		}
-        	});	
+          currentObject.get('food').set('foodCategory', scope.get('controller.category'));	
+          currentObject.get('food').set('position', currentIndex);  
+          objects.addObject(currentObject);
+
+          slicingArray.removeObject(currentObject);
+
+          if (slicingArray.get('length')) {
+            slicingArray.forEach(function(item, index){
+              item.get('food').set(scope.positionField, index);
+              if (item.get('food.isDirty')) {
+                item.get('food').save()
+              }
+            });
+          } else {
+            ui.item.remove();
+          }
+          
+          objects.forEach(function (el, index) {
+            el.get('food').set(scope.positionField, index);
+            if (el.get('food.isDirty')) {
+              el.get('food').save();
+            }
+          });
+          scope.get('controller.parentController').set('movingObject', null)
       },
     }).disableSelection(); 
-
-
   }
 });
