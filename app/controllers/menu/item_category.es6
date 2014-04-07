@@ -61,7 +61,7 @@ export default Em.ObjectController.extend({
 				position: controller.get('model.menuFoods.length')
 			}).save().then(function(food){
 				controller.store.createRecord('menuFood', {
-					menu: controller.get('controllers.menu.model'),
+					menu: controller.get('controllers.menu.menu'),
 					food: food,
 					isVisible: true
 				}).save().then(function(menuFood){

@@ -1,8 +1,14 @@
 export default Ember.Route.extend({
+  queryParams: {
+    category: {
+      refreshModel: true
+    }
+  },
 	model: function(params) {
-		return this.store.find('menu', 1)
+		return this.store.find('menu', params)
 	},
 	setupController: function(controller, model) {
+		model = model.get('firstObject');
 		controller.set('menu', model);
 		this.store.find('foodCategory').then(function(categories){
 			var categoriesProxyArray = [];
@@ -22,5 +28,10 @@ export default Ember.Route.extend({
 			});
 			controller.set('model', categoriesProxyArray);
 		});
-	}  
+	},
+  actions: {
+    queryParamsDidChange: function() {
+      this.refresh();	
+    }
+  }  
 });

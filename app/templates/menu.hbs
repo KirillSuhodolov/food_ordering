@@ -1,21 +1,33 @@
 <div class="page-header">
   <ul class="pagination pull-right calendar">
-    <li><a href="#">&laquo;</a></li>
-    <li><a href="#">Понедельник</a></li>
-    <li><a href="#">Вторник</a></li>
-    <li><a href="#">Среда</a></li>
-    <li><a href="#">Четверг</a></li>
-    <li><a href="#">Пятница</a></li>
-    <li><a href="#">&raquo;</a></li>
+    <li>
+      {{link-to '&laquo;' 'menu' (query-params date=prev)}}
+    </li>
+    <li>
+      {{link-to 'Понедельник' 'menu' (query-params date=monday)}}
+    </li>
+    <li>
+      {{link-to 'Вторник' 'menu' (query-params date=tuesday)}}
+    </li>
+    <li>
+      {{link-to 'Среда' 'menu' (query-params date=wednesday)}}
+    </li>
+    <li>
+      {{link-to 'Четверг' 'menu' (query-params date=thursday)}}
+    </li>
+    <li>
+      {{link-to 'Пятница' 'menu' (query-params date=friday)}}
+    </li>
+    <li>
+      {{link-to '&raquo;' 'menu' (query-params date=next)}}
+    </li>
   </ul>
-
   <h1>Меню</h1>
 </div>
 
 {{#each arrangedContent itemController='menu/itemCategory'}}
   <div class="panel panel-default foods-admin-list">
     <div class="panel-heading">
-      {{category.position}} |
       <div class="column main">
         <div class="btn-group pull-right">
           <button type="button" {{bind-attr class=":btn :btn-success isFirstCategory:disabled"}} {{action decrementPosition}}>Вверх</button>

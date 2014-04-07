@@ -16,6 +16,7 @@ export default Em.CollectionView.extend({
       connectWith: ".list-group",
       placeholder: "bg-warning placeholder",
       cursor: scope.get('cursor'),
+      cancel: ".empty",
       start:function (event, ui) {
           scope.set('startIndex', ui.item.index());
 		  },
@@ -65,7 +66,15 @@ export default Em.CollectionView.extend({
 
           currentObject.get('food').set('foodCategory', scope.get('controller.category'));	
           currentObject.get('food').set('position', currentIndex);  
-          objects.addObject(currentObject);
+          currentObject.get('food').save().then(function(){
+            objects.addObject(currentObject);
+            objects.forEach(function (el, index) {
+              el.get('food').set(scope.positionField, index);
+              if (el.get('food.isDirty')) {
+                el.get('food').save();
+              }
+            });
+          });
 
           slicingArray.removeObject(currentObject);
 
@@ -80,12 +89,6 @@ export default Em.CollectionView.extend({
             ui.item.remove();
           }
           
-          objects.forEach(function (el, index) {
-            el.get('food').set(scope.positionField, index);
-            if (el.get('food.isDirty')) {
-              el.get('food').save();
-            }
-          });
           scope.get('controller.parentController').set('movingObject', null)
       },
     }).disableSelection(); 

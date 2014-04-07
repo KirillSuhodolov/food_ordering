@@ -9,13 +9,15 @@ export default Em.View.extend({
 	}.observes('content.isVisible'),
 	actions: {
 		delete: function() {
-			var view = this;
+			var view = this,
+				content = view.get('content'),
+				collection = view.get('controller.menuFoods.arrangedContent');
 			this.get('content.food').deleteRecord();
 			this.get('content.food').save().then(function(){
 				view.get('content').deleteRecord();
 				view.get('content').save().then(function(){
-					view.get('controller.menuFoods.arrangedContent').removeObject(view.get('content'));
-					view.get('controller.menuFoods.arrangedContent').forEach(function (el, index) {
+					collection.removeObject(content);
+					collection.forEach(function (el, index) {
 						el.get('food').set('position', index);
 						if (el.get('food.isDirty')) {
 							el.get('food').save();
