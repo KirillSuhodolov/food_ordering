@@ -4,5 +4,6 @@ export default DS.Model.extend({
   cost: DS.attr('number'),
   foodCategory: DS.belongsTo('foodCategory'),
   orders: DS.hasMany('order'),
-  menuFoods: DS.hasMany('menuFood')
+  menuFoods: DS.hasMany('menuFood'),
+  position: DS.attr()
 });

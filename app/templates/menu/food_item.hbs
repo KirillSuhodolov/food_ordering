@@ -1,4 +1,5 @@
 {{#with view.content}}
+  {{food.position}} |
   {{editable-field model=food field=food.name tagName='h4' classNames="list-group-item-heading"}}
   <div class="column main">
     {{editable-field model=food field=food.composition isText=true classNames="list-group-item-text"}}

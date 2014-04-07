@@ -2,6 +2,7 @@
 .page-header{margin-top:0;}.page-header .calendar{margin-top:5px;}
 .available-menu input{width:initial;margin-top:8px;margin-bottom:8px;}
 body{margin-bottom:60px;}
+.foods-admin-list .list-group-item.empty{height:20px;}
 .foods-admin-list .placeholder{height:60px;list-style:none;}
 .foods-admin-list .checkbox{margin:0;}
 .foods-admin-list .column{float:left;}

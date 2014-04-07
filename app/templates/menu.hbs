@@ -13,8 +13,9 @@
 </div>
 
 {{#each foodCategories itemController='menu/itemCategory' itemView='menu/itemCategory'}}
-  <div class="panel panel-default foods-admin-list">
+  <div class="panel panel-default foods-admin-list" data-category={{unbound category.id}}>
     <div class="panel-heading">
+      {{category.position}} |
       {{editable-field model=category field=category.name tagName='h3' classNames="column main"}}
       <div class="column cost">
         <a href="#" class='btn btn-primary' {{action addFood}} >Новая позиция</a>

@@ -13,7 +13,8 @@ export default Em.ObjectController.extend({
 				foodCategory: this.get('model.category'),
 				name: 'Кликните чтобы изменить название',
 				composition: 'Кликните чтобы изменить состав',
-				cost: 0
+				cost: 0,
+				position: controller.get('model.menuFoods.length')
 			}).save().then(function(food){
 				controller.store.createRecord('menuFood', {
 					menu: controller.get('controllers.menu.model'),

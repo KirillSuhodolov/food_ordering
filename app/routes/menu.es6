@@ -7,12 +7,18 @@ export default Ember.Route.extend({
 		this.store.find('foodCategory').then(function(categories){
 			var categoriesProxyArray = [];
 			categories.forEach(function(category){
-				categoriesProxyArray.addObject({
-					category:category, 
-					menuFoods: model.get('menuFoods').filter(function(item){
-						if ( item.get('food.foodCategory') == category ) { return true }
-					})
-				});	
+				categoriesProxyArray.addObject(
+				Em.Object.create({
+									category:category, 
+									menuFoods: Ember.ArrayController.create({
+										content: model.get('menuFoods').filter(function(item){
+											if ( item.get('food.foodCategory') == category ) { return true }
+										}),
+									  sortProperties: ['food.position'],
+									  sortAscending: true
+									})
+								})
+				);	
 			});
 			controller.set('foodCategories', categoriesProxyArray)
 		});
