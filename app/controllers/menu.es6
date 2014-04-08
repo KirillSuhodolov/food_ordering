@@ -6,38 +6,62 @@ export default Em.ArrayController.extend({
 	slicingArray: null,
 	queryParams: ['date'],
 	menu: null,
-	date: function() {
-		return this.get('currentDate').format('YYYY-MM-DD')
-	}.property('currentDate'),
+	date: moment().format(config.SETTINGS.dateFormats.route),
 	
-	prev: function() {
-		return this.get('currentDate').add('d', 1).format('YYYY-MM-DD')
+	calendarFormat: function() {
+		return config.SETTINGS.dateFormats.calendar
 	}.property(''),
+
+	prev: function() {
+		var date = moment(this.get('date'));	
+		return date.subtract('w',1).startOf('isoWeek').add('d', 4).format(config.SETTINGS.dateFormats.route);
+	}.property('date'),
 	
 	next: function() {
-		return this.get('currentDate').add('d', 1).format('YYYY-MM-DD')
-	}.property(''),
+		var date = moment(this.get('date'));	
+		return date.add('w',1).startOf('isoWeek').format(config.SETTINGS.dateFormats.route);
+	}.property('date'),
 
 	monday: function() {
-		return this.get('currentDate').add('d', 1).format('YYYY-MM-DD')
-	}.property(''),
+		var date = moment(this.get('date'));	
+		if (date.isoWeekday() != 1 ) {
+			date = date.startOf('isoWeek').add('d', 0); 
+		}
+		return date.format(config.SETTINGS.dateFormats.route);
+	}.property('date'),
 
 	tuesday: function() {
-		return this.get('currentDate').add('d', 2).format('YYYY-MM-DD')
-	}.property(''),
+		var date = moment(this.get('date'));	
+		if (date.isoWeekday() != 2 ) {
+			date = date.startOf('isoWeek').add('d', 1);
+		}
+		return date.format(config.SETTINGS.dateFormats.route);
+	}.property('date'),
 
 	wednesday: function() {
-		return this.get('currentDate').add('d', 3).format('YYYY-MM-DD')
-	}.property(''),
+		var date = moment(this.get('date'));	
+		if (date.isoWeekday() != 3 ) {
+			date = date.startOf('isoWeek').add('d', 2);
+		}
+		return date.format(config.SETTINGS.dateFormats.route);
+	}.property('date'),
 
 	thursday: function() {
-		return this.get('currentDate').add('d', 4).format('YYYY-MM-DD')
-	}.property(''),
+		var date = moment(this.get('date'));	
+		if (date.isoWeekday() != 4 ) {
+			date = date.startOf('isoWeek').add('d', 3);
+		}
+		return date.format(config.SETTINGS.dateFormats.route);
+	}.property('date'),
 
 	friday: function() {
-		return this.get('currentDate').add('d', 5).format('YYYY-MM-DD')
-	}.property(''),
-	currentDate: moment(), 
+		var date = moment(this.get('date'));	
+		if (date.isoWeekday() != 5 ) {
+			date = date.startOf('isoWeek').add('d', 4);
+		}
+		return date.format(config.SETTINGS.dateFormats.route);
+	}.property('date'), 
+
 	actions: {
 		addCategory: function() {
 			var controller = this;

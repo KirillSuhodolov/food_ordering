@@ -11,7 +11,14 @@
  http://emberjs.com/guides/configuring-ember/feature-flags/
 */
 
-window.config = {};
+window.config = {
+	SETTINGS: {
+		dateFormats: {
+			route: 'YYYY-MM-DD',
+			calendar: 'MM/DD'
+		}
+	}
+};
 EmberENV = { FEATURES: { 'query-params-new': true } };
 <% config = Rails.application.config.ember %>
 

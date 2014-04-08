@@ -4,19 +4,34 @@
       {{link-to '&laquo;' 'menu' (query-params date=prev)}}
     </li>
     <li>
-      {{link-to 'Понедельник' 'menu' (query-params date=monday)}}
+      {{#link-to 'menu' (query-params date=monday)}}
+        Понедельник
+        ({{date monday calendarFormat}})
+      {{/link-to}}
     </li>
     <li>
-      {{link-to 'Вторник' 'menu' (query-params date=tuesday)}}
+      {{#link-to 'menu' (query-params date=tuesday)}}
+        Вторник
+        ({{date tuesday calendarFormat}})
+      {{/link-to}}
     </li>
     <li>
-      {{link-to 'Среда' 'menu' (query-params date=wednesday)}}
+      {{#link-to 'menu' (query-params date=wednesday)}}
+        Среда
+        ({{date wednesday calendarFormat}})
+      {{/link-to}}
     </li>
     <li>
-      {{link-to 'Четверг' 'menu' (query-params date=thursday)}}
+      {{#link-to 'menu' (query-params date=thursday)}}
+        Четверг   
+        ({{date thursday calendarFormat}})
+      {{/link-to}}
     </li>
     <li>
-      {{link-to 'Пятница' 'menu' (query-params date=friday)}}
+      {{#link-to 'menu' (query-params date=friday)}}
+        Пятница
+        ({{date friday calendarFormat}})
+      {{/link-to}}
     </li>
     <li>
       {{link-to '&raquo;' 'menu' (query-params date=next)}}
