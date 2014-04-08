@@ -1,3 +1,3 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :user_id, :cost
+  attributes :id, :comment, :user_id, :cost, :day
 end

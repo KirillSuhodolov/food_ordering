@@ -25,4 +25,12 @@ FoodCategory.all.each do |category|
 	end
 end
 
-Menu.create({day: Date.current.to_s('%m-%d-%y'), available: Time.now.to_s(:time) })
+5.times do |n|
+	User.create({
+		name: "user #{n}",
+		email: "user#{n}@email.com",
+		address: "дом #{n}",
+		position: n,
+		phone: '+23123123123'
+	})
+end

@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406131402) do
+ActiveRecord::Schema.define(version: 20140408160900) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "address"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140406131402) do
     t.text     "comment"
     t.integer  "user_id"
     t.integer  "cost",       default: 0
+    t.date     "day"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 20140406131402) do
     t.string   "phone"
     t.string   "address"
     t.boolean  "is_subscribe", default: true
+    t.integer  "position"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

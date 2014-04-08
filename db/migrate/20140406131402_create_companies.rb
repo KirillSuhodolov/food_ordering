@@ -3,7 +3,7 @@ class CreateCompanies < ActiveRecord::Migration
     create_table :companies do |t|
       t.string :name
       t.string :address
-
+      t.integer :position
       t.timestamps
     end
   end

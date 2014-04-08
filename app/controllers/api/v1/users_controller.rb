@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
   # GET /users
   def index
-    respond_with User.all
+    respond_with User.users
   end
 
   # GET /users/1
@@ -47,6 +47,7 @@ class Api::V1::UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :company_id, :name, :phone,
+     :address, :is_subscribe, :position, :status )
   end
 end

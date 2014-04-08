@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.text :comment
       t.integer :user_id
       t.integer :cost, default: 0
+      t.date :day
       t.timestamps
     end
   end

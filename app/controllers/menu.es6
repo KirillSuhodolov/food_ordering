@@ -1,15 +1,9 @@
-var ProxyCategory = Em.Object.extend({
-	resultCost: function() {
-		return this.get('menuFoods').reduce(function(previousValue, obj){
-			return previousValue + obj.get("selected") * obj.get('food.cost');
-		}, 0);	
-	}.property('menuFoods.@each.selected'),
-});
+import ProxyCategory from 'app/models/objects/proxy-category'
 
 export default Em.ArrayController.extend({
 	sortProperties: ['category.position'],
 	sortAscending: true,		
-	isAdmin: false,
+	isAdmin: true,
 	movingObject: null,
 	slicingArray: null,
 	queryParams: ['date'],
@@ -81,6 +75,7 @@ export default Em.ArrayController.extend({
 			var controller = this;
 			this.store.createRecord('order', {
 				cost: this.get('resultCost'),	
+				day: this.get('menu.day')
 			}).save().then(function(order){
 				var orderFoods = [];
 				controller.get('content').forEach(function(object){
@@ -114,14 +109,9 @@ export default Em.ArrayController.extend({
 			}).save().then(function(category){
 				controller.addObject(
 					ProxyCategory.create({
-						category:category, 
-						menuFoods: Ember.ArrayController.create({
-							content: [],
-							sortProperties: ['food.position'],
-							sortAscending: true
-						})
+						category:category
 					})
-					);	
+				);	
 			})			
 		}
 	}  
