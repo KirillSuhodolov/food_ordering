@@ -1,3 +1,11 @@
+var ProxyCategory = Em.Object.extend({
+  	resultCost: function() {
+		return this.get('menuFoods').reduce(function(previousValue, obj){
+	        return previousValue + obj.get("selected") * obj.get('food.cost');
+	    }, 0);	
+	}.property('menuFoods.@each.selected'),
+});
+
 export default Ember.Route.extend({
   queryParams: {
     category: {
@@ -14,7 +22,7 @@ export default Ember.Route.extend({
 			var categoriesProxyArray = [];
 			categories.forEach(function(category){
 				categoriesProxyArray.addObject(
-				Em.Object.create({
+				ProxyCategory.create({
 									category:category, 
 									menuFoods: Ember.ArrayController.create({
 										content: model.get('menuFoods').filter(function(item){

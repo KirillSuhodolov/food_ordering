@@ -4,7 +4,11 @@ class Api::V1::MenusController < ApplicationController
 
   # GET /menus
   def index
-    respond_with Menu.all
+    if params[:date]
+      respond_with [ Menu.find_or_create_by(day: params[:date]) ]
+    else
+      respond_with Menu.all
+    end
   end
 
   # GET /menus/1

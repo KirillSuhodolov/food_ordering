@@ -47,6 +47,6 @@ class Api::V1::OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:comment, :user_id)
+    params.require(:order).permit(:comment, :user_id, :cost)
   end
 end

@@ -44,22 +44,32 @@
   <div class="panel panel-default foods-admin-list">
     <div class="panel-heading">
       <div class="column main">
-        <div class="btn-group pull-right">
-          <button type="button" {{bind-attr class=":btn :btn-success isFirstCategory:disabled"}} {{action decrementPosition}}>Вверх</button>
-          <button type="button" {{bind-attr class=":btn :btn-success isLastCategory:disabled"}} {{action incrementPosition}}>Вниз</button>
-        </div>
-        {{editable-field model=category field=category.name tagName='h3'}}
+        {{#if isAdmin}}
+          <div class="btn-group pull-right">
+              <button type="button" {{bind-attr class=":btn :btn-success isFirstCategory:disabled"}} {{action decrementPosition}}>Вверх</button>
+              <button type="button" {{bind-attr class=":btn :btn-success isLastCategory:disabled"}} {{action incrementPosition}}>Вниз</button>
+          </div>
+          {{editable-field model=category field=category.name tagName='h3'}}
+        {{else}}
+          <h3>{{category.name}}</h3>
+        {{/if}}
       </div>
       <div class="column cost">
-        <a href="#" class='btn btn-primary' {{action addFood}} >Новая позиция</a>
+        {{#if isAdmin}}
+          <a href="#" class='btn btn-primary' {{action addFood}} >Новая позиция</a>
+        {{/if}}
       </div>
       <div class="checkbox column visibility">
-        <label>
-          {{input type='checkbox' checked=isAllSelected}} Отображать всю категорию
-        </label>
+        {{#if isAdmin}}
+          <label>
+            {{input type='checkbox' checked=isAllSelected}} Отображать всю категорию
+          </label>
+        {{/if}}
       </div>
       <div class="column actions">
-        <a href="#" class="btn btn-danger" {{action delete}}>X</a>
+        {{#if isAdmin}}
+          <a href="#" class="btn btn-danger" {{action delete}}>X</a>
+        {{/if}}
       </div>
       <div class="clearfix"></div>
     </div>
@@ -75,11 +85,11 @@
       <button class="btn btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>Добавить категорию</button>
       <div class='pull-left available-menu'>
         <p class="navbar-text pull-left">Меню доступно до</p> 
-        {{input value=available classNames="form-control pull-left"}}
+        {{input value=menu.available classNames="form-control pull-left time"}}
       </div>
     {{else}}
-      <button class="btn btn-primary navbar-btn pull-right" href="#">Заказать</button>
-      <p class="navbar-text pull-right">сумма</p> 
+      <button class="btn btn-primary navbar-btn pull-right" href="#" {{action createOrder}}>Заказать</button>
+      <p class="navbar-text pull-right">Итоговая сумма {{resultCost}}</p> 
     {{/if}}
   </div>
 </nav>

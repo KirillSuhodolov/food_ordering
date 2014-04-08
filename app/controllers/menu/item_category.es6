@@ -1,5 +1,6 @@
 export default Em.ObjectController.extend({
 	needs: ['menu'],
+	isAdmin: Em.computed.alias('controllers.menu.isAdmin'), 
 	isAllSelected: function() {
 		return this.get('model.menuFoods').isEvery('isVisible', true)
 	}.property('model.menuFoods.@each.isVisible'),

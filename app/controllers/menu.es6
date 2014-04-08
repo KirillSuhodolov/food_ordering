@@ -1,13 +1,27 @@
+var ProxyCategory = Em.Object.extend({
+	resultCost: function() {
+		return this.get('menuFoods').reduce(function(previousValue, obj){
+			return previousValue + obj.get("selected") * obj.get('food.cost');
+		}, 0);	
+	}.property('menuFoods.@each.selected'),
+});
+
 export default Em.ArrayController.extend({
 	sortProperties: ['category.position'],
 	sortAscending: true,		
-	isAdmin: true,
+	isAdmin: false,
 	movingObject: null,
 	slicingArray: null,
 	queryParams: ['date'],
 	menu: null,
 	date: moment().format(config.SETTINGS.dateFormats.route),
 	
+	resultCost: function() {
+		return this.get('content').reduce(function(previousValue, obj){
+			return previousValue + obj.get("resultCost");
+		}, 0);		
+	}.property('@each.resultCost'),
+
 	calendarFormat: function() {
 		return config.SETTINGS.dateFormats.calendar
 	}.property(''),
@@ -63,6 +77,35 @@ export default Em.ArrayController.extend({
 	}.property('date'), 
 
 	actions: {
+		createOrder: function() {
+			var controller = this;
+			this.store.createRecord('order', {
+				cost: this.get('resultCost'),	
+			}).save().then(function(order){
+				var orderFoods = [];
+				controller.get('content').forEach(function(object){
+					if (object.get('resultCost') > 0) {
+						object.get('menuFoods').filter(function(menuFood){
+							return menuFood.get('selected') > 0
+						}).forEach(function(menuFood){
+							orderFoods.addObject(controller.store.createRecord('orderFood', {
+								food: menuFood.get('food'),
+								order: order,
+								count: menuFood.get('selected') 
+							}).save());
+						});
+					}
+				});
+				Em.RSVP.all(orderFoods).then(function(){
+					controller.transitionToRoute('order.confirm', order);
+					controller.get('content').forEach(function(object){
+						object.get('menuFoods').forEach(function(menuFood){
+							menuFood.set('selected', 0);
+						});
+					});
+				});
+			});	
+		},
 		addCategory: function() {
 			var controller = this;
 			this.store.createRecord('foodCategory', {
@@ -70,14 +113,14 @@ export default Em.ArrayController.extend({
 				position: this.get('length') 
 			}).save().then(function(category){
 				controller.addObject(
-					Em.Object.create({
-										category:category, 
-										menuFoods: Ember.ArrayController.create({
-											content: [],
-										  sortProperties: ['food.position'],
-										  sortAscending: true
-										})
-									})
+					ProxyCategory.create({
+						category:category, 
+						menuFoods: Ember.ArrayController.create({
+							content: [],
+							sortProperties: ['food.position'],
+							sortAscending: true
+						})
+					})
 					);	
 			})			
 		}

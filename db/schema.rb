@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140406131402) do
   create_table "order_foods", force: true do |t|
     t.integer  "food_id"
     t.integer  "order_id"
+    t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140406131402) do
   create_table "orders", force: true do |t|
     t.text     "comment"
     t.integer  "user_id"
+    t.integer  "cost",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

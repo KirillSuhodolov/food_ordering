@@ -1,16 +1,43 @@
-{{#with view.content}}
-  {{editable-field model=food field=food.name tagName='h4' classNames="list-group-item-heading"}}
-  <div class="column main">
-    {{editable-field model=food field=food.composition isText=true classNames="list-group-item-text"}}
+{{#if isAdmin}}
+  {{editable-field model=view.content.food field=view.content.food.name tagName='h4' classNames="list-group-item-heading"}}
+{{else}}
+  <h4 class="list-group-item-heading">{{view.content.food.name}}</h4>
+{{/if}}
+<div class="column main">
+  {{#if isAdmin}}
+    {{editable-field model=view.content.food field=view.content.food.composition isText=true classNames="list-group-item-text"}}
+  {{else}}
+    <div class="list-group-item-text">{{view.content.food.composition}}</div>
+  {{/if}}
+</div>
+  <div class="column cost">
+    {{#if isAdmin}}
+      {{editable-field model=view.content.food field=view.content.food.cost}}
+    {{else}}
+      {{view.content.food.cost}}
+    {{/if}}
+    руб.
   </div>
-  {{editable-field model=food field=food.cost classNames="column cost"}}
-  <div class="checkbox column visibility">
+<div class="checkbox column visibility">
+  {{#if isAdmin}}
     <label>
-      {{input type='checkbox' checked=isVisible}} Отображать в меню
+      {{input type='checkbox' checked=view.content.isVisible}} Отображать в меню
     </label>
-  </div>
-  <div class="column actions">
+  {{else}}
+    <div class="input-group add-food">
+      <span class="input-group-btn">
+        <button {{bind-attr class=":btn :btn-warning view.isEmpty:disabled"}} type="button" {{action removeFromCard target=view}}>-</button>
+      </span>
+      {{input value=view.content.selected classNames="form-control"}}
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="button" {{action addToCard target=view}}>+</button>
+      </span>
+    </div>
+  {{/if}}
+</div>
+<div class="column actions">
+  {{#if isAdmin}}
     <a href="#" class="btn btn-danger" {{action delete target=view}}>X</a>
-  </div>
-  <div class="clearfix"></div>  
-{{/with}}
+  {{/if}}
+</div>
+<div class="clearfix"></div>  

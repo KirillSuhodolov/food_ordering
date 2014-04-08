@@ -4,6 +4,6 @@
     "bootstrap": "latest",
     "momentjs": "latest",
     "jquery-ui": "latest",
-    "BootstrapFormHelpers": "git@github.com:winmarkltd/BootstrapFormHelpers.git#master"
+    "jQuery-Mask-Plugin": "latest"
   }
 }
