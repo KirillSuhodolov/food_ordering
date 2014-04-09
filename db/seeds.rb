@@ -34,3 +34,36 @@ end
 		phone: '+23123123123'
 	})
 end
+
+3.times do |n|
+	company = Company.create({
+		name: "Company #{n}",
+		address: "address #{n}",
+		position: n + 1	
+	})
+
+	3.times do |n|
+		User.create({
+			name: "user #{n*2}",
+			email: "user#{n*2}@email.com",
+			address: "дом #{n*2}",
+			position: n,
+			company: company,
+			phone: '+23123123123'
+		})
+	end
+end
+
+User.users.each do |user|
+	order = Order.create({
+		user: user,
+		day: Date.today
+	})			
+	3.times do |n|
+		OrderFood.create({
+			order: order,
+			food_id: rand(1..40),
+			count: rand(1..10)	
+		})
+	end
+end

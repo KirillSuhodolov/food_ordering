@@ -1,0 +1,53 @@
+<div class="page-header">
+  {{partial 'pagination'}}
+  <h1>Заказы</h1>
+</div>
+
+{{#if users.isFulfilled}}
+	{{#each controller}}
+	  <div class="panel panel-default foods-admin-list">
+	    <div class="panel-heading">
+	      <div class="column main">
+	      	<h3>
+	      		Заказ {{id}} 
+	      		{{#if isProcessed}}
+	      		(обработан)
+	      		{{else}}
+	      		(не обработан)
+	      		{{/if}}
+	      	</h3>
+	      </div>
+	      <div class="column cost">
+	      	{{user.name}}, {{user.address}}
+	      </div>
+	      <div class="column visibility">
+	        {{user.phone}}
+	      </div>
+	      <div class="column actions">
+	      	{{totalCost}}
+	      </div>
+	      <div class="clearfix"></div>
+	    </div>
+	    <ul class="list-group no-dnd">
+	    	{{#each orderFoods}}
+	    		<li class="list-group-item">
+						{{!-- <h4 class="list-group-item-heading">{{view.content.email}}</h4> --}}
+						<div class="column main">
+						    <div class="list-group-item-text">{{food.name}}</div>
+						</div>
+						<div class="column cost">
+						  {{food.composition}}
+						</div>
+						<div class="checkbox column visibility">
+						  {{count}}
+						</div>
+						<div class="column actions">
+							{{totalCost}}
+						</div>
+						<div class="clearfix"></div>  
+	    		</li>
+	    	{{/each}}
+	    </ul>
+	  </div> 
+	{{/each}}
+{{/if}}

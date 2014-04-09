@@ -4,6 +4,7 @@ class CreateOrderFoods < ActiveRecord::Migration
       t.integer :food_id
       t.integer :order_id
       t.integer :count	
+      t.integer :cost
       t.timestamps
     end
   end

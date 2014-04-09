@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140408160900) do
     t.integer  "food_id"
     t.integer  "order_id"
     t.integer  "count"
+    t.integer  "cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,8 +67,8 @@ ActiveRecord::Schema.define(version: 20140408160900) do
   create_table "orders", force: true do |t|
     t.text     "comment"
     t.integer  "user_id"
-    t.integer  "cost",       default: 0
     t.date     "day"
+    t.boolean  "is_processed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

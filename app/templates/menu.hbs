@@ -1,42 +1,5 @@
 <div class="page-header">
-  <ul class="pagination pull-right calendar">
-    <li>
-      {{link-to '&laquo;' 'menu' (query-params date=prev)}}
-    </li>
-    <li>
-      {{#link-to 'menu' (query-params date=monday)}}
-        Понедельник
-        ({{date monday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'menu' (query-params date=tuesday)}}
-        Вторник
-        ({{date tuesday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'menu' (query-params date=wednesday)}}
-        Среда
-        ({{date wednesday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'menu' (query-params date=thursday)}}
-        Четверг   
-        ({{date thursday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'menu' (query-params date=friday)}}
-        Пятница
-        ({{date friday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{link-to '&raquo;' 'menu' (query-params date=next)}}
-    </li>
-  </ul>
+  {{partial 'pagination'}}
   <h1>Меню</h1>
 </div>
 

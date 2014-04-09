@@ -4,7 +4,11 @@ class Api::V1::OrdersController < ApplicationController
 
   # GET /orders
   def index
-    respond_with Order.all
+    if params[:date]
+      respond_with Order.by_date params[:date]
+    else
+      respond_with Order.all
+    end
   end
 
   # GET /orders/1
@@ -47,6 +51,6 @@ class Api::V1::OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:comment, :user_id, :cost, :day)
+    params.require(:order).permit(:comment, :user_id, :is_processed, :day)
   end
 end
