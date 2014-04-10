@@ -4,6 +4,7 @@
     "bootstrap": "latest",
     "momentjs": "latest",
     "jquery-ui": "latest",
-    "jQuery-Mask-Plugin": "latest"
+    "jQuery-Mask-Plugin": "latest",
+    "Flat-UI": "latest"
   }
 }

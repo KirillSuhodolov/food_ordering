@@ -11,12 +11,7 @@
 //= require moment
 //= require bootstrap
 //= require jquery.mask
-//= require jquery.ui.core
-//= require jquery.ui.widget
-//= require jquery.ui.mouse
-//= require jquery.ui.position
-//= require jquery.ui.draggable
-//= require jquery.ui.droppable
-//= require jquery.ui.sortable
+//= require_tree ../vendor/assets/javascripts/jquery-ui
+//= require_tree ../vendor/assets/javascripts/flat-ui
 
 window.App = require('app').default.create();
