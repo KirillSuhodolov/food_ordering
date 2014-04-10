@@ -13,7 +13,7 @@
 .page-header {
 	margin-top: 0;
 	.calendar {
-		margin-top: 5px;
+		margin-top: 20px;
 	}
 }
 
@@ -58,6 +58,9 @@ body {
 	}
 	.actions {
 		width: 5%;
+		.btn-danger {
+			margin-top: -15px;
+		}
 	}
 	.panel-heading {
 		.main {
@@ -67,6 +70,11 @@ body {
 		}
 		.visibility {
 			margin-top: 10px;
+		}
+		.actions {
+			.btn-danger {
+				margin-top: 0;
+			}
 		}
 	}
 }
@@ -80,11 +88,14 @@ body {
 
 .calendar {
 	a.active {
-		z-index: 2;
-		color: #fff;
-		cursor: default;
-		background-color: #428bca;
-		border-color: #428bca;
+		border-width: 2px !important;
+		color: #d6dbdf;
+		background-color: #16a085;
+		border-color: #16a085;
+		margin: 10px 5px 9px;
+		&:hover {
+			color: #d6dbdf;
+		}
 	}
 }
 
@@ -163,4 +174,31 @@ body {
   h1 {
     color: #e7e7e7;
   }
+}
+
+.fui-arrow-down, .fui-arrow-up {
+	display: inline-block;
+  font-family: 'Flat-UI-Icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;	
+}
+
+.fui-arrow-down {
+	-webkit-transform:rotate(90deg);
+	transform:rotate(90deg);
+	&:before {
+	  content: "\e02c";
+	}
+}
+.fui-arrow-up {
+	-webkit-transform:rotate(90deg);
+	transform:rotate(90deg);
+	&:before {
+	  content: "\e02d";
+	}
 }

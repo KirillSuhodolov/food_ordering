@@ -8,11 +8,9 @@ export default SortableList.extend({
   itemViewClass: ItemView.extend({
     templateName: 'menu/food_item', 
     isAdmin: Em.computed.alias('controller.isAdmin'),
-    isVisibleObserver: function() {
-      if (this.get('content.isDirty')) {
-        this.get('content').save();
-      }
-    }.observes('content.isVisible'),
+    isAdminOrIsVisible: function() {
+      return this.get('isAdmin') || this.get('content.isVisible');
+    }.property('isAdmin', 'content.isVisible'),
     isEmpty: Em.computed.lt('content.selected', 1),
     actions: {
       addToCard: function() {

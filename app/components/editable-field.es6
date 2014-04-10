@@ -3,6 +3,7 @@ export default Em.Component.extend({
 	isText: false,
 	field: null,
 	model: null,
+	classNames: ['editable-field'],
 	click: function(e) {
 		if ($(e.target).hasClass('unactive-editable')) {
 			this.set('isActive', true);

@@ -1,4 +1,45 @@
-<ul class="pagination pull-right calendar">
+<div class="pagination pull-right calendar">
+  <ul>
+    <li class="previous">
+      {{link-to '' routeName (query-params date=prev) classNames="fui-arrow-left"}}
+    </li>
+    <li>
+      {{#link-to routeName (query-params date=monday)}}
+        Понедельник
+        ({{date monday calendarFormat}})
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to routeName (query-params date=tuesday)}}
+        Вторник
+        ({{date tuesday calendarFormat}})
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to routeName (query-params date=wednesday)}}
+        Среда
+        ({{date wednesday calendarFormat}})
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to routeName (query-params date=thursday)}}
+        Четверг   
+        ({{date thursday calendarFormat}})
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to routeName (query-params date=friday)}}
+        Пятница
+        ({{date friday calendarFormat}})
+      {{/link-to}}
+    </li>
+    <li  class="next">
+      {{link-to '' routeName (query-params date=next) classNames="fui-arrow-right"}}
+    </li>
+  </ul>
+</div>
+
+{{!-- <ul class="pagination pull-right calendar">
   <li>
     {{link-to '&laquo;' routeName (query-params date=prev)}}
   </li>
@@ -35,4 +76,4 @@
   <li>
     {{link-to '&raquo;' routeName (query-params date=next)}}
   </li>
-</ul>
+</ul> --}}

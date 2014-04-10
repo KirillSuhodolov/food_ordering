@@ -6,7 +6,7 @@ export default Em.ArrayController.extend(
 	{
 	sortProperties: ['category.position'],
 	sortAscending: true,		
-	isAdmin: true,
+	isAdmin: false,
 	movingObject: null,
 	slicingArray: null,
 	routeName: 'menu',

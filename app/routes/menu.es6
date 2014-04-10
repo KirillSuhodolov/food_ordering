@@ -1,3 +1,4 @@
+import MenuFoods from 'app/controllers/menu/menu-foods'
 import ProxyCategory from 'app/models/objects/proxy-category'
 
 export default Ember.Route.extend({
@@ -18,12 +19,10 @@ export default Ember.Route.extend({
 				categoriesProxyArray.addObject(
 					ProxyCategory.create({
 						category:category, 
-						menuFoods: Ember.ArrayController.create({
+						menuFoods: MenuFoods.create({
 							content: model.get('menuFoods').filter(function(item){
 								if ( item.get('food.foodCategory') == category ) { return true }
 							}),
-							sortProperties: ['food.position'],
-							sortAscending: true
 						})
 					})
 					);	

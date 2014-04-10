@@ -12,32 +12,34 @@
 </div>
   <div class="column cost">
     {{#if isAdmin}}
-      {{editable-field model=view.content.food field=view.content.food.cost}}
+      {{editable-field model=view.content.food field=view.content.food.cost classNames='pull-left'}}
     {{else}}
       {{view.content.food.cost}}
-    {{/if}}
-    руб.
+    {{/if}} 
+    &nbsp;руб.
   </div>
-<div class="checkbox column visibility">
+<div class="column visibility">
   {{#if isAdmin}}
-    <label>
+    <label class="checkbox">
       {{input type='checkbox' checked=view.content.isVisible}} Отображать в меню
     </label>
   {{else}}
     <div class="input-group add-food">
       <span class="input-group-btn">
-        <button {{bind-attr class=":btn :btn-warning view.isEmpty:disabled"}} type="button" {{action removeFromCard target=view}}>-</button>
+        <button {{bind-attr class=":btn :btn-embossed :btn-warning view.isEmpty:disabled"}} type="button" {{action removeFromCard target=view}}>-</button>
       </span>
       {{input value=view.content.selected classNames="form-control"}}
       <span class="input-group-btn">
-        <button class="btn btn-success" type="button" {{action addToCard target=view}}>+</button>
+        <button class="btn btn-embossed btn-success" type="button" {{action addToCard target=view}}>+</button>
       </span>
     </div>
   {{/if}}
 </div>
 <div class="column actions">
   {{#if isAdmin}}
-    <a href="#" class="btn btn-danger" {{action delete target=view}}>X</a>
+    <a href="#" class="btn btn-embossed btn-danger" {{action delete target=view}}>
+      <span class='fui-cross'></span>
+    </a>
   {{/if}}
 </div>
-<div class="clearfix"></div>  
+<div class="clearfix"></div>    

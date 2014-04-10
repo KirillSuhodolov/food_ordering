@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20140408160900) do
     t.text     "comment"
     t.integer  "user_id"
     t.date     "day"
-    t.boolean  "is_processed"
+    t.boolean  "is_processed", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
