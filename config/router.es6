@@ -12,6 +12,8 @@ Router.map(function() {
   this.resource('orders');
   this.resource('clients');
   this.resource('profile');
+  this.resource('recoverPassword', {path: 'recover-password'});
+
 });
 
 export default Router;

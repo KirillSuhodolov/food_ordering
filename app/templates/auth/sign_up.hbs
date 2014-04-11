@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="page-header centered-text">
+      <h1>Пожалуйста, зарегистрируйтесь для заказа или
+        {{link-to 'войдите' 'signIn'}}
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    <div class="login-form">
+
+      <div class="form-group">
+        {{input type="text" value=name classNames="form-control login-field" placeholder="Ваше имя"}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+      </div>
+
+      <div class="form-group">
+        {{input type="text" value=phone classNames="form-control login-field" placeholder="Ваш телефон"}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+      </div>
+
+      <div class="form-group">
+        {{input type="text" value=address classNames="form-control login-field" placeholder="Ваш адрес"}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+      </div>
+
+      <div class="form-group">
+        {{input type="text" value=company classNames="form-control login-field" placeholder="Выберите компанию"}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+      </div>
+
+      <div class="form-group">
+        {{input type="text" value=email classNames="form-control login-field" placeholder="Ваша почта"}}
+        <label class="login-field-icon fui-mail" for="login-name"></label>
+      </div>
+
+      <div class="form-group">
+        {{input type="password" value=password classNames="form-control login-field" placeholder="Пароль"}}
+        <label class="login-field-icon fui-lock" for="login-pass"></label>
+      </div>
+
+      <div class="form-group">
+        {{input type="password" value=passwordConfirmation classNames="form-control login-field" placeholder="Повторите пароль"}}
+        <label class="login-field-icon fui-lock" for="login-pass"></label>
+      </div>
+
+      <a class="btn btn-primary btn-lg btn-block" href="#" {{action signUp}}>Зарегистрироваться</a>
+    </div>
+
+  </div>
+</div>

@@ -3,6 +3,7 @@ class CreateMenuFoods < ActiveRecord::Migration
     create_table :menu_foods do |t|
       t.integer :food_id
       t.integer :menu_id
+      t.integer :user_id
       t.boolean :is_visible, default: true
 
       t.timestamps

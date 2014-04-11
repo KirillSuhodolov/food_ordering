@@ -1,5 +1,10 @@
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
+    <div class="container block-embossed">
+        {{#if auth.signedIn}}
+            {{#link-to 'profile' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}{{auth.user.name}}{{/link-to}}
+        {{else}}
+            {{#link-to 'signIn' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}Войти{{/link-to}}
+        {{/if}}
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
@@ -13,7 +18,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
-                	{{#link-to 'orders'}}Заказы{{/link-to}}
+                	{{#link-to 'orders'}}
+                        Заказы
+                        <span class="navbar-new">2</span>
+                    {{/link-to}}
                 </li>
                 <li>
                 	{{#link-to 'clients'}}Клиенты{{/link-to}}
@@ -23,12 +31,13 @@
                 </li>
             </ul>
             <p class="navbar-text">+375 29 11 22 33</p>
-            <ul class="nav navbar-nav navbar-right">
-             	<li>
-             		<button type="button" class="btn btn-embossed btn-default navbar-btn">Войти</button>
-                </li>
+            <ul class="nav navbar-nav navbar-right edge-block">
                 <li> 
-                	{{#link-to 'profile'}}Vasia{{/link-to}}
+                    {{#if auth.signedIn}}
+                        <a href="#" {{ action signOut }}>
+                            Покинуть нас
+                        </a>
+                    {{/if}}
             	</li>
             </ul>
         </div>

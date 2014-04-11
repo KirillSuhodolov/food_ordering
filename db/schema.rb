@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408160900) do
+ActiveRecord::Schema.define(version: 20140411193602) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "address"
     t.integer  "position"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,9 +26,11 @@ ActiveRecord::Schema.define(version: 20140408160900) do
     t.string  "name"
     t.integer "food_group_id"
     t.integer "position"
+    t.integer "user_id"
   end
 
   create_table "food_groups", force: true do |t|
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,11 +41,13 @@ ActiveRecord::Schema.define(version: 20140408160900) do
     t.integer "food_category_id"
     t.integer "cost",             default: 0
     t.integer "position"
+    t.integer "user_id"
   end
 
   create_table "menu_foods", force: true do |t|
     t.integer  "food_id"
     t.integer  "menu_id"
+    t.integer  "user_id"
     t.boolean  "is_visible", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140408160900) do
   create_table "menus", force: true do |t|
     t.date     "day"
     t.time     "available"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140408160900) do
     t.integer  "order_id"
     t.integer  "count"
     t.integer  "cost"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,16 +81,30 @@ ActiveRecord::Schema.define(version: 20140408160900) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email"
     t.integer  "company_id"
     t.string   "name"
     t.string   "phone"
     t.string   "address"
-    t.boolean  "is_subscribe", default: true
+    t.boolean  "is_subscribe",           default: true
     t.integer  "position"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "authentication_token"
   end
+
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

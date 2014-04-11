@@ -4,6 +4,7 @@ class CreateFoodCategories < ActiveRecord::Migration
       t.string :name
       t.integer :food_group_id
       t.integer :position
+      t.integer :user_id
 
     end
   end

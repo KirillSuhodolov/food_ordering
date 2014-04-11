@@ -1,79 +1,24 @@
-<div class="pagination pull-right calendar">
-  <ul>
-    <li class="previous">
-      {{link-to '' routeName (query-params date=prev) classNames="fui-arrow-left"}}
-    </li>
-    <li>
-      {{#link-to routeName (query-params date=monday)}}
-        Понедельник
-        ({{date monday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to routeName (query-params date=tuesday)}}
-        Вторник
-        ({{date tuesday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to routeName (query-params date=wednesday)}}
-        Среда
-        ({{date wednesday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to routeName (query-params date=thursday)}}
-        Четверг   
-        ({{date thursday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li>
-      {{#link-to routeName (query-params date=friday)}}
-        Пятница
-        ({{date friday calendarFormat}})
-      {{/link-to}}
-    </li>
-    <li  class="next">
-      {{link-to '' routeName (query-params date=next) classNames="fui-arrow-right"}}
-    </li>
-  </ul>
-</div>
-
-{{!-- <ul class="pagination pull-right calendar">
-  <li>
-    {{link-to '&laquo;' routeName (query-params date=prev)}}
-  </li>
-  <li>
-    {{#link-to routeName (query-params date=monday)}}
+<div class="btn-group btn-group-lg pull-right calendar">
+    {{link-to '&laquo;' routeName (query-params date=prev) classNames="btn btn-embossed"}}
+    {{#link-to routeName (query-params date=monday) classNames="btn btn-embossed"}}
       Понедельник
       ({{date monday calendarFormat}})
     {{/link-to}}
-  </li>
-  <li>
-    {{#link-to routeName (query-params date=tuesday)}}
+    {{#link-to routeName (query-params date=tuesday) classNames="btn btn-embossed"}}
       Вторник
       ({{date tuesday calendarFormat}})
     {{/link-to}}
-  </li>
-  <li>
-    {{#link-to routeName (query-params date=wednesday)}}
+    {{#link-to routeName (query-params date=wednesday) classNames="btn btn-embossed"}}
       Среда
       ({{date wednesday calendarFormat}})
     {{/link-to}}
-  </li>
-  <li>
-    {{#link-to routeName (query-params date=thursday)}}
+    {{#link-to routeName (query-params date=thursday) classNames="btn btn-embossed"}}
       Четверг   
       ({{date thursday calendarFormat}})
     {{/link-to}}
-  </li>
-  <li>
-    {{#link-to routeName (query-params date=friday)}}
+    {{#link-to routeName (query-params date=friday) classNames="btn btn-embossed"}}
       Пятница
       ({{date friday calendarFormat}})
     {{/link-to}}
-  </li>
-  <li>
-    {{link-to '&raquo;' routeName (query-params date=next)}}
-  </li>
-</ul> --}}
+    {{link-to '&raquo;' routeName (query-params date=next) classNames="btn btn-embossed"}}
+</div>

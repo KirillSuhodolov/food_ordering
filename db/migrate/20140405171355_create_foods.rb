@@ -6,7 +6,7 @@ class CreateFoods < ActiveRecord::Migration
       t.integer :food_category_id
       t.integer :cost, default: 0
       t.integer :position
-
+      t.integer :user_id
     end
   end
 end

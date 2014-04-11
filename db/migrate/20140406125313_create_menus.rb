@@ -3,6 +3,7 @@ class CreateMenus < ActiveRecord::Migration
     create_table :menus do |t|
       t.date :day
       t.time :available
+      t.integer :user_id
 
       t.timestamps
     end

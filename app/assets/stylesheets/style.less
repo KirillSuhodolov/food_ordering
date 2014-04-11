@@ -87,7 +87,18 @@ body {
 }
 
 .calendar {
-	a.active {
+	a {
+		&.active {
+			background: #a1a6a9;
+			border-color: #a1a6a9;
+			color: #ffffff;
+		}
+		&:hover:not(.active) {
+			color: #ffffff;
+			background-color: #bdc3c7;
+		}
+	}
+	/*a.active {
 		border-width: 2px !important;
 		color: #d6dbdf;
 		background-color: #16a085;
@@ -96,18 +107,18 @@ body {
 		&:hover {
 			color: #d6dbdf;
 		}
-	}
+	}*/
 }
 
 .add-food {
-	width: 110px;
+	width: 130px;
 }
 
 .box {
   text-align: center;
   margin-top: 100px;
   .clock{
-    margin-left: 30px;
+    margin: 0 auto;
     border-radius: 60px;
     border: 3px solid #e7e7e7;;
     height: 80px;
@@ -117,9 +128,6 @@ body {
     top: 28%;
     top: -webkit-calc(50% - 43px);
     top: calc(50% - 43px);
-    left: 35%;
-    left: -webkit-calc(50% - 43px);
-    left: calc(50% - 43px);
   }
   .clock:after{
     content: "";
@@ -201,4 +209,17 @@ body {
 	&:before {
 	  content: "\e02d";
 	}
+}
+
+.centered-text {
+	text-align: center;
+}
+
+.edge-block {
+	margin-right: 10px !important;
+}
+
+.block-embossed {
+	-webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 }

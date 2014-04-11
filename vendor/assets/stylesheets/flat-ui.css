@@ -1553,8 +1553,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .form-group.focus .input-group-btn .btn,
 .input-group.focus .input-group-btn .btn {
   border-color: #1abc9c;
-  background-color: #ffffff;
-  color: #1abc9c;
+  /*background-color: #ffffff;*/
+  /*color: #1abc9c;*/
 }
 .form-group.focus .input-group-btn .btn-default,
 .input-group.focus .input-group-btn .btn-default {
@@ -1618,9 +1618,9 @@ fieldset[disabled] .input-group.focus .input-group-btn .btn-default.active {
   border-color: #1abc9c;
 }
 .input-group-btn .btn {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   border: 2px solid #bdc3c7;
-  color: #bdc3c7;
+  /*color: #bdc3c7;*/
   line-height: 18px;
 }
 .input-group-btn .btn-default {
@@ -4397,7 +4397,7 @@ body.vjs-full-window {
   position: relative;
   border-radius: 6px;
 }
-.login-form:before {
+/*.login-form:before {
   content: '';
   border-style: solid;
   border-width: 12px 12px 12px 0;
@@ -4408,7 +4408,7 @@ body.vjs-full-window {
   top: 35px;
   width: 0;
   -webkit-transform: rotate(360deg);
-}
+}*/
 .login-form .control-group {
   margin-bottom: 6px;
   position: relative;

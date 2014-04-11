@@ -2,6 +2,13 @@ export default Em.Mixin.create({
 	queryParams: ['date'],
 	date: moment().format(config.SETTINGS.dateFormats.route),
 	
+	dateObserver: function() {
+		var date = moment(this.get('date'));	
+		if (date.isoWeekday() == (6 || 7)) {
+			this.transitionTo({queryParams: {date: this.get('next') }});
+		}
+	}.observes('date').on('init'),
+
 	routeName: undefined,
 
 	resultCost: function() {

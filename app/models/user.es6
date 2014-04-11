@@ -7,5 +7,7 @@ export default DS.Model.extend({
   address: DS.attr(),
   isSubscribe: DS.attr(), 
   position: DS.attr(), 
-  status: DS.attr()
+  status: DS.attr(),
+  password: DS.attr(),
+  passwordConfirmation: DS.attr()
 });
