@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="btn-group">
+	      {{#link-to 'calendar' (query-params period=prevMonth) classNames="btn btn-primary btn-embossed"}}
+	          <span class="fui-arrow-left"></span>
+	      {{/link-to}}
+		<div class="btn btn-primary btn-embossed active">
+			{{date period monthFormat}}
+		</div>
+	    {{#link-to 'calendar' (query-params period=nextMonth) classNames="btn btn-primary btn-embossed"}}
+	        <span class="fui-arrow-right"></span>
+	    {{/link-to}}
+		</div>
+	</div>
+</div>
+
+{{view 'calendarGenerator'}}

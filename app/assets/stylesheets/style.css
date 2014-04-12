@@ -27,3 +27,8 @@ body{margin-bottom:60px;}
 .centered-text{text-align:center;}
 .edge-block{margin-right:10px !important;}
 .block-embossed{-webkit-box-shadow:inset 0 -2px 0 rgba(0, 0, 0, 0.15);box-shadow:inset 0 -2px 0 rgba(0, 0, 0, 0.15);}
+.day-template{position:relative;float:left;width:14.28%;color:white;height:90px;border:1px solid;border-color:#FFF;}
+.calendar-month{position:relative;overflow:hidden;padding-top:15px;padding-bottom:15px;}.calendar-month .day{text-align:center;position:relative;float:left;width:14.28%;color:white;height:90px;border:1px solid;border-color:#FFF;}.calendar-month .day.active{color:#ffffff;background-color:#bdc3c7;}.calendar-month .day.active a{color:#ffffff;-webkit-box-shadow:inset 0 2px 0 rgba(0, 0, 0, 0.15);box-shadow:inset 0 2px 0 rgba(0, 0, 0, 0.15);}
+.calendar-month .day a{width:100%;height:100%;display:inline-block;vertical-align:middle;}.calendar-month .day a:hover{color:#ffffff;background-color:#3498db;-webkit-box-shadow:inset 0 2px 0 rgba(0, 0, 0, 0.15);box-shadow:inset 0 2px 0 rgba(0, 0, 0, 0.15);}
+.calendar-month .day a h3{margin-top:20px !important;}
+.calendar-month .empty{position:relative;float:left;width:14.28%;color:white;height:90px;border:1px solid;border-color:#FFF;}
