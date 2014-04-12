@@ -6,16 +6,19 @@ export default Em.ArrayController.extend(
 	{
 	sortProperties: ['category.position'],
 	sortAscending: true,		
-	isAdmin: false,
+	isAdmin: Em.computed.alias('auth.user.isAdmin'),
 	movingObject: null,
 	slicingArray: null,
 	routeName: 'menu',
 	menu: null,
+	needs: ['application'],
 
 	actions: {
 		createOrder: function() {
-			var controller = this;
+			var controller = this,
+				user = this.get('auth.user');
 			this.store.createRecord('order', {
+				user: user,
 				cost: this.get('resultCost'),	
 				day: this.get('menu.day')
 			}).save().then(function(order){
@@ -34,7 +37,12 @@ export default Em.ArrayController.extend(
 					}
 				});
 				Em.RSVP.all(orderFoods).then(function(){
-					controller.transitionToRoute('order.confirm', order);
+					controller.get('controllers.application').set('order', order);
+					if (user) {
+						controller.transitionToRoute('order.confirm', order);
+					} else {
+						controller.transitionToRoute('signIn');
+					}
 					controller.get('content').forEach(function(object){
 						object.get('menuFoods').forEach(function(menuFood){
 							menuFood.set('selected', 0);
@@ -51,7 +59,10 @@ export default Em.ArrayController.extend(
 			}).save().then(function(category){
 				controller.addObject(
 					ProxyCategory.create({
-						category:category
+						category:category, 
+						menuFoods: MenuFoods.create({
+							proxyController: controller
+						})
 					})
 				);	
 			})			

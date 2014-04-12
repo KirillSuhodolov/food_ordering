@@ -45,7 +45,7 @@
 Ember.Checkbox.reopen({
   didInsertElement: function() {
     this._super();
-  	this.$().checkbox();
+  	// this.$().checkbox();
   }
 });
 
@@ -75,14 +75,14 @@ window.App.Auth = Em.Auth.extend({
     },
 
     authRedirectable: {
-        route: 'signIn'
+        route: 'menu'
     },
 
     actionRedirectable: {
         signInRoute: 'menu',
         signInSmart: true,
         signInBlacklist: ['signIn', 'signUp'],
-        signOutRoute: 'signIn'
+        signOutRoute: 'menu'
     },
 
     rememberable: {

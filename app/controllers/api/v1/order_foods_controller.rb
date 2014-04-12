@@ -47,6 +47,6 @@ class Api::V1::OrderFoodsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_food_params
-    params.require(:order_food).permit(:food_id, :order_id)
+    params.require(:order_food).permit(:food_id, :order_id, :count)
   end
 end

@@ -20,8 +20,14 @@ export default Em.ObjectController.extend({
                         'password': password,
                         'remember': this.get('remember')
                     }
-                }).then(function(){
-                        
+                }).then(function(user){
+                    var order = application.get('order');
+                    if (order) {
+                        order.set('user', application.get('auth.user'));
+                        order.save().then(function() {
+                            application.transitionToRoute('order.confirm', order);
+                        });    
+                    }
                     }, function() {
                         alert('Ошибка авторизации');
                     });

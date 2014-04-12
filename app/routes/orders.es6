@@ -1,4 +1,5 @@
 export default Ember.Route.extend({
+	authRedirectable: true,
 	queryParams: {
 		category: {
 			refreshModel: true

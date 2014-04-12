@@ -6,6 +6,7 @@ export default Em.ObjectController.extend({
             this.set('disabled', true);
 
             var self = this,
+                application = this.get('controllers.application'),
                 password = this.get('password'),
                 auth = this.auth,
                 model = this.get('model'),
@@ -20,6 +21,16 @@ export default Em.ObjectController.extend({
                                     'password': password,
                                     'remember': true
                                 }
+                            }).then(function(user){
+                                var order = application.get('order');
+                                if (order) {
+                                    order.set('user', application.get('auth.user'));
+                                    order.save().then(function() {
+                                        application.transitionToRoute('order.confirm', order);
+                                    });    
+                                }  
+                            }, function() {
+                                alert('Ошибка авторизации');
                             });
                         }, function(user){
                             var record = controller.get('model'),

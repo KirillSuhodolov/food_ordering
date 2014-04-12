@@ -20,6 +20,7 @@ export default Ember.Route.extend({
 					ProxyCategory.create({
 						category:category, 
 						menuFoods: MenuFoods.create({
+							proxyController: controller,
 							content: model.get('menuFoods').filter(function(item){
 								if ( item.get('food.foodCategory') == category ) { return true }
 							}),

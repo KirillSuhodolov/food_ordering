@@ -9,5 +9,9 @@ export default DS.Model.extend({
   position: DS.attr(), 
   status: DS.attr(),
   password: DS.attr(),
-  passwordConfirmation: DS.attr()
+  passwordConfirmation: DS.attr(),
+  isAdmin: Em.computed.equal('status', 'admin'),
+  greeting: function() {
+    return this.get('name') || this.get('email');
+  }.property('name', 'email')
 });

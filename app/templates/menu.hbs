@@ -52,7 +52,12 @@
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="container">
     {{#if isAdmin}}
-      <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>Добавить категорию</button>
+      <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>
+        Добавить категорию
+      </button>
+      {{#link-to 'calendar' classNames="btn btn-embossed btn-primary navbar-btn pull-right calendar-link"}}
+        Календарь   
+      {{/link-to}}
       <div class='pull-left available-menu'>
         <p class="navbar-text pull-left">Меню доступно до</p> 
         {{input value=menu.available classNames="form-control pull-left time"}}

@@ -7,7 +7,7 @@ class CreateFirstObjects < ActiveRecord::Migration
     User.create({
     	name: 'admin',
     	email: 'admin@admin.com',
-    	password: 'admin',
+    	password: 'adminadmin',
     	status: UserStatus::ADMIN
     })
   end
