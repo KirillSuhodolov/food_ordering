@@ -4,7 +4,7 @@ export default Em.Mixin.create({
 	
 	dateObserver: function() {
 		var date = moment(this.get('date'));	
-		if (date.isoWeekday() == (6 || 7)) {
+		if ((date.isoWeekday() == 6) || (date.isoWeekday() == 7)) {
 			this.transitionTo({queryParams: {date: this.get('next') }});
 		}
 	}.observes('date').on('init'),

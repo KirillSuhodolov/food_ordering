@@ -1,11 +1,25 @@
 export default Em.ObjectController.extend({
+	init: function() {
+		this._super();
+		this.set('isAllSelected', this.get('model.menuFoods').isEvery('isVisible', true));
+	},
 	needs: ['menu'],
 	isAdmin: Em.computed.alias('controllers.menu.isAdmin'), 
-	isAllSelected: function() {
-		return this.get('model.menuFoods').isEvery('isVisible', true)
+	
+	isAllSelectedProxy: function() {
+		return this.get('model.menuFoods').isEvery('isVisible', true);
 	}.property('model.menuFoods.@each.isVisible'),
+	
+	isAllSelected: null,
+	
 	isAllSelectedObserver: function() {
-		this.get('model.menuFoods').setEach('isVisible', this.get('isAllSelected'));	
+		if (!this.get('isAllSelected') && !this.get('isAllSelectedProxy')) {
+			this.get('model.menuFoods').setEach('isVisible', true);	
+		} else if (this.get('isAllSelected') && this.get('isAllSelectedProxy')) {
+			this.get('model.menuFoods').setEach('isVisible', false);	
+		} else {
+			this.get('model.menuFoods').setEach('isVisible', this.get('isAllSelected'));	
+		}
 	}.observes('isAllSelected'),
 
 	isFirstCategory: function() {

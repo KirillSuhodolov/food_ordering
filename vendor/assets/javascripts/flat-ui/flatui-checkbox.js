@@ -27,8 +27,8 @@
       var $el = this.$element
         , $parent = $el.closest('.checkbox');
         
-        $el.prop('disabled') && $parent.addClass('disabled');   
-        $el.prop('checked') && $parent.addClass('checked');
+        // $el.prop('disabled') && $parent.addClass('disabled');   
+        // $el.prop('checked') && $parent.addClass('checked');
     }  
     
   , toggle: function () {    
@@ -102,11 +102,11 @@
     }
   });
   
-  $(function () {
-    $('[data-toggle="checkbox"]').each(function () {
-      var $checkbox = $(this);
-      $checkbox.checkbox();
-    });
-  });
+  // $(function () {
+  //   $('[data-toggle="checkbox"]').each(function () {
+  //     var $checkbox = $(this);
+  //     $checkbox.checkbox();
+  //   });
+  // });
 
 }(window.jQuery);

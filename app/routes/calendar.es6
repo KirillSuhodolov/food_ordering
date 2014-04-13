@@ -1,3 +1,13 @@
 export default Em.Route.extend({
-	authRedirectable: true
+	authRedirectable: true,
+		queryParams: {
+		category: {
+			refreshModel: true
+		}
+	},
+	actions: {
+		queryParamsDidChange: function() {
+			this.refresh();	
+		}
+	}  
 });

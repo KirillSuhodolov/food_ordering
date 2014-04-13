@@ -45,7 +45,14 @@
 Ember.Checkbox.reopen({
   didInsertElement: function() {
     this._super();
-  	// this.$().checkbox();
+    this.$().checkbox();
+    // var self = this;
+    // this.$().on('change', function() {
+    //   Ember.run(function(){
+    //     self.set('checked', !self.get('checked'));
+    //     console.log(self.toString());  
+    //   });                  
+    // });
   }
 });
 

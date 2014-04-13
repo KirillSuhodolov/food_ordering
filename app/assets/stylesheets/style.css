@@ -33,4 +33,4 @@ body{margin-bottom:60px;}
 .calendar-month .day a h3{margin-top:20px !important;}
 .calendar-month .empty{position:relative;float:left;width:14.28%;color:white;height:90px;border:1px solid;border-color:#FFF;}
 .calendar-link{margin-right:20px;}
-.time{width:70px;}
+.time{width:70px !important;}

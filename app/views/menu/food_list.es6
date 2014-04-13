@@ -8,9 +8,17 @@ export default SortableList.extend({
   itemViewClass: ItemView.extend({
     templateName: 'menu/food_item', 
     isAdmin: Em.computed.alias('controller.isAdmin'),
-    isAdminOrIsVisible: function() {
-      return this.get('isAdmin') || this.get('content.isVisible');
-    }.property('isAdmin', 'content.isVisible'),
+
+    isVisibleObserver: function() {
+      if (this.get('content.isDirty')) {
+        this.get('content').save();
+      }
+    }.observes('content.isVisible'),    
+
+    // isAdminOrIsVisible: function() {
+    //   return this.get('isAdmin') || this.get('content.isVisible');
+    // }.property('isAdmin', 'content.isVisible'),
+    
     isEmpty: Em.computed.lt('content.selected', 1),
     actions: {
       addToCard: function() {
@@ -22,13 +30,13 @@ export default SortableList.extend({
       delete: function() {
         var view = this,
         content = view.get('content'),
-        collection = view.get('controller.menuFoods.arrangedContent');
+        collection = view.get('controller.menuFoods');
         this.get('content.food').deleteRecord();
         this.get('content.food').save().then(function(){
           view.get('content').deleteRecord();
           view.get('content').save().then(function(){
             collection.removeObject(content);
-            collection.forEach(function (el, index) {
+            collection.get('arrangedContent').forEach(function (el, index) {
               el.get('food').set('position', index);
               if (el.get('food.isDirty')) {
                 el.get('food').save();

@@ -28,9 +28,13 @@
       </div>
       <div class="column visibility">
         {{#if isAdmin}}
-        <label class="checkbox">
+        <label {{bind-attr class="isAllSelectedProxy:checked :checkbox" }} >
+          <span class="icons">
+            <span class="first-icon fui-checkbox-unchecked"></span>
+            <span class="second-icon fui-checkbox-checked"></span>
+          </span>            
           {{input type='checkbox' checked=isAllSelected }}
-           Отображать всю категорию
+          Отображать всю категорию
         </label>
         {{/if}}
       </div>

@@ -20,7 +20,7 @@
   </div>
 <div class="column visibility">
   {{#if isAdmin}}
-    <label class="checkbox">
+    <label {{bind-attr class=":checkbox view.content.isVisible:checked" }}>
       {{input type='checkbox' checked=view.content.isVisible}} Отображать в меню
     </label>
   {{else}}
