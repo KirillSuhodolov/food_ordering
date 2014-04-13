@@ -25,7 +25,7 @@ module FoodOrdering
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = false
-    config.assets.paths << Rails.root.join('bower_components')
+    # config.assets.paths << Rails.root.join('bower_components')
     config.autoload_paths << "#{Rails.root}/app/enumerations"
   end
 end
