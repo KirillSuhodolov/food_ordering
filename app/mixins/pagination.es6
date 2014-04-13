@@ -5,17 +5,11 @@ export default Em.Mixin.create({
 	dateObserver: function() {
 		var date = moment(this.get('date'));	
 		if ((date.isoWeekday() == 6) || (date.isoWeekday() == 7)) {
-			this.transitionTo({queryParams: {date: this.get('next') }});
+			this.transitionToRoute({queryParams: {date: this.get('next') }});
 		}
 	}.observes('date').on('init'),
 
 	routeName: undefined,
-
-	resultCost: function() {
-		return this.get('content').reduce(function(previousValue, obj){
-			return previousValue + obj.get("resultCost");
-		}, 0);		
-	}.property('@each.resultCost'),
 
 	calendarFormat: function() {
 		return config.SETTINGS.dateFormats.calendar

@@ -34,6 +34,7 @@ body {
 		padding: 5px 0;
 		&.no-dnd {
 			padding: 0;
+			padding-bottom: 3px;
 		}
 	}
 	.placeholder {
@@ -51,10 +52,17 @@ body {
 	}
 	.cost {
 		width: 20%;
+		min-height: 10px;
 		padding: 0 10px;
 	}
 	.visibility {
 		width: 20%;
+		.label {
+			margin-top: 4px;
+			font-size: 16px;
+			display: block;
+			float: left;
+		}
 	}
 	.actions {
 		width: 5%;
@@ -281,4 +289,31 @@ body {
 
 .time {
 	width: 70px !important;
+}
+
+.orders {
+	.list-group {
+		margin-bottom: 0;
+		.list-group-item {
+			border: none;
+		}
+	}
+	.panel-heading {
+		.actions {
+			margin-top: 10px;			
+		}
+	}
+	.column {
+		&.main {
+			width: 50%;
+		}
+		&.visibility {
+			p {
+				margin-bottom: 0;
+			}
+		}
+		&.actions {
+			width: 10%;
+		}
+	}
 }

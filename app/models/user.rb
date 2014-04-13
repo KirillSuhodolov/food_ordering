@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
 	  	user.company = Company.first
 	  end
   end
+
+  def is_admin
+    status == UserStatus::ADMIN
+  end
 end

@@ -1,10 +1,10 @@
-class Api::V1::FoodsController < ApplicationController
+class Api::V1::FoodsController < Api::BaseApiController
   before_action :set_food, only: [:show, :update, :destroy]
   respond_to :json
 
   # GET /foods
   def index
-    respond_with Food.all
+    respond_with Food.existing
   end
 
   # GET /foods/1
@@ -14,28 +14,34 @@ class Api::V1::FoodsController < ApplicationController
 
   # POST /foods
   def create
-    @food = Food.new(food_params)
+    if current_user.is_admin
+      @food = Food.new(food_params)
 
-    if @food.save
-      respond_with @food, status: :created, location: [:api, :v1, @food]
-    else
-      render json: { errors: @food.errors }, status: :unprocessable_entity
+      if @food.save
+        respond_with @food, status: :created, location: [:api, :v1, @food]
+      else
+        render json: { errors: @food.errors }, status: :unprocessable_entity
+      end
     end
   end
 
   # PATCH/PUT /foods/1
   def update
-    if @food.update(food_params)
-      respond_with @food, status: :ok, location: [:api, :v1, @food]
-    else
-      render json: { errors: @food.errors }, status: :unprocessable_entity
+    if current_user.is_admin
+      if @food.update(food_params)
+        respond_with @food, status: :ok, location: [:api, :v1, @food]
+      else
+        render json: { errors: @food.errors }, status: :unprocessable_entity
+      end
     end
   end
 
   # DELETE /foods/1
   def destroy
-    @food.destroy
-    head :no_content
+    if current_user.is_admin
+      @food.update_attribute :is_deleted, true
+      head :no_content
+    end
   end
 
   private

@@ -1,0 +1,64 @@
+<div class="page-header">
+  {{partial 'pagination'}}
+  <h1>Заказы</h1>
+</div>
+
+{{#each controller itemController='profile/ordersItem'}}
+  <div class="panel panel-default foods-admin-list block-embossed">
+    <div class="panel-heading">
+      <div class="column main">
+    	  Заказ № {{id}}
+    	  {{#if isProcessed}}
+    	  	- Обработан, ожидайте доставки!
+    	  {{/if}}
+      </div>
+      <div class="column cost">
+      </div>
+      <div class="column visibility">
+      </div>
+      <div class="column actions">
+      	{{totalCost}}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <ul class="list-group no-dnd">
+    	{{#each orderFoods itemController='profile/foodsItem'}}
+	    	<li class="list-group-item">
+				  <h4 class="list-group-item-heading">
+				  	{{food.name}}
+				  </h4>
+					<div class="column main">
+					    <div class="list-group-item-text">
+					  		{{food.composition}}					    	
+					    </div>
+					</div>
+					<div class="column cost">
+					  						
+					</div>
+					<div class="checkbox column visibility">
+						{{#unless parentController.isProcessed}}
+					    <div class="input-group add-food">
+					      <span class="input-group-btn">
+					        <button {{bind-attr class=":btn :btn-embossed :btn-warning isEmpty:disabled"}} type="button" {{action removeItem}}>-</button>
+					      </span>
+					      {{input value=count classNames="form-control"}}
+					      <span class="input-group-btn">
+					        <button class="btn btn-embossed btn-success" type="button" {{action addItem}}>+</button>
+					      </span>
+					    </div>
+				    {{/unless}}
+					</div>
+					<div class="column actions">
+						{{totalCost}}
+					</div>
+					<div class="clearfix"></div>  
+	    	</li>
+    	{{/each}}
+    </ul>
+  </div> 
+{{else}}
+	<h2 class="centered-text text-danger">
+		На сегодня вы ничего не заказали.
+	</h2>	
+{{/each}}

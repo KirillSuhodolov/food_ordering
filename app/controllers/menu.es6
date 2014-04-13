@@ -1,5 +1,6 @@
 import ProxyCategory from 'app/models/objects/proxy-category'
 import PaginationMixin from 'app/mixins/pagination'
+import MenuFoods from 'app/controllers/menu/menu-foods'
 
 export default Em.ArrayController.extend(
 	PaginationMixin,
@@ -12,6 +13,12 @@ export default Em.ArrayController.extend(
 	routeName: 'menu',
 	menu: null,
 	needs: ['application'],
+	
+	resultCost: function() {
+		return this.get('content').reduce(function(previousValue, obj){
+			return previousValue + obj.get("resultCost");
+		}, 0);		
+	}.property('@each.resultCost'),
 
 	actions: {
 		createOrder: function() {

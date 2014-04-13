@@ -1,4 +1,4 @@
-class Api::V1::CompaniesController < ApplicationController
+class Api::V1::CompaniesController < Api::BaseApiController
   before_action :set_company, only: [:show, :update, :destroy]
   respond_to :json
 

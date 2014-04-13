@@ -1,4 +1,4 @@
-class Api::V1::OrderFoodsController < ApplicationController
+class Api::V1::OrderFoodsController < Api::BaseApiController
   before_action :set_order_food, only: [:show, :update, :destroy]
   respond_to :json
 

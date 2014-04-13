@@ -1,4 +1,4 @@
-class Api::V1::FoodGroupsController < ApplicationController
+class Api::V1::FoodGroupsController < Api::BaseApiController
   before_action :set_food_group, only: [:show, :update, :destroy]
   respond_to :json
 

@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < Api::BaseApiController
   before_action :set_user, only: [:show, :update, :destroy]
   respond_to :json
 

@@ -35,17 +35,15 @@ end
 		position: n + 1	
 	})
 
-	3.times do |n|
-		User.create({
-			name: "user #{n*2}",
-			email: "user#{n*2}@email.com",
-			address: "house #{n*2}",
-			position: n,
-			company: company,
-			password: '1234qwer',
-			phone: "+23123123123"
-		})
-	end
+	User.create({
+		name: "user asdsadas21",
+		email: "userad22@email.com",
+		address: "house asd",
+		position: 1,
+		company: company,
+		password: '1234qwer',
+		phone: "+23123123123"
+	})
 end
 
 User.users.each do |user|
@@ -60,4 +58,19 @@ User.users.each do |user|
 			count: rand(1..10)	
 		})
 	end
+
+	food = Food.create({
+		name: "food deleted", 
+		composition: "food deleted",
+	  food_category_id: 1,
+	  cost: 100 * 33,
+	  position: 33,
+	  is_deleted: true
+	})
+
+	OrderFood.create({
+		order: order,
+		food: food,
+		count: rand(1..10)	
+	})
 end

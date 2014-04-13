@@ -3,51 +3,66 @@
   <h1>Заказы</h1>
 </div>
 
-{{#if users.isFulfilled}}
-	{{#each controller}}
-	  <div class="panel panel-default foods-admin-list block-embossed">
+{{#each controller itemController='orders/item'}}
+	{{#if orders.length}}
+	  <div class="panel panel-default foods-admin-list orders block-embossed">
 	    <div class="panel-heading">
 	      <div class="column main">
 	      	<h3>
-	      		Заказ {{id}} 
-	      		{{#if isProcessed}}
-	      		(обработан)
+	      		{{#if company.isSeparated}}
+	      			Индивидуальные заказы
 	      		{{else}}
-	      		(не обработан)
+	      			{{company.name}} 
 	      		{{/if}}
 	      	</h3>
 	      </div>
 	      <div class="column cost">
-	      	{{user.name}}, {{user.address}}
+	      	{{company.address}}
 	      </div>
 	      <div class="column visibility">
-	        {{user.phone}}
+	    		{{#if isProcessed}}
+	      		<p class="text-success">обработано</p>
+	    		{{else}}
+			    	<a href="#" class="btn btn-embossed btn-warning" {{action process}}>
+			    		Обработать!
+			    	</a>
+	    		{{/if}}        
 	      </div>
 	      <div class="column actions">
-	      	{{totalCost}}
+	        {{totalCost}}&nbsp;руб.
 	      </div>
 	      <div class="clearfix"></div>
 	    </div>
-	    <ul class="list-group no-dnd">
-	    	{{#each orderFoods}}
+	    <ul class="list-group">
+	    	{{#each orders}}
 	    		<li class="list-group-item">
-						{{!-- <h4 class="list-group-item-heading">{{view.content.email}}</h4> --}}
-						<div class="column main">
-						    <div class="list-group-item-text">{{food.name}}</div>
-						</div>
-						<div class="column cost">
-						  {{food.composition}}
-						</div>
-						<div class="checkbox column visibility">
-						  {{count}}
-						</div>
-						<div class="column actions">
-							{{totalCost}}
-						</div>
-						<div class="clearfix"></div>  
+						{{#if user.isSeparated}}
+							<h4 class="list-group-item-heading">{{user.name}}, {{user.address}}, {{user.phone}}</h4>
+						{{/if}}
+						<ul class="list-group">
+							{{#each orderFoods}}
+						  	<li class="list-group-item">
+									<div class="column main">
+									    <div class="list-group-item-text">{{food.name}}</div>
+									</div>
+									<div class="column cost">
+									  {{food.composition}}
+									</div>
+									<div class="checkbox column visibility">
+									  <span class="label label-info">
+									  	{{count}}&nbsp;шт.
+									  </span>
+									</div>
+									<div class="column actions">
+										{{totalCost}}&nbsp;руб.
+									</div>
+									<div class="clearfix"></div>  
+						  	</li>
+					  	{{/each}}
+					  </ul>
 	    		</li>
 	    	{{/each}}
 	    </ul>
 	  </div> 
-	{{/each}}
-{{/if}}
+	{{/if}}
+{{/each}}

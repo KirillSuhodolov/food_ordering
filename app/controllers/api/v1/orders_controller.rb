@@ -1,14 +1,19 @@
-class Api::V1::OrdersController < ApplicationController
+class Api::V1::OrdersController < Api::BaseApiController
   before_action :set_order, only: [:show, :update, :destroy]
   respond_to :json
 
   # GET /orders
   def index
     if params[:date]
-      respond_with Order.by_date params[:date]
-    else
-      respond_with Order.all
+      if current_user.is_admin
+        result = Order.by_date(params[:date])
+      else
+        result = Order.by_user(current_user).by_date(params[:date])         
+      end
+    elsif current_user.is_admin
+      result = Order.all
     end
+    respond_with result 
   end
 
   # GET /orders/1

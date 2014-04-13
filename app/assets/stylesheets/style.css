@@ -2,13 +2,13 @@
 .page-header{margin-top:0;}.page-header .calendar{margin-top:20px;}
 .available-menu input{width:initial;margin-top:8px;margin-bottom:8px;}
 body{margin-bottom:60px;}
-.foods-admin-list .list-group{padding:5px 0;}.foods-admin-list .list-group.no-dnd{padding:0;}
+.foods-admin-list .list-group{padding:5px 0;}.foods-admin-list .list-group.no-dnd{padding:0;padding-bottom:3px;}
 .foods-admin-list .placeholder{height:60px;list-style:none;}
 .foods-admin-list .checkbox{margin:0;}
 .foods-admin-list .column{float:left;}
 .foods-admin-list .main{width:55%;}
-.foods-admin-list .cost{width:20%;padding:0 10px;}
-.foods-admin-list .visibility{width:20%;}
+.foods-admin-list .cost{width:20%;min-height:10px;padding:0 10px;}
+.foods-admin-list .visibility{width:20%;}.foods-admin-list .visibility .label{margin-top:4px;font-size:16px;display:block;float:left;}
 .foods-admin-list .actions{width:5%;}.foods-admin-list .actions .btn-danger{margin-top:-15px;}
 .foods-admin-list .panel-heading .main h3{margin:5px 0 0 0;}
 .foods-admin-list .panel-heading .visibility{margin-top:10px;}
@@ -34,3 +34,8 @@ body{margin-bottom:60px;}
 .calendar-month .empty{position:relative;float:left;width:14.28%;color:white;height:90px;border:1px solid;border-color:#FFF;}
 .calendar-link{margin-right:20px;}
 .time{width:70px !important;}
+.orders .list-group{margin-bottom:0;}.orders .list-group .list-group-item{border:none;}
+.orders .panel-heading .actions{margin-top:10px;}
+.orders .column.main{width:50%;}
+.orders .column.visibility p{margin-bottom:0;}
+.orders .column.actions{width:10%;}

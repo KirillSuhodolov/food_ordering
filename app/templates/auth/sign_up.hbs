@@ -10,7 +10,7 @@
 
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-    <div class="login-form">
+    <form class="login-form" {{action signUp on='submit'}}>
 
       <div class="form-group">
         {{input type="text" value=name classNames="form-control login-field" placeholder="Ваше имя"}}
@@ -47,7 +47,7 @@
         <label class="login-field-icon fui-lock" for="login-pass"></label>
       </div>
 
-      <a class="btn btn-primary btn-lg btn-block" href="#" {{action signUp}}>Зарегистрироваться</a>
+      <button class="btn btn-primary btn-lg btn-block" type='submit'>Зарегистрироваться</button>
     </div>
 
   </div>

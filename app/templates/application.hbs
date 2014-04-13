@@ -1,7 +1,15 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container block-embossed">
         {{#if auth.signedIn}}
-            {{#link-to 'profile' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}{{auth.user.greeting}}{{/link-to}}
+            {{#if auth.user.isAdmin}}
+                <a href="#" class="btn btn-embossed btn-default disabled navbar-btn pull-right"> 
+                    {{auth.user.greeting}}
+                </a>
+            {{else}}
+                {{#link-to 'profile' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}
+                    {{auth.user.greeting}}
+                {{/link-to}}
+            {{/if}}
         {{else}}
             {{#link-to 'signIn' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}Войти{{/link-to}}
         {{/if}}

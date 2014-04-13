@@ -1,3 +1,5 @@
+import ProxyCompany from 'app/models/objects/proxy-company'
+
 export default Ember.Route.extend({
 	authRedirectable: true,
 	queryParams: {
@@ -9,9 +11,21 @@ export default Ember.Route.extend({
 		return this.store.find('order', params)
 	},  
 	setupController: function(controller, model) {
-		this._super(controller, model);
-		controller.set('users', this.store.findQuery('user'));
-		controller.set('companies', this.store.findQuery('company'));
+		this.store.find('company').then(function(company){
+			var ordersProxyArray = [];
+			company.forEach(function(company){
+				ordersProxyArray.addObject(
+					ProxyCompany.create({
+						company: company, 
+						orders: model.filter(function(item){
+							return item.get('user.company') == company 
+						}),
+					})
+				)
+			});	
+			controller.set('model', ordersProxyArray);
+		});	
+
 	},
 	actions: {
 		queryParamsDidChange: function() {

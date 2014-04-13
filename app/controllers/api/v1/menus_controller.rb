@@ -1,4 +1,4 @@
-class Api::V1::MenusController < ApplicationController
+class Api::V1::MenusController < Api::BaseApiController
   before_action :set_menu, only: [:show, :update, :destroy]
   respond_to :json
 

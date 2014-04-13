@@ -1,4 +1,4 @@
-class Api::V1::FoodCategoriesController < ApplicationController
+class Api::V1::FoodCategoriesController < Api::BaseApiController
   before_action :set_food_category, only: [:show, :update, :destroy]
   respond_to :json
 

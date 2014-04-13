@@ -42,18 +42,37 @@
 //= require_tree ../app
 //= require_tree ./initializers
 
+Em.Auth.RememberableAuthModule.reopen({
+    recall: function (opts) {
+        var token,
+            self = this;
+        if (null == opts)
+            opts = {};
+        if (!get$(get$(this, 'auth'), 'signedIn') && (token = this.retrieveToken())) {
+            set$(this, 'fromRecall', true);
+            opts.data || (opts.data = {});
+            get$(opts, 'data')[get$(get$(this, 'config'), 'tokenKey')] = token;
+            if (null != get$(get$(this, 'config'), 'endPoint')) {
+                return get$(this, 'auth').signIn(get$(get$(this, 'config'), 'endPoint'), opts);
+            } else {
+                return get$(this, 'auth').signIn(opts).catch(function(error){
+                    self.recall();
+                    if (error.recall) {
+                        Bootstrap.NM.push(Em.I18n.translations.messages.recall, 'danger');
+                    }
+                });
+            }
+        } else {
+            return new (get$(get$(Em, 'RSVP'), 'resolve'));
+        }
+    }
+});
+
 Ember.Checkbox.reopen({
-  didInsertElement: function() {
-    this._super();
-    this.$().checkbox();
-    // var self = this;
-    // this.$().on('change', function() {
-    //   Ember.run(function(){
-    //     self.set('checked', !self.get('checked'));
-    //     console.log(self.toString());  
-    //   });                  
-    // });
-  }
+    didInsertElement: function() {
+        this._super();
+        this.$().checkbox();
+    }
 });
 
 window.App = require('app').default.create();

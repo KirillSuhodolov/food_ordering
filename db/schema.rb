@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140411193602) do
     t.integer "cost",             default: 0
     t.integer "position"
     t.integer "user_id"
+    t.boolean "is_deleted",       default: false
   end
 
   create_table "menu_foods", force: true do |t|
