@@ -33,7 +33,6 @@
 
 /public/*.txt
 /public/*.TXT
-config/*.yml
 
 # CTAGS
 .gemtags
