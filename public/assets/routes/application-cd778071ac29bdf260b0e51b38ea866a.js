@@ -1,0 +1,1 @@
+define("app/routes/application",["exports"],function(t){"use strict";t["default"]=Em.Route.extend({actions:{signOut:function(){this.auth.signOut().then(function(){window.location.reload(!0)})}}})});
