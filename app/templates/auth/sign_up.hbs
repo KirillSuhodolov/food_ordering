@@ -28,8 +28,17 @@
       </div>
 
       <div class="form-group">
-        {{input type="text" value=company classNames="form-control login-field" placeholder="Выберите компанию"}}
-        <label class="login-field-icon fui-user" for="login-name"></label>
+       {{!--  {{input type="text" value=company classNames="form-control login-field" placeholder="Выберите компанию"}}
+        <label class="login-field-icon fui-user" for="login-name"></label> --}}
+        {{view Ember.Select
+           content=companies
+           optionValuePath="content.id"
+           optionLabelPath="content.name"
+           selection=company
+           prompt='Выберите компанию'
+           classNames='form-control'
+         }}
+         <label class="login-field-icon fui-user" for="login-name"></label>
       </div>
 
       <div class="form-group">

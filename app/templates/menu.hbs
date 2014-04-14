@@ -3,72 +3,96 @@
   <h1>Меню</h1>
 </div>
 
-{{#each arrangedContent itemController='menu/itemCategory'}}
-  <div class="panel panel-default foods-admin-list block-embossed">
-    <div class="panel-heading">
-      <div class="column main">
-        {{#if isAdmin}}
-          <div class="btn-group pull-right">
-              <button type="button" {{bind-attr class=":btn :btn-embossed :btn-success isFirstCategory:disabled"}} {{action decrementPosition}}>
-                <span class='fui-arrow-up'></span>
-              </button>
-              <button type="button" {{bind-attr class=":btn :btn-embossed :btn-success isLastCategory:disabled"}} {{action incrementPosition}}>
-                <span class='fui-arrow-down'></span>
-              </button>
+{{#if isAdmin}}
+  <div class="row">
+    <div class="col-lg-8">
+      {{#if menu.isAvailable}}
+        <div class="form-group">    
+          <label for="dtp_input1" class="col-lg-4 control-label">Меню доступно до</label>
+          <div class="input-group date form_datetime col-lg-4">
+            {{input value=menu.available classNames="form-control" readonly=true}}
+            {{!-- <input class="form-control" size="16" type="text" value="" readonly> --}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
           </div>
-          {{editable-field model=category field=category.name tagName='h3'}}
-        {{else}}
-          <h3>{{category.name}}</h3>
-        {{/if}}
-      </div>
-      <div class="column cost">
-        {{#if isAdmin}}
-          <a href="#" class='btn btn-embossed btn-primary' {{action addFood}} >Новая позиция</a>
-        {{/if}}
-      </div>
-      <div class="column visibility">
-        {{#if isAdmin}}
-        <label {{bind-attr class="isAllSelectedProxy:checked :checkbox" }} >
-          <span class="icons">
-            <span class="first-icon fui-checkbox-unchecked"></span>
-            <span class="second-icon fui-checkbox-checked"></span>
-          </span>            
-          {{input type='checkbox' checked=isAllSelected }}
-          Отображать всю категорию
-        </label>
-        {{/if}}
-      </div>
-      <div class="column actions">
-        {{#if isAdmin}}
-          <a href="#" class="btn btn-embossed btn-danger" {{action delete}}>
-            <span class='fui-cross'></span>
-          </a>
-        {{/if}}
-      </div>
-      <div class="clearfix"></div>
+        </div>
+      {{/if}}
     </div>
-
-    {{view 'menu/foodList' contentBinding='menuFoods.filteredContent'}}
-
-  </div>   
-{{/each}}
-
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <div class="container">
-    {{#if isAdmin}}
-      <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>
-        Добавить категорию
-      </button>
+    <div class="col-lg-4">
       {{#link-to 'calendar' classNames="btn btn-embossed btn-primary navbar-btn pull-right calendar-link"}}
         Календарь   
       {{/link-to}}
-      <div class='pull-left available-menu'>
-        <p class="navbar-text pull-left">Меню доступно до</p> 
-        {{input value=menu.available classNames="form-control pull-left time"}}
-      </div>
-    {{else}}
-      <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action createOrder}}>Заказать</button>
-      <p class="navbar-text pull-right">Итоговая сумма {{resultCost}}</p> 
-    {{/if}}
+    </div>
   </div>
-</nav>
+{{/if}}
+
+{{#if menu.isAvailable}}
+  {{#each arrangedContent itemController='menu/itemCategory'}}
+    <div class="panel panel-default foods-admin-list block-embossed">
+      <div class="panel-heading">
+        <div class="column main">
+          {{#if isAdmin}}
+            <div class="btn-group pull-right">
+                <button type="button" {{bind-attr class=":btn :btn-embossed :btn-success isFirstCategory:disabled"}} {{action decrementPosition}}>
+                  <span class='fui-arrow-up'></span>
+                </button>
+                <button type="button" {{bind-attr class=":btn :btn-embossed :btn-success isLastCategory:disabled"}} {{action incrementPosition}}>
+                  <span class='fui-arrow-down'></span>
+                </button>
+            </div>
+            {{editable-field model=category field=category.name tagName='h3'}}
+          {{else}}
+            <h3>{{category.name}}</h3>
+          {{/if}}
+        </div>
+        <div class="column cost">
+          {{#if isAdmin}}
+            <a href="#" class='btn btn-embossed btn-primary' {{action addFood}} >Новая позиция</a>
+          {{/if}}
+        </div>
+        <div class="column visibility">
+          {{#if isAdmin}}
+          <label {{bind-attr class="isAllSelectedProxy:checked :checkbox" }} >
+            <span class="icons">
+              <span class="first-icon fui-checkbox-unchecked"></span>
+              <span class="second-icon fui-checkbox-checked"></span>
+            </span>            
+            {{input type='checkbox' checked=isAllSelected }}
+            Отображать всю категорию
+          </label>
+          {{/if}}
+        </div>
+        <div class="column actions">
+          {{#if isAdmin}}
+            <a href="#" class="btn btn-embossed btn-danger" {{action delete}}>
+              <span class='fui-cross'></span>
+            </a>
+          {{/if}}
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      {{view 'menu/foodList' contentBinding='menuFoods.filteredContent'}}
+
+    </div>   
+  {{/each}}
+{{else}}
+  <h2 class="centered-text text-danger">
+    Данное меню уже недоступно.
+  </h2>   
+{{/if}}
+
+
+{{#if menu.isAvailable}}
+  <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      {{#if isAdmin}}
+        <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>
+          Добавить категорию
+        </button>
+      {{else}}
+        <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action createOrder}}>Заказать</button>
+        <p class="navbar-text pull-right">Итоговая сумма {{resultCost}}</p> 
+      {{/if}}
+    </div>
+  </nav>
+{{/if}}

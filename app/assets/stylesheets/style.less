@@ -288,7 +288,7 @@ body {
 }
 
 .time {
-	width: 70px !important;
+	width: 180px !important;
 }
 
 .orders {
@@ -314,6 +314,42 @@ body {
 		}
 		&.actions {
 			width: 10%;
+		}
+	}
+}
+
+.datetimepicker.dropdown-menu {
+	opacity: initial;
+	display: none;
+	visibility: initial;
+}
+
+.glyphicon {
+  display: inline-block;
+  font-family: 'Flat-UI-Icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+	&.glyphicon-arrow-right {
+		&:before {
+		  content: "\e02c";
+		}
+	}
+
+	&.glyphicon-arrow-left {
+		&:before {
+		  content: "\e02d";
+		}
+	}
+
+	&.glyphicon-th {
+	  &:before {
+		  content: "\e022";
 		}
 	}
 }

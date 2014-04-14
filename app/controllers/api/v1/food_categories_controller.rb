@@ -1,5 +1,6 @@
 class Api::V1::FoodCategoriesController < Api::BaseApiController
   before_action :set_food_category, only: [:show, :update, :destroy]
+  before_filter :authenticate_user, except: [:index]
   respond_to :json
 
   # GET /food_categories

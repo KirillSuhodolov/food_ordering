@@ -1,5 +1,6 @@
 class Api::V1::MenusController < Api::BaseApiController
   before_action :set_menu, only: [:show, :update, :destroy]
+  before_filter :authenticate_user, except: [:index]
   respond_to :json
 
   # GET /menus

@@ -5,6 +5,7 @@
     "momentjs": "latest",
     "jquery-ui": "latest",
     "jQuery-Mask-Plugin": "latest",
+    "bootstrap-datetimepicker": "git@github.com:smalot/bootstrap-datetimepicker.git#master",
     "Flat-UI": "latest",
     "ember-auth": "latest",
     "ember-auth-request-jquery": "latest",

@@ -21,6 +21,7 @@
 //= require ../vendor/assets/javascripts/flat-ui/flatui-radio 
 //= require ../vendor/assets/javascripts/flat-ui/jquery.tagsinput 
 //= require ../vendor/assets/javascripts/flat-ui/jquery.placeholder
+//= require ../vendor/assets/javascripts/bootstrap-datetimepicker
 
 //= require environment
 //= require ember-appkit
@@ -58,7 +59,7 @@ Em.Auth.RememberableAuthModule.reopen({
                 return get$(this, 'auth').signIn(opts).catch(function(error){
                     self.recall();
                     if (error.recall) {
-                        Bootstrap.NM.push(Em.I18n.translations.messages.recall, 'danger');
+                        alert('relogin');
                     }
                 });
             }

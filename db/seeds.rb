@@ -1,3 +1,15 @@
+Company.create({
+  position: 999,
+	name: "Остальные клиенты( не указавшие принадлежность, но указавшие собственный адрес )"
+})
+
+User.create({
+	name: 'admin',
+	email: 'admin@admin.com',
+	password: 'adminadmin',
+	status: UserStatus::ADMIN
+})
+
 FoodCategory.create([
 	{name: 'food category 1', position: 0},
 	{name: 'food category 2', position: 1},

@@ -1,5 +1,6 @@
 class Api::V1::OrdersController < Api::BaseApiController
   before_action :set_order, only: [:show, :update, :destroy]
+  before_filter :authenticate_user, except: [:create]
   respond_to :json
 
   # GET /orders
