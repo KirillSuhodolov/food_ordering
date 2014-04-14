@@ -19,8 +19,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: pasha_foodorde27
+  database: pasha_foodord83
   host: postgresql2.locum.ru
   pool: 5
-  username: pasha_foodorde27
-  password: VuA6t5d9O
+  username: pasha_foodord83
+  password: foodord
