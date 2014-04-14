@@ -1,1 +1,0 @@
-define("app/controllers/application",["exports"],function(e){"use strict";e["default"]=Em.Controller.extend({order:null})});
