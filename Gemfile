@@ -14,6 +14,7 @@ gem 'enumerate_it'
 gem 'figaro'
 gem 'annotate', ">=2.5.0"
 gem "bower-rails"
+gem "unicorn"
 
 group :test, :development do
   gem 'better_errors'
