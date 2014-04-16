@@ -5,6 +5,11 @@
 {{/if}}
 <div class="column main">
   {{#if isAdmin}}
+    <div class="pull-right">
+      <button class="btn btn-embossed btn-success drag-handler">
+        <span class="fui-list"></span>
+      </button>
+    </div>
     {{editable-field model=view.content.food field=view.content.food.composition isText=true classNames="list-group-item-text"}}
   {{else}}
     <div class="list-group-item-text">{{view.content.food.composition}}</div>

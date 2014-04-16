@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::BaseApiController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show]
   respond_to :json
 
   # GET /users
@@ -24,19 +24,19 @@ class Api::V1::UsersController < Api::BaseApiController
   end
 
   # PATCH/PUT /users/1
-  def update
-    if @user.update(user_params)
-      respond_with @user, status: :ok, location: [:api, :v1, @user]
-    else
-      render json: { errors: @user.errors }, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @user.update(user_params)
+  #     respond_with @user, status: :ok, location: [:api, :v1, @user]
+  #   else
+  #     render json: { errors: @user.errors }, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /users/1
-  def destroy
-    @user.destroy
-    head :no_content
-  end
+  # def destroy
+  #   @user.destroy
+  #   head :no_content
+  # end
 
   private
 

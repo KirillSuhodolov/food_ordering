@@ -20,6 +20,12 @@ export default Em.ArrayController.extend(
 		}, 0);		
 	}.property('@each.resultCost'),
 
+	menuAvailableObserver: function() {
+		if (this.get('menu.isDirty')) {
+			this.get('menu').save();
+		}
+	}.observes('menu.available'),
+
 	actions: {
 		createOrder: function() {
 			var controller = this,

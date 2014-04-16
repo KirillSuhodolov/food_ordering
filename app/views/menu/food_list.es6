@@ -5,6 +5,7 @@ export default SortableList.extend({
   positionField: 'position',
   includedModel: 'food',
   sortingArray: 'menuFoods',
+  handle: '.drag-handler',
   itemViewClass: ItemView.extend({
     templateName: 'menu/food_item', 
     isAdmin: Em.computed.alias('controller.isAdmin'),

@@ -14,6 +14,8 @@ body{margin-bottom:60px;}
 .foods-admin-list .panel-heading .visibility{margin-top:10px;}
 .foods-admin-list .panel-heading .actions .btn-danger{margin-top:0;}
 .active-editable{display:none;}.active-editable textarea{width:100%;}
+.active-editable input{min-width:50%;}
+.unactive-editable{display:block;min-height:30px;min-width:30%;}
 .calendar{}.calendar a.active{background:#a1a6a9;border-color:#a1a6a9;color:#ffffff;}
 .calendar a:hover:not(.active){color:#ffffff;background-color:#bdc3c7;}
 .add-food{width:130px;}

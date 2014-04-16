@@ -9,6 +9,7 @@ export default Em.CollectionView.extend({
   positionField: '',
   includedModel: '',
   sortingArray: '',
+  handle: '',
   cursor: 'move',
   classNames: ['list-group'],
   tagName: 'ul',
@@ -19,8 +20,10 @@ export default Em.CollectionView.extend({
     this.$().sortable({
       connectWith: ".list-group",
       placeholder: "bg-warning placeholder",
+      handle: scope.get('handle'),
       cursor: scope.get('cursor'),
       cancel: ".empty",
+      axis: 'y',
       start:function (event, ui) {
         scope.set('startIndex', ui.item.index());
       },
