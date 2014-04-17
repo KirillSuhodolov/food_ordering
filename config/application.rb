@@ -27,5 +27,19 @@ module FoodOrdering
     config.i18n.enforce_available_locales = false
     # config.assets.paths << Rails.root.join('bower_components')
     config.autoload_paths << "#{Rails.root}/app/enumerations"
+
+    config.action_mailer.default_url_options = {
+        :host => 'kuskus.by'
+    }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address              => "smtp.mandrillapp.com",
+        :port                 => 587,
+        :domain               => 'kuskus.by',
+        :user_name            => '',
+        :password             => '',
+        :authentication       => 'login',
+        :enable_starttls_auto => true
+    }
   end
 end

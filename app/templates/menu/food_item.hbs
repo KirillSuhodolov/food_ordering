@@ -33,7 +33,7 @@
       <span class="input-group-btn">
         <button {{bind-attr class=":btn :btn-embossed :btn-warning view.isEmpty:disabled"}} type="button" {{action removeFromCard target=view}}>-</button>
       </span>
-      {{input value=view.content.selected classNames="form-control"}}
+      {{input value=view.content.selected classNames="form-control" disabled=true}}
       <span class="input-group-btn">
         <button class="btn btn-embossed btn-success" type="button" {{action addToCard target=view}}>+</button>
       </span>

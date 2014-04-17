@@ -2,13 +2,25 @@
     <div class="container block-embossed">
         {{#if auth.signedIn}}
             {{#if auth.user.isAdmin}}
-                <a href="#" class="btn btn-embossed btn-default disabled navbar-btn pull-right"> 
-                    {{auth.user.greeting}}
-                </a>
-            {{else}}
-                {{#link-to 'profile' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}
-                    {{auth.user.greeting}}
+                {{#link-to 'profile.settings' }} 
+                    {{auth.user.greeting}} 
                 {{/link-to}}
+            {{else}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{auth.user.greeting}} <b class="caret"></b></a>
+                      <span class="dropdown-arrow"></span>
+                      <ul class="dropdown-menu">
+                        <li>
+                            {{link-to 'Ваши заказы' 'profile' }}
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            {{link-to 'Настройки' 'settings' }}
+                        </li>
+                      </ul>
+                    </li>
+                </ul>
             {{/if}}
         {{else}}
             {{#link-to 'signIn' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}Войти{{/link-to}}

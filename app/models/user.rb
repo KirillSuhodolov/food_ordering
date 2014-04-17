@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   	if user.company.nil? and user.status.nil?
 	  	user.company = Company.first
 	  end
+    user.position = User.last.id
   end
 
   def is_admin

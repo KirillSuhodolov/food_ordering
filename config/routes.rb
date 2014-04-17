@@ -15,6 +15,9 @@ FoodOrdering::Application.routes.draw do
       devise_scope :user do
         post 'users', :to => 'registrations#create'
         put 'users/:id', :to => 'registrations#update'
+        post 'generate_new_password_email', to: 'registrations#generate_new_password_email'
+        post 'recover_password', to: 'registrations#recover_password'
+
       end
 
       resources :users, only: [:show, :index]

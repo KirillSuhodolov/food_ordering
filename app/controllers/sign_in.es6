@@ -18,7 +18,7 @@ export default Em.ObjectController.extend({
                     data: {
                         'email': email,
                         'password': password,
-                        'remember': this.get('remember')
+                        'remember': true
                     }
                 }).then(function(user){
                     var order = application.get('order');

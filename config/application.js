@@ -59,7 +59,7 @@ Em.Auth.RememberableAuthModule.reopen({
                 return get$(this, 'auth').signIn(opts).catch(function(error){
                     self.recall();
                     if (error.recall) {
-                        alert('relogin');
+                        console.log('relogin');
                     }
                 });
             }
