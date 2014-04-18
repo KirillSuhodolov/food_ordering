@@ -2,7 +2,7 @@
     <div class="container block-embossed">
         {{#if auth.signedIn}}
             {{#if auth.user.isAdmin}}
-                {{#link-to 'profile.settings' }} 
+                {{#link-to 'settings' classNames='btn btn-default btn-embossed navbar-btn navbar-right' }} 
                     {{auth.user.greeting}} 
                 {{/link-to}}
             {{else}}
@@ -41,7 +41,6 @@
                 <li>
                 	{{#link-to 'orders'}}
                         Заказы
-                        <span class="navbar-new">2</span>
                     {{/link-to}}
                 </li>
                 {{/if}}

@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :address
       t.boolean :is_subscribe, default: true
-      t.integer :position
+      t.integer :position, default: 1
       t.string :status
       
       t.timestamps

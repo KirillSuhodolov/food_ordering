@@ -42,7 +42,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
   def recover_password
     if params[:reset_password_token].empty?
-      
+    end 
   end
 
   private

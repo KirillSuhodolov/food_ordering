@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140411192505) do
     t.string   "phone"
     t.string   "address"
     t.boolean  "is_subscribe",           default: true
-    t.integer  "position"
+    t.integer  "position",               default: 1
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"

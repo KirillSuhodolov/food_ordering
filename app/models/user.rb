@@ -44,7 +44,10 @@ class User < ActiveRecord::Base
   	if user.company.nil? and user.status.nil?
 	  	user.company = Company.first
 	  end
-    user.position = User.last.id
+  end
+
+  after_create do
+    UserMailer.registration(self).deliver
   end
 
   def is_admin
