@@ -5,19 +5,17 @@
 
 {{#if isAdmin}}
   <div class="row">
-    <div class="col-lg-8">
-      {{#if menu.isAvailable}}
-        <div class="form-group">    
-          <label for="dtp_input1" class="col-lg-4 control-label">Меню доступно до</label>
-          <div class="input-group date form_datetime col-lg-4">
-            {{input value=menu.available classNames="form-control" readonly=true}}
-            {{!-- <input class="form-control" size="16" type="text" value="" readonly> --}}
-            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-          </div>
+    <div class="col-lg-8 col-xs-8">
+      <div class="form-group">    
+        <label for="dtp_input1" class="col-lg-3 col-xs-4 control-label">Меню доступно до</label>
+        <div class="input-group date form_datetime col-lg-3 col-xs-5">
+          {{input value=menu.available classNames="form-control" readonly=true}}
+          {{!-- <input class="form-control" size="16" type="text" value="" readonly> --}}
+          <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
         </div>
-      {{/if}}
+      </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 col-xs-4">
       {{#link-to 'calendar' classNames="btn btn-embossed btn-primary navbar-btn pull-right calendar-link"}}
         Календарь   
       {{/link-to}}
@@ -57,7 +55,7 @@
               <span class="second-icon fui-checkbox-checked"></span>
             </span>            
             {{input type='checkbox' checked=isAllSelected }}
-            Отображать всю категорию
+            Отображать <span class='visible-lg'>всю категорию</span>
           </label>
           {{/if}}
         </div>
@@ -84,7 +82,7 @@
 
 {{#if menu.isAvailable}}
   <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
       {{#if isAdmin}}
         <button class="btn btn-embossed btn-primary navbar-btn pull-right" href="#" {{action addCategory}}>
           Добавить категорию

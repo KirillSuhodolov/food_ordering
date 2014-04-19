@@ -1,30 +1,5 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container block-embossed">
-        {{#if auth.signedIn}}
-            {{#if auth.user.isAdmin}}
-                {{#link-to 'settings' classNames='btn btn-default btn-embossed navbar-btn navbar-right' }} 
-                    {{auth.user.greeting}} 
-                {{/link-to}}
-            {{else}}
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{auth.user.greeting}} <b class="caret"></b></a>
-                      <span class="dropdown-arrow"></span>
-                      <ul class="dropdown-menu">
-                        <li>
-                            {{link-to 'Ваши заказы' 'profile' }}
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            {{link-to 'Настройки' 'settings' }}
-                        </li>
-                      </ul>
-                    </li>
-                </ul>
-            {{/if}}
-        {{else}}
-            {{#link-to 'signIn' classNames="btn btn-embossed btn-default navbar-btn pull-right"}}Войти{{/link-to}}
-        {{/if}}
+<nav class="navbar navbar-default block-embossed" role="navigation">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
@@ -32,7 +7,7 @@
                 <span class="icon-bar"></span>
             </button>
             {{#link-to 'menu' classNames='navbar-brand'}}
-                Food Ordering
+            Food Ordering
             {{/link-to}} 
         </div>
         <div class="navbar-collapse collapse">
@@ -40,7 +15,7 @@
                 {{#if auth.user.isAdmin}}
                 <li>
                 	{{#link-to 'orders'}}
-                        Заказы
+                    Заказы
                     {{/link-to}}
                 </li>
                 {{/if}}
@@ -53,20 +28,43 @@
                     {{#link-to 'menu'}}Меню{{/link-to}}
                 </li>
             </ul>
-            <p class="navbar-text">+375 29 11 22 33</p>
+            {{#unless auth.user.isAdmin}}
+                <p class="navbar-text">+375 29 11 22 33</p>
+            {{/unless}}
+            {{#if auth.signedIn}}
             <ul class="nav navbar-nav navbar-right edge-block">
-                <li> 
-                    {{#if auth.signedIn}}
+                <li class="btn-group navbar-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{auth.user.greeting}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    {{#unless auth.user.isAdmin}}
+                    <li>
+                        {{link-to 'Ваши заказы' 'profile' }}
+                    </li>
+                    {{/unless}}
+                    <li>
+                        {{link-to 'Настройки' 'settings' }}
+                    </li>
+                    <li class="divider"></li>
+                    <li> 
+                        {{#if auth.signedIn}}
                         <a href="#" {{ action signOut }}>
                             Покинуть нас
                         </a>
-                    {{/if}}
-            	</li>
-            </ul>
-        </div>
+                        {{/if}}
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        {{else}}
+        {{#link-to 'signIn' classNames="btn btn-embossed btn-default navbar-btn navbar-right"}}Войти{{/link-to}}
+        {{/if}}
     </div>
+</div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     {{ outlet }}
 </div>

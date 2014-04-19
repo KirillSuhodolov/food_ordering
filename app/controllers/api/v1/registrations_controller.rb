@@ -16,10 +16,10 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def update
     resource = resource_class.find(params[:id])
     fields = resource_params
-    if fields[:password].empty?
+    if fields[:password] and fields[:password].empty?
       fields.delete :password
     end
-    if fields[:password_confirmation].empty?
+    if fields[:password_confirmation] and fields[:password_confirmation].empty?
       fields.delete :password_confirmation
     end
     user = resource.update_attributes(fields)
