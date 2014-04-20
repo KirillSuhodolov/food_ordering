@@ -1,12 +1,13 @@
-export default Em.Route.extend({
+import Pagination from 'app/mixins/pagination-route'
+
+export default Em.Route.extend(Pagination,
+{
+  modelName: 'order',
   authRedirectable: true,
 	queryParams: {
 		category: {
 			refreshModel: true
 		}
-	},
-	model: function(params) {
-		return this.get('store').findQuery('order', params);	
 	},
 	actions: {
 		queryParamsDidChange: function() {

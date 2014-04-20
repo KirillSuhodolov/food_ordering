@@ -1,15 +1,15 @@
 import ProxyCompany from 'app/models/objects/proxy-company'
+import Pagination from 'app/mixins/pagination-route'
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(Pagination,
+{
+	modelName: 'order',
 	authRedirectable: true,
 	queryParams: {
 		category: {
 			refreshModel: true
 		}
 	},
-	model: function(params) {
-		return this.store.find('order', params)
-	},  
 	setupController: function(controller, model) {
 		this.store.find('company').then(function(company){
 			var ordersProxyArray = [];

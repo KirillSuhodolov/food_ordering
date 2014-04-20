@@ -1,14 +1,14 @@
 import MenuFoods from 'app/controllers/menu/menu-foods'
 import ProxyCategory from 'app/models/objects/proxy-category'
+import Pagination from 'app/mixins/pagination-route'
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(Pagination, 
+{
+	modelName: 'menu',
 	queryParams: {
 		category: {
 			refreshModel: true
 		}
-	},
-	model: function(params) {
-		return this.store.find('menu', params)
 	},
 	setupController: function(controller, model) {
 		model = model.get('firstObject');

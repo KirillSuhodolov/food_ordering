@@ -1,13 +1,10 @@
 export default Em.Mixin.create({
+	init: function() {
+		this._super();
+		this.set('date', null);
+	},
 	queryParams: ['date'],
-	date: moment().format(config.SETTINGS.dateFormats.route),
-	
-	dateObserver: function() {
-		var date = moment(this.get('date'));	
-		if ((date.isoWeekday() == 6) || (date.isoWeekday() == 7)) {
-			this.transitionToRoute({queryParams: {date: this.get('next') }});
-		}
-	}.observes('date').on('init'),
+	// date: null,
 
 	routeName: undefined,
 
