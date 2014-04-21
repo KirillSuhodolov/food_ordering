@@ -33,4 +33,5 @@ FoodOrdering::Application.routes.draw do
     end
   end
   get '*foo', :to => 'landing#index'
+  # get 'recover-password', to: 'landing#index', as: 'edit_user_password'
 end

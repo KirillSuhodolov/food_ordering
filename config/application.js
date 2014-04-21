@@ -69,6 +69,14 @@ Em.Auth.RememberableAuthModule.reopen({
     }
 });
 
+Em.Route.reopen({
+    activate: function() {
+        this._super();
+        var $collapsedBlock = $('.navbar-header > button');
+        if (!$collapsedBlock.hasClass('collapsed')) { $collapsedBlock.addClass('collapsed'); }
+    }
+});
+
 Ember.Checkbox.reopen({
     didInsertElement: function() {
         this._super();

@@ -42,7 +42,7 @@
 					      <span class="input-group-btn">
 					        <button {{bind-attr class=":btn :btn-embossed :btn-warning isEmpty:disabled"}} type="button" {{action removeItem}}>-</button>
 					      </span>
-					      {{input value=count classNames="form-control"}}
+					      {{input value=count classNames="form-control" disabled=true}}
 					      <span class="input-group-btn">
 					        <button class="btn btn-embossed btn-success" type="button" {{action addItem}}>+</button>
 					      </span>

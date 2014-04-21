@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   after_create do
-    UserMailer.registration(self).deliver
+    UserMailer.registration(self).deliver unless self.is_admin
   end
 
   def is_admin

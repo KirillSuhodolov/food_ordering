@@ -36,8 +36,8 @@ module FoodOrdering
         :address              => "smtp.mandrillapp.com",
         :port                 => 587,
         :domain               => 'kuskus.by',
-        :user_name            => 'kuskusscf@gmail.com',
-        :password             => 'IsFY04po1CIo8yUt0Y5Ehg',
+        :user_name            => 'k.suhodolov@sumatosoft.com',
+        :password             => 'fjYjxPYWJNR6yoPNPl8NSw',
         :authentication       => 'login',
         :enable_starttls_auto => true
     }
