@@ -1,11 +1,14 @@
 export default Ember.ArrayController.extend({
-	content: [],
-	proxyController: null,
+	init: function() {
+		this._super();
+		// this.set('content', []);
+		this.set('proxyController', null);
+	},
 	filteredContent: function() {
 		if (this.get('proxyController.isAdmin')) {
-			return this.get('content');
+			return this.get('arrangedContent');
 		} else {
-			return this.get('content').filterBy('isVisible', true)									
+			return this.get('arrangedContent').filterBy('isVisible', true)									
 		}
 	}.property('content.@each.isVisible'),
 	sortProperties: ['food.position'],

@@ -84,6 +84,15 @@ Ember.Checkbox.reopen({
     }
 });
 
+// Em.Select.reopen({
+//     didInsertElement: function() {
+//         this._super();
+//         if (this.get('multiple')) {
+//             this.$().selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse multiple-menu'});
+//         }
+//     }
+// });
+
 window.App = require('app').default.create();
 
 window.App.Auth = Em.Auth.extend({

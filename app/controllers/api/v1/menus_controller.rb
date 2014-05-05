@@ -54,4 +54,11 @@ class Api::V1::MenusController < Api::BaseApiController
   def menu_params
     params.require(:menu).permit(:day, :available)
   end
+  
+  def ability
+    {
+      admin: [:index, :show, :create, :update, :destroy],
+      other: [:index, :show]
+    }
+  end
 end

@@ -6,14 +6,20 @@ export default Em.CollectionView.extend({
     this.set('startIndex', 0);
     this.set('isRemoving', false);    
   },
+  // firld for sort property
   positionField: '',
+  // model name of dragging item
   includedModel: '',
+  // array of sorting model
   sortingArray: '',
+  // additional class for drag block
   handle: '',
+  tagName: 'ul',
+  // view class for each dragging item
+  itemViewClass: ItemView.extend({}),
   cursor: 'move',
   classNames: ['list-group'],
-  tagName: 'ul',
-  itemViewClass: ItemView.extend({}),
+  
   didInsertElement: function() {
     this._super();
     var scope = this;
@@ -30,19 +36,19 @@ export default Em.CollectionView.extend({
       stop:function (event, ui) {
         if (!scope.get('isRemoving')) {
           var objects = scope.get('controller').get(scope.get('sortingArray')),
-          startIndex = scope.get('startIndex'),
-          currentIndex = ui.item.index(),
-          result = [],
-          currentObject = objects.objectAt(startIndex);
+            startIndex = scope.get('startIndex'),
+            currentIndex = ui.item.index(),
+            result = [],
+            currentObject = objects.objectAt(startIndex);
           if (startIndex < currentIndex) {
             var beforeStart = objects.slice(0, startIndex),
-            afterStart = objects.slice(startIndex + 1, currentIndex + 1),
-            afterAll = objects.slice(currentIndex + 1, objects.get('length'));
+              afterStart = objects.slice(startIndex + 1, currentIndex + 1),
+              afterAll = objects.slice(currentIndex + 1, objects.get('length'));
             result.addObjects(beforeStart).addObjects(afterStart).addObject(currentObject).addObjects(afterAll)
           } else if (startIndex > currentIndex) {
             var beforeCurrent = objects.slice(0, currentIndex),
-            afterCurrent = objects.slice(currentIndex, startIndex),
-            afterAll = objects.slice(startIndex + 1, objects.get('length'));
+              afterCurrent = objects.slice(currentIndex, startIndex),
+              afterAll = objects.slice(startIndex + 1, objects.get('length'));
             result.addObjects(beforeCurrent).addObject(currentObject).addObjects(afterCurrent).addObjects(afterAll)
           }
 
@@ -55,9 +61,10 @@ export default Em.CollectionView.extend({
         } 
         scope.set('isRemoving', false); 
       },
+
       remove: function(event, ui) {
         var objects = scope.get('controller').get(scope.get('sortingArray')),
-        currentObject = objects.objectAt(scope.get('startIndex')); 
+          currentObject = objects.objectAt(scope.get('startIndex')); 
 
         scope.onRemove(currentObject.get(scope.get('includedModel')));
 
@@ -66,12 +73,13 @@ export default Em.CollectionView.extend({
 
         scope.set('isRemoving', true);
       },
+
       receive: function(event, ui) {
         var objects = scope.get('controller').get(scope.get('sortingArray')),
-        currentIndex = ui.item.index(),
-        currentObject = scope.get('controller.parentController.movingObject'), 
-        slicingArray = scope.get('controller.parentController.slicingArray'); 
-	
+          currentIndex = ui.item.index(),
+          currentObject = scope.get('controller.parentController.movingObject'), 
+          slicingArray = scope.get('controller.parentController.slicingArray'); 
+  	
         scope.onReceive(currentObject.get(scope.get('includedModel')));
 
         currentObject.get(scope.get('includedModel')).set('position', currentIndex);  
@@ -103,9 +111,11 @@ export default Em.CollectionView.extend({
     }).disableSelection(); 
   },
   onRemove: function(object) {
-
+  //  callback fires when element removes from colelction
   },
   onReceive: function(object) {
-
+  //  callbaack fires when element receive to collection
   }
+
+  // instances of removing and receiving views are different
 });

@@ -14,6 +14,10 @@ export default Em.View.extend({
 				maxView: 1,
 				format: 'yyyy-MM-dd hh:ii'
 				// initialDate: new Date()
-    });
+    	});
+
+		this.$('.scrollTop-button').on('click', function(){
+	    	$('body').animate({scrollTop: 0});
+		})
 	}
 });

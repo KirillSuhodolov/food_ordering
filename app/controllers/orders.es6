@@ -5,5 +5,9 @@ export default Em.ArrayController.extend(
 	{
 		sortProperties: ['isProcessed'],
 		sortAscending: true,	
-		routeName: 'orders'
+		routeName: 'orders',
+		getFoodGroupsAndCategories: function() {
+			this.set('foodGroups', this.store.find('foodGroup'));
+			this.set('foodCategories', this.store.find('foodCategory'));
+		}.observes('').on('init')
 	});

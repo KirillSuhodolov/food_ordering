@@ -49,4 +49,11 @@ class Api::V1::MenuFoodsController < Api::BaseApiController
   def menu_food_params
     params.require(:menu_food).permit(:food_id, :menu_id, :is_visible)
   end
+  
+  def ability
+    {
+      admin: [:index, :show, :create, :update, :destroy],
+      other: [:index, :show]
+    }
+  end
 end

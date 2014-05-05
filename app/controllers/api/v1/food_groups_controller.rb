@@ -49,4 +49,11 @@ class Api::V1::FoodGroupsController < Api::BaseApiController
   def food_group_params
     params[:food_group]
   end
+  
+  def ability
+    {
+      admin: [:index, :show, :create, :update, :destroy],
+      other: [:index, :show]
+    }
+  end
 end

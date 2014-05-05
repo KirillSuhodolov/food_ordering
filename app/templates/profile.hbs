@@ -4,7 +4,7 @@
 </div>
 
 {{#each controller itemController='profile/ordersItem'}}
-  <div class="panel panel-default foods-admin-list block-embossed">
+  <div class="panel panel-default foods-admin-list my-orders block-embossed">
     <div class="panel-heading">
       <div class="column main">
     	  Заказ № {{id}}
@@ -15,6 +15,22 @@
       <div class="column cost">
       </div>
       <div class="column visibility">
+	      {{#unless isProcessed}}
+		      <div class="btn-group">
+		      	<div {{ bind-attr class=":btn :btn-danger :btn-embossed isDirty::disabled"}} {{action rollback}}>
+			      	<span class='visible-lg'>
+				      	Отменить
+			      	</span>
+			      	<span class='fui-cross hidden-lg'></span>
+		      	</div>
+		      	<div {{ bind-attr class=":btn :btn-success :btn-embossed isDirty::disabled"}} {{action save}}>
+			      	<span class='visible-lg'>
+			      	Сохранить
+			      	</span>
+			      	<span class='fui-check hidden-lg'></span>
+		      	</div>	
+		      </div>
+	      {{/unless}}
       </div>
       <div class="column actions">
       	{{totalCost}}
@@ -36,7 +52,7 @@
 					<div class="column cost">
 					  						
 					</div>
-					<div class="checkbox column visibility">
+					<div class="column visibility">
 						{{#unless parentController.isProcessed}}
 					    <div class="input-group add-food">
 					      <span class="input-group-btn">

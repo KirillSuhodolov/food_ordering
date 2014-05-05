@@ -55,4 +55,11 @@ class Api::V1::FoodsController < Api::BaseApiController
   def food_params
     params.require(:food).permit(:name, :composition, :cost, :food_category_id, :position)
   end
+  
+  def ability
+    {
+      admin: [:index, :show, :create, :update, :destroy],
+      other: [:index, :show]
+    }
+  end
 end

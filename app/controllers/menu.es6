@@ -14,6 +14,12 @@ export default Em.ArrayController.extend(
 	menu: null,
 	needs: ['application'],
 	
+	getFoodGroups: function() {
+		if (this.get('auth.user.isAdmin')) {
+			this.set('foodGroups', this.store.find('foodGroup'));
+		}
+	}.observes('').on('init'),
+
 	resultCost: function() {
 		return this.get('content').reduce(function(previousValue, obj){
 			return previousValue + obj.get("resultCost");
@@ -79,6 +85,9 @@ export default Em.ArrayController.extend(
 					})
 				);	
 			})			
+		},
+		addFoodGroup: function() {
+			this.store.createRecord('foodGroup').save();	
 		}
 	}  
 });

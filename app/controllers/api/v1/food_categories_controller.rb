@@ -48,6 +48,13 @@ class Api::V1::FoodCategoriesController < Api::BaseApiController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def food_category_params
-    params.require(:food_category).permit(:name, :position)
+    params.require(:food_category).permit(:name, :position, :food_group_id)
+  end
+
+  def ability
+    {
+      admin: [:index, :show, :create, :update, :destroy],
+      other: [:index, :show]
+    }
   end
 end

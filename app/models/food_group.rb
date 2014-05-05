@@ -9,4 +9,5 @@
 #
 
 class FoodGroup < ActiveRecord::Base
+  has_many :food_categories
 end

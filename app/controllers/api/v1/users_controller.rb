@@ -51,4 +51,12 @@ class Api::V1::UsersController < Api::BaseApiController
     params.require(:user).permit(:email, :company_id, :name, :phone,
      :address, :is_subscribe, :position, :status )
   end
+
+  def ability
+    {
+      admin: [:index, :show, :create, :update, :destroy],
+      other: [:show],
+      unauthorized: [:create]
+    }
+  end
 end

@@ -17,6 +17,7 @@
 .navbar-fixed-bottom {
 	@media (min-width: 1200px) { 
 		padding-right: 30px;
+		padding-left: 30px;
 	}
 }
 
@@ -59,6 +60,10 @@ body {
 	}
 	.main {
 		width: 55%;
+		font-size: 14px;
+		.drag-handler {
+			margin-top: -12px;
+		}
 	}
 	.cost {
 		width: 20%;
@@ -89,13 +94,30 @@ body {
 	.panel-heading {
 		.main {
 			h3 {
-				margin: 5px 0 0 0;
+				margin: 0;
+				.unactive-editable {
+					min-height: 51px;
+					padding-top: 4px;
+					padding-left: 3px;
+				}
+			}
+			.btn-group {
+				margin-top: 5px;
 			}
 		}
+		.cost {
+			margin-top: 5px;
+		}
 		.visibility {
-			margin-top: 10px;
+			.checkbox {
+				margin-top: 16px;				
+			}
+			.text-success {
+				margin-top: 5px;
+			}
 		}
 		.actions {
+			margin-top: 5px;
 			.btn-danger {
 				margin-top: 0;
 			}
@@ -325,16 +347,21 @@ body {
 		margin-bottom: 0;
 		.list-group-item {
 			border: none;
+			&.inner {
+				padding-left: 0;
+				padding-right: 0;
+			}
 		}
 	}
-	.panel-heading {
-		.actions {
-			margin-top: 10px;			
-		}
-	}
+	// .panel-heading {
+	// 	.actions {
+	// 		margin-top: 10px;			
+	// 	}
+	// }
 	.column {
 		&.main {
 			width: 50%;
+			font-size: 18px;
 		}
 		&.visibility {
 			p {
@@ -408,4 +435,59 @@ body {
 	padding-bottom: 5px;
 	-webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.my-orders {
+	.panel-heading {
+		.main {
+			font-size: 18px;
+		}
+	}
+	.visibility {
+		min-height: 1px;
+		width: 22%;
+		@media (min-width: 1200px) { 
+			width: 20%;
+		}
+	}
+	.cost {
+		width: 5%;
+		@media (min-width: 1200px) { 
+			width: 12%;
+		}
+	}
+	.actions {
+		text-align: right;
+		width: 18%;
+		@media (min-width: 1200px) { 
+			width: 13%;
+		}
+	}
+}
+
+.group-list {
+	.group-item {
+		margin-top: 30px;
+		.btn {
+			height: 100%;
+			box-sizing: content-box;
+		}
+	}
+	margin-bottom: 30px;	
+}
+
+.grouping-foods {
+	list-style-type: none;
+	overflow: hidden;
+	padding: 0;
+	li {
+		float: left;
+		&:after {
+	   		content: ' + '
+		}
+
+		&:last-of-type:after {
+		    content:' '
+		}
+	}
 }

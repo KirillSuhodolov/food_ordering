@@ -14,6 +14,7 @@ export default Ember.Route.extend(Pagination,
 		model = model.get('firstObject');
 		controller.set('menu', model);
 		this.store.find('foodCategory').then(function(categories){
+			controller.set('foodCategories', categories);
 			var categoriesProxyArray = [];
 			categories.forEach(function(category){
 				categoriesProxyArray.addObject(
