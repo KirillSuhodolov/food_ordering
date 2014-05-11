@@ -17,17 +17,17 @@ export default Ember.Route.extend(Pagination,
 			controller.set('foodCategories', categories);
 			var categoriesProxyArray = [];
 			categories.forEach(function(category){
-				categoriesProxyArray.addObject(
-					ProxyCategory.create({
-						category:category, 
-						menuFoods: MenuFoods.create({
+					var menuFoods = MenuFoods.create({
 							proxyController: controller,
 							content: model.get('menuFoods').filter(function(item){
 								if ( item.get('food.foodCategory') == category ) { return true }
 							}),
-						})
-					})
-					);	
+						}),
+						proxyCategory = ProxyCategory.create({
+							category:category, 
+							menuFoods: menuFoods
+						});
+				categoriesProxyArray.addObject(proxyCategory);	
 			});
 			controller.set('model', categoriesProxyArray);
 		});

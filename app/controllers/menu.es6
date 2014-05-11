@@ -76,14 +76,14 @@ export default Em.ArrayController.extend(
 				name: 'Кликните чтобы изменить название',
 				position: this.get('length') 
 			}).save().then(function(category){
-				controller.addObject(
-					ProxyCategory.create({
+				var menuFoods = MenuFoods.create({
+						proxyController: controller
+					}),
+					proxyCategory = ProxyCategory.create({
 						category:category, 
-						menuFoods: MenuFoods.create({
-							proxyController: controller
-						})
-					})
-				);	
+						menuFoods: menuFoods
+					});
+				controller.addObject(proxyCategory);	
 			})			
 		},
 		addFoodGroup: function() {

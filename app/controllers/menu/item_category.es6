@@ -12,6 +12,10 @@ export default Em.ObjectController.extend({
 	
 	isAllSelected: null,
 	
+	isAdminOrEmpty: function() {
+		return this.get('isAdmin') || this.get('menuFoods.filteredContent.length');	 
+	}.property('isAdmin', 'menuFoods.filteredContent.length'),
+
 	isAllSelectedObserver: function() {
 		if (!this.get('isAllSelected') && !this.get('isAllSelectedProxy')) {
 			this.get('model.menuFoods').setEach('isVisible', true);	
