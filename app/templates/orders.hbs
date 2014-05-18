@@ -37,6 +37,7 @@
 	    <ul class="list-group">
 
 				{{#each groupingFoods}}
+					{{#if count}}
 		    		<li class="list-group-item">
 			  			<div class="column main">
 						    <ul class="list-group-item-text grouping-foods">
@@ -44,21 +45,22 @@
 								<li>&nbsp;{{food.name}}&nbsp;</li>
 							{{/each}}
 						    </ul>
-						</div>
-						<div class="column cost">
+							</div>
+							<div class="column cost">
 
-						</div>
-						<div class="column visibility">
-						  <span class="label label-info">
-						  	{{count}}&nbsp;шт.
-						  </span>
-						</div>
-						<div class="column actions">
-							{{totalCost}}&nbsp;руб.
-						</div>
-						<div class="clearfix"></div>  
-					</li>
-			    {{/each}}
+							</div>
+							<div class="column visibility">
+							  <span class="label label-info">
+							  	{{count}}&nbsp;шт.
+							  </span>
+							</div>
+							<div class="column actions">
+								{{totalCost}}&nbsp;руб.
+							</div>
+							<div class="clearfix"></div>  
+						</li>
+					{{/if}}
+		    {{/each}}
 
 			    {{#each foodsWithoutGrouping}}
 		    		<li class="list-group-item">
