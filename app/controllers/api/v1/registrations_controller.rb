@@ -34,7 +34,12 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def generate_new_password_email
     user = User.find_by(email: resource_params[:email])
     if user
-     user.send_reset_password_instructions
+      password = (0...8).map { (65 + rand(26)).chr }.join
+      user.password = password
+      user.password_confirmation = password
+      user.save
+      UserMailer.send_new_password(user.email, password).deliver
+      render json: {}, status: 201
     else
      render json: { errors: {} }, status: 422
     end

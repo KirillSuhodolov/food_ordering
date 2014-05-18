@@ -4,17 +4,12 @@ export default Em.ObjectController.extend({
 	}.property('orderFoods.@each.isDirty'),
 
 	actions: {
-		rollback: function() {
-			this.get('orderFoods').forEach(function(item){
-				item.rollback();
-			});	
-		},
-		save: function() {
-			this.get('orderFoods').forEach(function(item){
-				if (item.get('isDirty')) {
-					item.save();
-				}
-			});	
+		delete: function() {
+			var parentController = this.get('parentController'),
+					model = this.get('model');
+			model.destroyRecord().then(function(){
+				parentController.get('content').removeObject(model);		
+			});
 		}
 	}
 });

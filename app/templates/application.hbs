@@ -15,13 +15,19 @@
                 {{#if auth.user.isAdmin}}
                 <li>
                 	{{#link-to 'orders'}}
-                    Заказы
+                    Заказы для фасовки
                     {{/link-to}}
                 </li>
-                {{/if}}
-                {{#if auth.user.isAdmin}}
+                <li>
+                    {{#link-to 'notSortedOrders'}}
+                    Заказы для курьера
+                    {{/link-to}}
+                </li>
                 <li>
                 	{{#link-to 'clients'}}Клиенты{{/link-to}}
+                </li>
+                <li>
+                    {{#link-to 'groups'}}Группировки{{/link-to}}
                 </li>
                 {{/if}}
                 <li>

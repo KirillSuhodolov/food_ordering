@@ -123,8 +123,8 @@ window.App.Auth = Em.Auth.extend({
     },
 
     actionRedirectable: {
-        signInRoute: 'menu',
-        signInSmart: true,
+//        signInRoute: 'menu',
+//        signInSmart: true,
         signInBlacklist: ['signIn', 'signUp'],
         signOutRoute: 'menu'
     },

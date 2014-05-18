@@ -1,32 +1,23 @@
 export default Em.ObjectController.extend({
-	queryParams: ['resetPasswordToken'],
-	resetPasswordToken: null,
 	actions: {
 		submit: function() {
-			if (this.get('password') == this.get('passwordConfirmation')) {
-				if (this.get('password').length >= 8) {
-					$.ajax({
-						url: '/api/v1/recover_password',
-						type: 'POST',
-						data: {
-							user: {
-								password: this.get('password'),
-								password_confirmation: this.get('passwordConfirmation'),
-								reset_password_token: this.get('resetPasswordToken')
-							}
+			var self = this;
+			if (this.get('email')) {
+				$.ajax({
+					url: '/api/v1/generate_new_password_email',
+					type: 'POST',
+					data: {
+						user: {
+							email: this.get('email')
 						}
-					}).done(function(){
-						this.transitionToRoute('signIn');
-					}).fail(function(){
-						alert('Не верный токен');
-					});
-				} else {
-					alert('Пароль слишком короткий'); 
-				}
-			} else {
-				alert('Пароли не совпадают');
+					}
+				}).done(function(){
+					alert('В ближайшее время вам будет выслан новый пароль.');
+					self.transitionToRoute('signIn');
+				}).fail(function(){
+					alert('Такого пользователя не существует');
+				});
 			}
 		}
 	}
 });
-

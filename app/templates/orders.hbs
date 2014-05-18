@@ -39,10 +39,12 @@
 		    	{{#each orders}}
 		    		<li class="list-group-item">
 						{{#if user.isSeparated}}
-							<h4 class="list-group-item-heading">{{user.name}}, {{user.address}}, {{user.phone}}</h4>
+							<h4 class="list-group-item-heading">{{user.name}}, {{user.address}}, {{user.phone}}
+							<span class='pull-right'>{{totalCost}}</span>
+							</h4>
 						{{/if}}
 						<ul class="list-group">
-							{{#each orderFoods}}
+							{{#each sortedFoods}}
 						  	<li class="list-group-item inner">
 								<div class="column main">
 								    <div class="list-group-item-text">{{food.name}}</div>
@@ -70,7 +72,7 @@
 			  			<div class="column main">
 						    <ul class="list-group-item-text grouping-foods">
 						    {{#each orderFoods}}
-								<li>&nbsp;{{food.name}}&nbsp;</li> 
+								<li>&nbsp;{{food.name}}&nbsp;</li>
 							{{/each}}
 						    </ul>
 						</div>

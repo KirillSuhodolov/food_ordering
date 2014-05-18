@@ -8,7 +8,7 @@ class Api::V1::MenusController < Api::BaseApiController
     if params[:date]
       respond_with [ Menu.find_or_create_by(day: params[:date]) ]
     else
-      respond_with Menu.all
+      respond_with [ Menu.first_available ]
     end
   end
 

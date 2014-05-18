@@ -14,11 +14,11 @@ export default Em.ArrayController.extend(
 	menu: null,
 	needs: ['application'],
 	
-	getFoodGroups: function() {
-		if (this.get('auth.user.isAdmin')) {
-			this.set('foodGroups', this.store.find('foodGroup'));
-		}
-	}.observes('').on('init'),
+	dateObserver: function() {
+		if (Em.isEmpty(this.get('date')) && this.get('menu.day')) {
+			this.set('date', this.get('menu.day'));
+		}	
+	}.observes('date', 'menu.day').on('init'),
 
 	resultCost: function() {
 		return this.get('content').reduce(function(previousValue, obj){
@@ -85,9 +85,6 @@ export default Em.ArrayController.extend(
 					});
 				controller.addObject(proxyCategory);	
 			})			
-		},
-		addFoodGroup: function() {
-			this.store.createRecord('foodGroup').save();	
 		}
 	}  
 });

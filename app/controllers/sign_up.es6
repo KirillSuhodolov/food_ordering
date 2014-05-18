@@ -28,7 +28,9 @@ export default Em.ObjectController.extend({
                                     order.save().then(function() {
                                         application.transitionToRoute('order.confirm', order);
                                     });    
-                                }  
+                                } else {
+                                    application.transitionToRoute('menu', {queryParams: {date: menu.get('date') }});
+                                } 
                             }, function() {
                                 alert('Ошибка авторизации');
                             });

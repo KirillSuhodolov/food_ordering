@@ -16,20 +16,12 @@
       </div>
       <div class="column visibility">
 	      {{#unless isProcessed}}
-		      <div class="btn-group">
-		      	<div {{ bind-attr class=":btn :btn-danger :btn-embossed isDirty::disabled"}} {{action rollback}}>
-			      	<span class='visible-lg'>
-				      	Отменить
-			      	</span>
-			      	<span class='fui-cross hidden-lg'></span>
-		      	</div>
-		      	<div {{ bind-attr class=":btn :btn-success :btn-embossed isDirty::disabled"}} {{action save}}>
-			      	<span class='visible-lg'>
-			      	Сохранить
-			      	</span>
-			      	<span class='fui-check hidden-lg'></span>
-		      	</div>	
-		      </div>
+		      <div class="btn btn-danger btn-embossed" type="button" {{action delete}}>
+            <span class='visible-lg'>
+            	Отменить заказ
+            </span>
+            <span class='fui-cross hidden-lg'></span>
+          </div>
 	      {{/unless}}
       </div>
       <div class="column actions">

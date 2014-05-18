@@ -7,9 +7,13 @@ export default Em.Route.extend({
   },
   setupController: function(controller, model) {
   	this._super(controller, model);
-  	this.store.find('company').then(function(companies){
-  		var firstObject = companies.findBy('id', '1');
-	  	controller.set('companies', companies.removeObject(firstObject));
-  	});
+    if (this.get('auth.userId')) {
+        this.transitionTo('menu');
+    } else {
+    	this.store.find('company').then(function(companies){
+    		var firstObject = companies.findBy('id', '1');
+  	  	controller.set('companies', companies.removeObject(firstObject));
+    	});
+    }
   }
 });

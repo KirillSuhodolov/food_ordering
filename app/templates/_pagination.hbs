@@ -1,3 +1,4 @@
+{{#if date}}
 <div class="btn-group btn-group-lg pull-right calendar hidden-print">
   {{link-to '&laquo;' routeName (query-params date=prev) classNames="btn btn-embossed"}}
   {{#link-to routeName (query-params date=monday) classNames="btn btn-embossed"}}
@@ -27,3 +28,4 @@
   {{/link-to}}
   {{link-to '&raquo;' routeName (query-params date=next) classNames="btn btn-embossed"}}
 </div>
+{{/if}}

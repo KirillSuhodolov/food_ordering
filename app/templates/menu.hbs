@@ -23,37 +23,6 @@
   </div>
 
   <hr>
-  
-  {{#if foodCategories.length}}
-    <div class="row">
-      <div class="col-lg-4 col-lg-offset-4">
-        <button class="btn btn-success btn-embossed btn-block" {{action addFoodGroup}}>Добавить групировку</button>  
-      </div>
-    </div>
-    <div class="row group-list">
-      {{#each foodGroups itemController='menu/itemGroup'}}
-        <div class="col-lg-6 group-item">
-          <div class="input-group">
-            {{view Em.Select
-              content=parentController.foodCategories
-              multiple=true
-              classNames='form-control'
-              optionValuePath="content.id"
-              optionLabelPath="content.name"
-              selection=selection
-              size=parentController.foodCategories.length
-            }} 
-            <span class="input-group-btn">
-              <button class="btn btn-danger btn-embossed" type="button" {{action delete}}>
-                <span class='fui-cross'></span>
-              </button>
-            </span>
-          </div>  
-        </div>
-      {{/each}}
-    </div>
-    <hr>
-  {{/if}}
 {{/if}}
 
 {{#if menu.isAvailable}}

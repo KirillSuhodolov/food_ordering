@@ -1,6 +1,6 @@
 export default Em.ObjectController.extend({
     disabled: false,
-    needs: ['application'],
+    needs: ['application', 'menu'],
     email: null,
     password: null,
     remember: true,
@@ -13,7 +13,8 @@ export default Em.ObjectController.extend({
                 password = this.get('password'),
                 error;
             if (email && password) {
-                var application = this.get('controllers.application');
+                var application = this.get('controllers.application'),
+                    menu = this.get('controllers.menu');
                 this.auth.signIn({
                     data: {
                         'email': email,
@@ -27,6 +28,8 @@ export default Em.ObjectController.extend({
                         order.save().then(function() {
                             application.transitionToRoute('order.confirm', order);
                         });    
+                    } else {
+                        application.transitionToRoute('menu', {queryParams: {date: menu.get('date') }});
                     }
                     }, function() {
                         alert('Ошибка авторизации');

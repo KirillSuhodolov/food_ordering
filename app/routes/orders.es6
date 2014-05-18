@@ -47,7 +47,7 @@ export default Ember.Route.extend(Pagination,
 				foodGroups.forEach(function(group){
 					groupProxyObjects.addObject({
 						group: group,
-						orderFoods: orderFoods.filterBy('food.foodCategory.foodGroup', group)				
+						orderFoods: orderFoods.filterBy('food.foodCategory.foodGroup', group).sortBy('food.foodCategory.position')			
 					});
 				});
 			
@@ -83,6 +83,7 @@ export default Ember.Route.extend(Pagination,
 
 				ordersProxyArray.addObject(
 					ProxyCompany.create({
+						isWithGrouping: true,
 						company: company, 
 						groupingFoods: groupingFoods,
 						foodsWithoutGrouping: foodsWithoutGrouping,

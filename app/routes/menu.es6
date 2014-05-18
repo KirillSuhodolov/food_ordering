@@ -10,6 +10,21 @@ export default Ember.Route.extend(Pagination,
 			refreshModel: true
 		}
 	},
+	model: function(params, transition) {		
+		if (params.date && (params.date != 'undefined') && params.date != 'null' ) {
+			var date = moment(params.date);
+
+			if ((date.isoWeekday() == 6) || (date.isoWeekday() == 7)) {
+				params['date'] = date.add('w',1).startOf('isoWeek').format(config.SETTINGS.dateFormats.route);
+				this.transitionTo(this.get('routeName'), {queryParams: {date: params['date'] }});		
+			} else {
+				params['date'] = date.format(config.SETTINGS.dateFormats.route);
+				return this.store.find(this.get('modelName'), params);			
+			}
+		} else {
+			return this.store.find(this.get('modelName'));					
+		}
+	},
 	setupController: function(controller, model) {
 		model = model.get('firstObject');
 		controller.set('menu', model);
