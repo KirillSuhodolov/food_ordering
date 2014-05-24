@@ -364,6 +364,7 @@ body {
 			font-size: 18px;
 		}
 		&.visibility {
+			min-height: 1px;
 			p {
 				margin-bottom: 0;
 			}
@@ -373,6 +374,39 @@ body {
 			text-align: right;
 			@media (min-width: 1200px) { 
 				width: 10%;
+			}
+		}
+	}
+	@media print {
+		font-size: 10px;	
+		.main {
+			h3 {
+				line-height: 2.12222 !important;
+			}
+		}
+		h3, h4 {
+			font-size: 13px !important;	
+		}
+		.label, .list-group-item-text, {
+			font-size: 10px !important;	
+			border: none;
+			font-weight: normal;
+		}
+		.list-group-item {
+			padding-bottom: 0;
+			padding-top: 0;
+		}
+		.panel-heading {
+			padding-bottom: 0;
+			padding-top: 0;
+			.actions {
+				padding-right: 15px;
+			}
+		}
+		.list-group-item-heading {
+			margin: 0;
+			.pull-right {
+				padding-right: 15px;
 			}
 		}
 	}

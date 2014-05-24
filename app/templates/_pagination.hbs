@@ -28,4 +28,8 @@
   {{/link-to}}
   {{link-to '&raquo;' routeName (query-params date=next) classNames="btn btn-embossed"}}
 </div>
+
+<div class='pull-right visible-print'>
+  <h4>{{date date calendarFormat}}</h4>
+</div>
 {{/if}}
