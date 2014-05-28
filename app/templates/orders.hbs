@@ -42,8 +42,8 @@
 			  			<div class="column main">
 						    <ul class="list-group-item-text grouping-foods">
 						    {{#each orderFoods}}
-								<li>&nbsp;{{food.name}}&nbsp;</li>
-							{{/each}}
+						    	<li>&nbsp;{{food.name}}&nbsp;{{orderFood.order.id}}</li>
+								{{/each}}
 						    </ul>
 							</div>
 							<div class="column cost">
