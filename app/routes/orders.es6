@@ -22,7 +22,8 @@ export default Ember.Route.extend(Pagination,
                         orderFoods = [],
                         orderFoodsNotUniq = [],
                         groupProxyObjects = [],
-                        groupingFoods = [];
+                        groupingFoods = [],
+                        stackedGroups = [];
 
                     orders.forEach(function(order){
                         var scopeOrderFoods = [];
@@ -42,12 +43,12 @@ export default Ember.Route.extend(Pagination,
 		                      }
                         });
                         
-		                    foodGroups.forEach(function(group){
-		                        groupProxyObjects.addObject({
-		                            group: group,
-		                            orderFoods: scopeOrderFoods.filterBy('food.foodCategory.foodGroup', group).sortBy('food.foodCategory.position')
-		                        });
-		                    });
+	                    foodGroups.forEach(function(group){
+	                        groupProxyObjects.addObject({
+	                            group: group,
+	                            orderFoods: scopeOrderFoods.filterBy('food.foodCategory.foodGroup', group).sortBy('food.foodCategory.position')
+	                        });
+	                    });
                         orderFoods.addObjects(scopeOrderFoods);
                     });
 
@@ -78,8 +79,16 @@ export default Ember.Route.extend(Pagination,
                     //     });
                     // });
 
-                    foodsWithoutGrouping.setObjects(orderFoods.filterBy('food.foodCategory.foodGroup', null));
-
+                    orderFoods.filterBy('food.foodCategory.foodGroup', null).forEach(function(object){
+                        var food = foodsWithoutGrouping.findBy('food', object.get('food'))
+                            
+                        if (food) {
+                            food.incrementProperty('count', object.get('count'));
+                        } else {
+                            foodsWithoutGrouping.addObject(object);
+                        }
+                    });
+                    
                     groupProxyObjects.forEach(function(object){
                         for(var i = object.orderFoods.length; i >= 0; i-- ) {
                             var orderFoods = object.orderFoods;
@@ -108,16 +117,34 @@ export default Ember.Route.extend(Pagination,
                         }
                     });
 
+                    groupingFoods.forEach(function(groupingFood){
+                        var length = groupingFood.get('orderFoods.length'),
+                            foodIds = groupingFood.get('orderFoods').mapBy('food.id'),
+                            stackedGroup = stackedGroups.find(function(object){
+                                var objectLength = object.get('orderFoods.length'),
+                                    objectFoodIds = object.get('orderFoods').mapBy('food.id');
+                                if (length == objectLength && !Em.compare(foodIds, objectFoodIds)) { return object; }   
+                            });
+
+                        if (stackedGroup) {
+                            stackedGroup.incrementProperty('count', groupingFood.get('count'))        
+                        } else {
+                            stackedGroups.addObject(groupingFood);
+                        }                           
+                    });    
+
                     ordersProxyArray.addObject(
                         ProxyCompany.create({
                             isWithGrouping: true,
                             company: company,
                             groupingFoods: groupingFoods,
+                            stackedGroups: stackedGroups,
                             foodsWithoutGrouping: foodsWithoutGrouping,
                             orders: orders
                         })
-                    )
+                    );
                 });
+
                 controller.set('model', ordersProxyArray);
             });
         },
