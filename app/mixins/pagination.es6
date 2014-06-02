@@ -12,7 +12,11 @@ export default Em.Mixin.create({
 		return config.SETTINGS.dateFormats.calendar
 	}.property(''),
 
-	prev: function() {
+    timeFormat: function() {
+        return config.SETTINGS.dateFormats.time
+    }.property(''),
+
+    prev: function() {
 		var date = moment(this.get('date'));	
 		return date.subtract('w',1).startOf('isoWeek').add('d', 4).format(config.SETTINGS.dateFormats.route);
 	}.property('date'),
