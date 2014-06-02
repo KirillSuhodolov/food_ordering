@@ -4,6 +4,8 @@ export default Ember.Route.extend({
 	},
 	setupController: function(controller, model) {
 		this._super(controller, model);
-		controller.set('foodCategories', this.store.find('foodCategory'));
-	}
+        this.store.find('foodCategory').then(function(foodCategories){
+            controller.set('foodCategories', foodCategories.sortBy('id'));
+        });
+    }
 });

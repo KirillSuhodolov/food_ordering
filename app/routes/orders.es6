@@ -20,7 +20,6 @@ export default Ember.Route.extend(Pagination,
                         }),
                         foodsWithoutGrouping = [],
                         orderFoods = [],
-                        orderFoodsNotUniq = [],
                         groupProxyObjects = [],
                         groupingFoods = [],
                         stackedGroups = [];
@@ -52,40 +51,23 @@ export default Ember.Route.extend(Pagination,
                         orderFoods.addObjects(scopeOrderFoods);
                     });
 
-                    // orders.forEach(function(order){
-                    //     orderFoodsNotUniq.addObjects(order.get('orderFoods.content'));
-                    // });
-
-                    // orderFoodsNotUniq.forEach(function(orderFood){
-                    //     var currentFood = orderFoods.findBy('food', orderFood.get('food'));
-                    //     if (currentFood) {
-                    //         currentFood.set('count', orderFood.get('count') + currentFood.get('count') );
-                    //     } else {
-                    //         orderFoods.addObject(Em.Object.createWithMixins({
-                    //             orderFood: orderFood,
-                    //             count: orderFood.get('count'),
-                    //             food: orderFood.get('food'),
-                    //             totalCost: function() {
-                    //                 return this.get('orderFood.cost') * this.get('count');
-                    //             }.property('orderFoods.@each.cost', 'count')
-                    //         }));
-                    //     }
-                    // });
-
-                    // foodGroups.forEach(function(group){
-                    //     groupProxyObjects.addObject({
-                    //         group: group,
-                    //         orderFoods: orderFoods.filterBy('food.foodCategory.foodGroup', group).sortBy('food.foodCategory.position')
-                    //     });
-                    // });
-
                     orderFoods.filterBy('food.foodCategory.foodGroup', null).forEach(function(object){
-                        var food = foodsWithoutGrouping.findBy('food', object.get('food'))
+                        var food = foodsWithoutGrouping.findBy('orderFoods.firstObject.food', object.get('food'));
                             
                         if (food) {
                             food.incrementProperty('count', object.get('count'));
                         } else {
-                            foodsWithoutGrouping.addObject(object);
+                            foodsWithoutGrouping.addObject(Em.Object.createWithMixins({
+                                count: object.get('count'),
+                                orderFoods: [object.get('orderFood')],
+                                totalCost: function() {
+                                    var costs = this.get('orderFoods').reduce(function(previousValue, item){
+                                            return item.get('cost') + previousValue
+                                        }, 0),
+                                        totalCost = costs * this.get('count');
+                                    return totalCost;
+                                }.property('orderFoods.@each.cost', 'count')
+                            }));
                         }
                     });
                     
@@ -138,8 +120,7 @@ export default Ember.Route.extend(Pagination,
                             isWithGrouping: true,
                             company: company,
                             groupingFoods: groupingFoods,
-                            stackedGroups: stackedGroups,
-                            foodsWithoutGrouping: foodsWithoutGrouping,
+                            stackedGroups: stackedGroups.addObjects(foodsWithoutGrouping).sortBy('orderFoods.firstObject.food.foodCategory.position'),
                             orders: orders
                         })
                     );

@@ -1,62 +1,67 @@
 <div class="page-header">
-  {{partial 'pagination'}}
-  <h1>Заказы</h1>
+    {{partial 'pagination'}}
+    <h1>Заказы</h1>
 </div>
 
 {{#each controller itemController='orders/item'}}
-	{{#if orders.length}}
-	  <div class="panel panel-default foods-admin-list orders block-embossed">
-	    <div class="panel-heading">
-	      <div class="column main">
-	      	<h3>
-	      		{{#if company.isSeparated}}
-	      			Индивидуальные заказы
-	      		{{else}}
-	      			{{company.name}} 
-	      		{{/if}}
-	      	</h3>
-	      </div>
-	      <div class="column cost">
-	      	{{company.address}}
-	      </div>
-	      <div class="column visibility">
-	      </div>
-	      <div class="column actions">
-	        {{totalCost}}&nbsp;руб.
-	      </div>
-	      <div class="clearfix"></div>
-	    </div>
-	    <ul class="list-group">
-	    	{{#each orders}}
-	    		<li class="list-group-item">
-						<h4 class="list-group-item-heading">
-							{{user.name}}, {{user.address}}, {{user.phone}}
-							<span class='pull-right'>{{totalCost}}&nbsp;руб.</span>
-						</h4>
-						<ul class="list-group">
-							{{#each sortedFoods}}
-						  	<li class="list-group-item">
-									<div class="column main">
-									    <div class="list-group-item-text">{{food.name}}</div>
-									</div>
-									<div class="column cost">
-									  
-									</div>
-									<div class="checkbox column visibility">
+    {{#if orders.length}}
+        <div class="panel panel-default foods-admin-list orders block-embossed">
+            <div class="panel-heading">
+                <div class="column main">
+                    <h3>
+                        {{#if company.isSeparated}}
+                            Индивидуальные заказы
+                        {{else}}
+                            {{company.name}}
+                        {{/if}}
+                    </h3>
+                </div>
+                <div class="column cost">
+                    {{company.address}}
+                </div>
+                <div class="column visibility">
+                </div>
+                <div class="column actions">
+                    {{totalCost}}&nbsp;руб.
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <ul class="list-group">
+                {{#each orders}}
+                    <li class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            {{user.name}}, {{user.address}}, {{user.phone}}
+                            <span class='pull-right'>{{totalCost}}&nbsp;руб.</span>
+                        </h4>
+                        {{#if comment}}
+                            <p class="list-group-item-heading">
+                                Комментарий к заказу: {{comment}}
+                            </p>
+                        {{/if}}
+                        <ul class="list-group">
+                            {{#each sortedFoods}}
+                                <li class="list-group-item">
+                                    <div class="column main">
+                                        <div class="list-group-item-text">{{food.name}}</div>
+                                    </div>
+                                    <div class="column cost">
+
+                                    </div>
+                                    <div class="checkbox column visibility">
 									  <span class="label label-info">
 									  	{{count}}&nbsp;шт.
 									  </span>
-									</div>
-									<div class="column actions">
-										{{totalCost}}&nbsp;руб.
-									</div>
-									<div class="clearfix"></div>  
-						  	</li>
-					  	{{/each}}
-					  </ul>
-	    		</li>
-	    	{{/each}}
-	    </ul>
-	  </div> 
-	{{/if}}
+                                    </div>
+                                    <div class="column actions">
+                                        {{totalCost}}&nbsp;руб.
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
 {{/each}}

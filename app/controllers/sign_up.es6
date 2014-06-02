@@ -1,12 +1,13 @@
 export default Em.ObjectController.extend({
     disabled: false,
-    needs: ['application'],
+    needs: ['application', 'menu'],
     actions: {
         signUp: function() {
             this.set('disabled', true);
 
             var self = this,
                 application = this.get('controllers.application'),
+                menu = this.get('controllers.menu'),
                 password = this.get('password'),
                 auth = this.auth,
                 model = this.get('model'),
