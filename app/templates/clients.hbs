@@ -13,8 +13,13 @@
       <div class="column visibility">
         {{editable-field model=this.model field=address}}
       </div>
-      <div class="column actions">
-      </div>
+        <div class="column actions">
+        {{#unless isSeparated}}
+          <a href="#" class="btn btn-embossed btn-danger" {{action delete}}>
+            <span class='fui-cross'></span>
+          </a>
+        {{/unless}}
+        </div>
       <div class="clearfix"></div>
     </div>
 
