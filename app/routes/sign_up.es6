@@ -3,7 +3,7 @@ export default Em.Route.extend({
     this.render('auth/sign_up')
   },
   model: function() {
-    return this.get('store').createRecord('user');
+    return this.get('store').createRecord('user', {isSubscribe: false});
   },
   setupController: function(controller, model) {
   	this._super(controller, model);

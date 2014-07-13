@@ -54,6 +54,10 @@
         <label class="login-field-icon fui-lock" for="login-pass"></label>
       </div>
 
+        <label {{bind-attr class=":checkbox isSubscribe:checked" }}>
+            {{input type='checkbox' checked=isSubscribe}} <span>Включить email уведомления об обработке заказов</span>
+        </label>
+
       <button class="btn btn-primary btn-lg btn-block" type='submit'>Обновить</button>
     </form>
 

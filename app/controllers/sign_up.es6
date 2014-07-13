@@ -14,7 +14,7 @@ export default Em.ObjectController.extend({
                 controller = this;
             if (this.get('email') && password && this.get('passwordConfirmation')) {
                 if (password == this.get('passwordConfirmation')) {
-                    if (password.length >= 8) {
+                    if (password.length >= 6) {
                         model.save().then(function(user){
                             auth.signIn({
                                 data: {

@@ -15,7 +15,19 @@
 class Food < ActiveRecord::Base
   belongs_to :food_category
   has_many :orders, through: :order_foods
-  has_many :order_foods	
+  has_many :order_foods
 
   scope :existing, ->() { where(is_deleted: false) }
+
+  after_create do |food|
+    menus = Menu.where('day > ?',  Date.current)
+
+    menus.each do |menu|
+      MenuFood.create({
+                          menu: menu,
+                          food: food
+                      })
+    end
+  end
 end
+

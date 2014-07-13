@@ -20,8 +20,8 @@ class Order < ActiveRecord::Base
   scope :by_user, ->(user) { where(user: user) }
 
   after_save do
-  	if is_processed_changed? and !is_processed_was and is_processed
-	  UserMailer.process_order(self).deliver
-	end
+    if is_processed_changed? and !is_processed_was and is_processed and self.user.is_subscribe
+      UserMailer.process_order(self).deliver
+    end
   end
 end
