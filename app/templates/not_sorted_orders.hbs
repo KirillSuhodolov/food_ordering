@@ -27,11 +27,11 @@
                 <div class="clearfix"></div>
             </div>
             <ul class="list-group">
-                {{#each orders}}
+                {{#each orders itemController='orders/iterate_item'}}
                     <li class="list-group-item">
                         <h4 class="list-group-item-heading">
                             Заказ № {{id}}, {{user.name}},
-                            {{#if company.isSeparated}}
+                            {{#if parentController.company.isSeparated}}
                                 {{user.address}},
                             {{/if}}
                             {{user.phone}}
