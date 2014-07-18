@@ -10,24 +10,18 @@
 #  position         :integer
 #  user_id          :integer
 #  is_deleted       :boolean          default(FALSE)
-#
 
 class Food < ActiveRecord::Base
   belongs_to :food_category
   has_many :orders, through: :order_foods
   has_many :order_foods
+  has_many :menu_foods
+
+  scope :current_deleted, ->(menu) { deleted.joins(:menu_foods).where(menu_foods: { menu: menu }) }
 
   scope :existing, ->() { where(is_deleted: false) }
+  scope :deleted, ->() { where(is_deleted: true) }
 
-  after_create do |food|
-    menus = Menu.where('day > ?',  Date.current)
-
-    menus.each do |menu|
-      MenuFood.create({
-                          menu: menu,
-                          food: food
-                      })
-    end
-  end
 end
+
 
