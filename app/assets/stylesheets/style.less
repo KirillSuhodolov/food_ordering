@@ -19,6 +19,9 @@
     padding-right: 30px;
     padding-left: 30px;
   }
+  .navbar-text {
+    margin-right: 21px;
+  }
 }
 
 .page-header {
@@ -147,6 +150,50 @@ body {
 }
 
 .calendar {
+//  .hidden-vertical {
+//    display: none;
+//  }
+
+  @media (min-width: 640px) {
+    float: right;
+  }
+
+  @media (min-width: 0px) and (max-width: 639px) {
+    &.days {
+      width: 100%;
+
+      .hidden-vertical {
+        display: none;
+      }
+      .week-day {
+        width: 20%;
+      }
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 768px) {
+    &.days {
+      width: 100%;
+
+      .hidden-vertical {
+        display: block;
+      }
+      .week-day {
+        width: 20%;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    &.days {
+
+      .hidden-vertical {
+        display: block;
+      }
+    }
+  }
+
+  overflow: hidden;
   a {
     &.active {
       background: #a1a6a9;

@@ -1,35 +1,41 @@
 {{#if date}}
-<div class="btn-group btn-group-lg pull-right calendar hidden-print">
-  {{link-to '&laquo;' routeName (query-params date=prev) classNames="btn btn-embossed"}}
-  {{#link-to routeName (query-params date=monday) classNames="btn btn-embossed"}}
-    <span class='hidden-lg pull-left'>Пн</span>
-    <span class='visible-lg pull-left'>Понедельник</span>
-    <span class='pull-left'>({{date monday calendarFormat}})</span>
-  {{/link-to}}
-  {{#link-to routeName (query-params date=tuesday) classNames="btn btn-embossed"}}
-    <span class='visible-lg pull-left'>Вторник</span>
-    <span class='hidden-lg pull-left'>Вт</span>      
-    <span class='pull-left'>({{date tuesday calendarFormat}})</span>
-  {{/link-to}}
-  {{#link-to routeName (query-params date=wednesday) classNames="btn btn-embossed"}}
-    <span class='visible-lg pull-left'>Среда</span>
-    <span class='hidden-lg pull-left'>Ср</span>      
-    <span class='pull-left'>({{date wednesday calendarFormat}})</span>
-  {{/link-to}}
-  {{#link-to routeName (query-params date=thursday) classNames="btn btn-embossed"}}
-    <span class='visible-lg pull-left'>Четверг</span>
-    <span class='hidden-lg pull-left'>Чт</span>         
-    <span class='pull-left'>({{date thursday calendarFormat}})</span>
-  {{/link-to}}
-  {{#link-to routeName (query-params date=friday) classNames="btn btn-embossed"}}
-    <span class='visible-lg pull-left'>Пятница</span>
-    <span class='hidden-lg pull-left'>Пт</span>     
-    <span class='pull-left'>({{date friday calendarFormat}})</span>
-  {{/link-to}}
-  {{link-to '&raquo;' routeName (query-params date=next) classNames="btn btn-embossed"}}
-</div>
+    <div class="btn-group btn-group-lg calendar days hidden-print">
+        {{link-to '&laquo;' routeName (query-params date=prev) classNames="hidden-xs btn btn-embossed"}}
+        {{#link-to routeName (query-params date=monday) classNames="btn btn-embossed week-day"}}
+            <span class='hidden-lg pull-left'>Пн</span>
+            <span class='visible-lg pull-left'>Понедельник</span>
+            <span class='hidden-vertical pull-left'>({{date monday calendarFormat}})</span>
+        {{/link-to}}
+        {{#link-to routeName (query-params date=tuesday) classNames="btn btn-embossed week-day"}}
+            <span class='visible-lg pull-left'>Вторник</span>
+            <span class='hidden-lg pull-left'>Вт</span>
+            <span class='hidden-vertical pull-left'>({{date tuesday calendarFormat}})</span>
+        {{/link-to}}
+        {{#link-to routeName (query-params date=wednesday) classNames="btn btn-embossed week-day"}}
+            <span class='visible-lg pull-left'>Среда</span>
+            <span class='hidden-lg pull-left'>Ср</span>
+            <span class='hidden-vertical pull-left'>({{date wednesday calendarFormat}})</span>
+        {{/link-to}}
+        {{#link-to routeName (query-params date=thursday) classNames="btn btn-embossed week-day"}}
+            <span class='visible-lg pull-left'>Четверг</span>
+            <span class='hidden-lg pull-left'>Чт</span>
+            <span class='hidden-vertical pull-left'>({{date thursday calendarFormat}})</span>
+        {{/link-to}}
+        {{#link-to routeName (query-params date=friday) classNames="btn btn-embossed week-day"}}
+            <span class='visible-lg pull-left'>Пятница</span>
+            <span class='hidden-lg pull-left'>Пт</span>
+            <span class='hidden-vertical pull-left'>({{date friday calendarFormat}})</span>
+        {{/link-to}}
+        {{link-to '&raquo;' routeName (query-params date=next) classNames="hidden-xs btn btn-embossed"}}
+    </div>
 
-<div class='pull-right visible-print'>
-  <h4>{{date date calendarFormat}}</h4>
-</div>
+    <div class="visible-xs btn-group btn-group-lg calendar hidden-print">
+        {{link-to '&laquo;' routeName (query-params date=prev) classNames="btn btn-embossed"}}
+        <a href="#" disabled class="disabled btn btn-embossed">{{date monday calendarFormat}} - {{date friday calendarFormat}}</a>
+        {{link-to '&raquo;' routeName (query-params date=next) classNames="btn btn-embossed"}}
+    </div>
+
+    <div class='pull-right visible-print'>
+        <h4>{{date date calendarFormat}}</h4>
+    </div>
 {{/if}}
