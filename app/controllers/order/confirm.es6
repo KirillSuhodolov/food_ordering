@@ -1,13 +1,22 @@
 export default Em.ObjectController.extend({
-	needs: ['menu'],
-	actions: {
-		save: function() {
-			var controller = this,
-                menu = this.get('controllers.menu');
+    needs: ['menu'],
+    actions: {
+        save: function() {
+            var controller = this,
+                model = this.get('model');
 
-                this.get('model').save().then(function(){
-				controller.transitionToRoute('menu', {queryParams: {date: menu.get('date') }});
-            });
-		}
-	}	
+            if (model.get('isDirty')) {
+                model.save().then(function(){
+                    controller.transition()
+                });
+            } else {
+                controller.transition()
+            }
+        }
+    },
+
+    transition: function() {
+        var menu = this.get('controllers.menu');
+        this.transitionToRoute('menu', {queryParams: {date: menu.get('date') }});
+    }
 });

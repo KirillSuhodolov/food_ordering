@@ -15,18 +15,11 @@ class Menu < ActiveRecord::Base
 
   validates :day, uniqueness: true
 
-  before_create do |menu|
-    menu.available = Time.parse "#{menu.day} 10:00:00"
-  end
+  validates_with MenuValidator
 
-  after_create do |menu|
-    Food.existing.each do |food|
-      MenuFood.create({
-                          menu: menu,
-                          food: food
-                      })
-    end
-  end
+  before_create :set_time
+
+  after_create :create_menu_foods
 
   def self.first_available
     today = DateTime.current
@@ -35,6 +28,25 @@ class Menu < ActiveRecord::Base
 
     today = (today.wday == 6 || today.wday == 0) ? today.next_week : today.next_day
 
-    Menu.find_or_create_by(day: today)
+    Menu.find_or_create_by(day: today.to_date)
+  end
+
+  protected
+
+  def create_menu_foods
+    menu = self
+    Food.existing.each do |food|
+      MenuFood.create({
+                        menu: menu,
+                        food: food
+                      })
+    end
+  end
+
+  def set_time
+    menu = self
+    previous_menu = Menu.where('day < ?', menu.day).order(:day).last
+    available_time = previous_menu ? previous_menu.available.strftime('%H:%M') : '10:00'
+    menu.available = Time.parse "#{menu.day} #{available_time}"
   end
 end

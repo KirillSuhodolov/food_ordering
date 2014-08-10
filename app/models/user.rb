@@ -35,15 +35,15 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
 
-  has_many :order
+  has_many :orders
   belongs_to :company
-  
+
   scope :users, -> () { where(status: nil) }
 
   before_create do |user|
-  	if user.company.nil? and user.status.nil?
-	  	user.company = Company.first
-	  end
+    if user.company.nil? and user.status.nil?
+      user.company = Company.first
+    end
   end
 
   after_create do

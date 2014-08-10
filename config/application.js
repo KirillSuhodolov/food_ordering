@@ -14,27 +14,27 @@
 //= require ../vendor/assets/javascripts/jquery-ui/jquery.ui.tooltip
 //= require ../vendor/assets/javascripts/jquery-ui/jquery.ui.effect
 
-//= require ../vendor/assets/javascripts/flat-ui/jquery.ui.touch-punch.min 
-//= require ../vendor/assets/javascripts/flat-ui/bootstrap-select 
-//= require ../vendor/assets/javascripts/flat-ui/bootstrap-switch 
-//= require ../vendor/assets/javascripts/flat-ui/flatui-checkbox 
-//= require ../vendor/assets/javascripts/flat-ui/flatui-radio 
-//= require ../vendor/assets/javascripts/flat-ui/jquery.tagsinput 
+//= require ../vendor/assets/javascripts/flat-ui/jquery.ui.touch-punch.min
+//= require ../vendor/assets/javascripts/flat-ui/bootstrap-select
+//= require ../vendor/assets/javascripts/flat-ui/bootstrap-switch
+//= require ../vendor/assets/javascripts/flat-ui/flatui-checkbox
+//= require ../vendor/assets/javascripts/flat-ui/flatui-radio
+//= require ../vendor/assets/javascripts/flat-ui/jquery.tagsinput
 //= require ../vendor/assets/javascripts/flat-ui/jquery.placeholder
 //= require ../vendor/assets/javascripts/bootstrap-datetimepicker
 
 //= require environment
 //= require ember-appkit
 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-request-jquery 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-response-json 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-strategy-token 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-session-cookie 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-ember-data 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-auth-redirectable 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-action-redirectable 
-//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-rememberable 
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-request-jquery
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-response-json
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-strategy-token
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-session-cookie
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-ember-data
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-auth-redirectable
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-action-redirectable
+//= require ../vendor/assets/javascripts/ember-auth/ember-auth-module-rememberable
 
 //= require_self
 //= require_tree ./adapters
@@ -83,15 +83,6 @@ Ember.Checkbox.reopen({
         this.$().checkbox();
     }
 });
-
-// Em.Select.reopen({
-//     didInsertElement: function() {
-//         this._super();
-//         if (this.get('multiple')) {
-//             this.$().selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse multiple-menu'});
-//         }
-//     }
-// });
 
 window.App = require('app').default.create();
 

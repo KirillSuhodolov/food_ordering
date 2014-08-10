@@ -29,6 +29,7 @@ module FoodOrdering
     config.i18n.enforce_available_locales = false
     # config.assets.paths << Rails.root.join('bower_components')
     config.autoload_paths << "#{Rails.root}/app/enumerations"
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
 
     config.action_mailer.default_url_options = {
         :host => 'kuskus.by'

@@ -1,21 +1,20 @@
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-		<div class="page-header centered-text">
-		  <h1>Заказ принят, спасибо!</h1>
-		</div>
-	</div>
+    <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div class="page-header centered-text">
+            <h1>Заказ принят, спасибо!</h1>
+        </div>
+    </div>
 </div>
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-  	<div class="form-group">
-			<p>Вы можете отправить замечание или предложение к своему заказу.</p>
-		</div>
-	  	<div class="form-group">
-			{{textarea value=comment rows='5' classNames='form-control'}}
-		</div>
-	  	<div class="form-group">
-			{{link-to 'Все в порядке, ожидаю заказ!' 'menu' classNames='pull-right btn btn-embossed btn-success'}}
-			<a href="#" class='btn btn-embossed btn-primary'{{action save}}>Отправить</a> 
-		</div>
-	</div>
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <div class="form-group">
+            <p>Вы можете отправить замечание или предложение к своему заказу.</p>
+        </div>
+        <div class="form-group">
+          {{textarea value=comment rows='5' classNames='form-control'}}
+        </div>
+        <div class="form-group">
+            <a href="#" class='btn btn-embossed btn-primary'{{action save}}>Ожидаю заказ</a>
+        </div>
+    </div>
 </div>

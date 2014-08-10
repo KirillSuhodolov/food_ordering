@@ -6,18 +6,17 @@
 {{#if isAdmin}}
   <div class="row">
     <div class="col-lg-8 col-xs-9">
-      <div class="form-group">    
+      <div class="form-group">
         <label for="dtp_input1" class="col-lg-3 col-xs-5 control-label">Доступно до</label>
         <div class="input-group date form_datetime col-lg-4 col-xs-7">
           {{input value=menu.available classNames="form-control" readonly=true}}
-          {{!-- <input class="form-control" size="16" type="text" value="" readonly> --}}
           <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
         </div>
       </div>
     </div>
     <div class="col-lg-4 col-xs-3">
       {{#link-to 'calendar' classNames="btn btn-embossed btn-primary navbar-btn pull-right calendar-link"}}
-        Календарь   
+        Календарь
       {{/link-to}}
     </div>
   </div>
@@ -59,7 +58,7 @@
             <span class="icons">
               <span class="first-icon fui-checkbox-unchecked"></span>
               <span class="second-icon fui-checkbox-checked"></span>
-            </span>            
+            </span>
             {{input type='checkbox' checked=isAllSelected }}
             <span class='visible-lg'>Отображать всю категорию</span>
           </label>
@@ -77,13 +76,13 @@
 
       {{view 'menu/foodList' contentBinding='menuFoods.filteredContent'}}
 
-    </div>   
+    </div>
     {{/if}}
   {{/each}}
 {{else}}
   <h2 class="centered-text text-danger">
     Данное меню уже недоступно.
-  </h2>   
+  </h2>
 {{/if}}
 
 
