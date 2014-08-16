@@ -47,6 +47,6 @@ class Menu < ActiveRecord::Base
     menu = self
     previous_menu = Menu.where('day < ?', menu.day).order(:day).last
     available_time = previous_menu ? previous_menu.available.strftime('%H:%M') : '10:00'
-    menu.available = Time.parse "#{menu.day} #{available_time}"
+    menu.available = Time.zone.parse "#{menu.day} #{available_time}"
   end
 end
