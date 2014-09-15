@@ -10,7 +10,7 @@ export default Em.ObjectController.extend({
 									alert('Ваш аккаунт успешно обновлен');
 								});
 							} else {
-								alert('Пароль слишком короткий'); 
+								alert('Пароль слишком короткий');
 							}
 						} else {
 							alert('Пароли не совпадают');
@@ -23,7 +23,16 @@ export default Em.ObjectController.extend({
 				} else {
 					alert('Вы не заполнили почту');
 				}
-			}	
-		}
-	}	
+			}
+		},
+        exterminate: function() {
+            Em.$.ajax({
+                url: 'exterminate',
+                type: 'POST',
+                date: {}
+            }).done(function(){
+                alert('exterminated')
+            })
+        }
+	}
 });

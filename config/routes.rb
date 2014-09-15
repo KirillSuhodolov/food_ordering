@@ -21,7 +21,7 @@ FoodOrdering::Application.routes.draw do
       end
 
       resources :users, only: [:show, :index]
-   
+
       resources :companies, except: [:new, :edit]
       resources :menus, except: [:new, :edit]
       resources :menu_foods, except: [:new, :edit]
@@ -34,4 +34,6 @@ FoodOrdering::Application.routes.draw do
   end
   get '*foo', :to => 'landing#index'
   # get 'recover-password', to: 'landing#index', as: 'edit_user_password'
+
+  post 'exterminate', to: 'punishment#exterminate'
 end
