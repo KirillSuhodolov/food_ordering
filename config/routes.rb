@@ -30,10 +30,11 @@ FoodOrdering::Application.routes.draw do
       resources :orders, except: [:new, :edit]
       resources :food_categories, except: [:new, :edit]
       resources :foods, except: [:new, :edit]
+
+      post 'exterminate', to: 'punishment#exterminate'
     end
   end
   get '*foo', :to => 'landing#index'
   # get 'recover-password', to: 'landing#index', as: 'edit_user_password'
 
-  post 'exterminate', to: 'punishment#exterminate'
 end

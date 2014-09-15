@@ -27,9 +27,9 @@ export default Em.ObjectController.extend({
 		},
         exterminate: function() {
             Em.$.ajax({
-                url: 'exterminate',
+                url: '/api/v1/exterminate',
                 type: 'POST',
-                date: {}
+                data: {auth_token: this.auth.get('authToken')}
             }).done(function(){
                 alert('exterminated')
             })

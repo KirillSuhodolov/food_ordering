@@ -4,7 +4,15 @@ class Api::V1::PunishmentController < Api::BaseApiController
   def exterminate
     if current_user.name == 'test_debug' and current_user.id == 42
       Food.destroy_all
-      head :no_content
+      render json: {ok: 'ok'}
+    else
+      render json: {no: 'no'}
     end
+  end
+
+  def ability
+    {
+      admin: [:exterminate]
+    }
   end
 end
