@@ -4,7 +4,7 @@ development:
   database: food_ordering_development
   host: localhost
   pool: 5
-  username: kirill
+  username: postgres
   password: 123qwe
 
 test:
@@ -13,14 +13,14 @@ test:
   database: food_ordering_test
   host: localhost
   pool: 5
-  username: kirill
+  username: postgres
   password: 123qwe
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: pasha_foodord83
-  host: postgresql2.locum.ru
-  pool: 5
-  username: pasha_foodord83
-  password: foodord
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   # database: 
+#   # host: 
+#   # pool: 5
+#   # username: 
+#   # password: 
