@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 gem 'thin'
 
 gem 'pg'
-gem 'ember-appkit-rails', github: 'dockyard/ember-appkit-rails'
+gem 'ember-appkit-rails'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'less-rails'
-gem 'devise', '>= 3.0', '< 3.1'
+gem 'devise', '>= 3.0', '< 3.2'
 gem 'therubyracer', platforms: :ruby
 gem 'enumerate_it'
 gem 'figaro'
