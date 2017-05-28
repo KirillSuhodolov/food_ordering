@@ -32,16 +32,16 @@ module FoodOrdering
     config.autoload_paths += %W["#{config.root}/app/validators/"]
 
     config.action_mailer.default_url_options = {
-        :host => 'kuskus.by'
+        :host => ''
     }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        :address              => "smtp.mandrillapp.com",
-        :port                 => 587,
-        :domain               => 'kuskus.by',
-        :user_name            => 'k.suhodolov@sumatosoft.com',
-        :password             => 'fjYjxPYWJNR6yoPNPl8NSw',
-        :authentication       => 'login',
+        :user_name => '',
+        :password => '',
+        :domain => '',
+        :address => '',
+        :port => 587,
+        :authentication => :plain,
         :enable_starttls_auto => true
     }
   end

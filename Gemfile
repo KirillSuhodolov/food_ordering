@@ -13,6 +13,7 @@ gem 'active_model_serializers', '0.9.0.alpha1'
 gem 'jquery-rails', '3.1.4'
 gem 'parser', '2.2.2.6'
 
+gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'less-rails'
@@ -29,6 +30,12 @@ group :test, :development do
   gem 'binding_of_caller', '0.7.2'
   gem 'meta_request', '0.3.4'
   gem 'quiet_assets', '1.0.3'
+
+  gem 'capistrano', '~> 3.6.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  # Add this if you're using rvm
+  gem 'capistrano-rvm', github: "capistrano/rvm"
 
   gem 'capybara','2.3.0'
   gem 'poltergeist','1.5.1'

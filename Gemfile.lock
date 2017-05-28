@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/capistrano/rvm.git
+  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
+  specs:
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,11 +37,15 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    airbrussh (1.2.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
     arel (5.0.1.20140414130214)
     ast (2.3.0)
+    autoprefixer-rails (7.1.1)
+      execjs
     barber (0.11.3)
       ember-source (>= 1.0, < 3)
       execjs (>= 1.2, < 3)
@@ -49,6 +61,19 @@ GEM
     bower-rails (0.11.0)
     builder (3.2.3)
     callsite (0.0.11)
+    capistrano (3.6.1)
+      airbrussh (>= 1.0.0)
+      capistrano-harrow
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-harrow (0.5.3)
+    capistrano-rails (1.1.8)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
     capybara (2.3.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -126,6 +151,9 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.2)
     multi_json (1.12.1)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (4.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
@@ -172,6 +200,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sshkit (1.13.1)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     teaspoon (0.7.9)
       railties (>= 3.2.5, < 5)
     therubyracer (0.12.3)
@@ -206,9 +237,14 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (= 0.9.0.alpha1)
   annotate (>= 2.5.0)
+  autoprefixer-rails
   better_errors
   binding_of_caller (= 0.7.2)
   bower-rails
+  capistrano (~> 3.6.1)
+  capistrano-bundler (~> 1.1.2)
+  capistrano-rails (~> 1.1.1)
+  capistrano-rvm!
   capybara (= 2.3.0)
   coffee-rails
   devise (>= 3.0, < 3.2)
