@@ -20,6 +20,7 @@ gem 'less-rails'
 gem 'devise', '>= 3.0', '< 3.2'
 gem 'therubyracer', platforms: :ruby
 gem 'enumerate_it'
+gem 'sendgrid-actionmailer'
 gem 'figaro'
 gem 'annotate', '>=2.5.0'
 gem 'bower-rails'

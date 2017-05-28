@@ -5,7 +5,7 @@ lock '3.6.1'
 # Project configuration options
 # ------------------------------
 
-set :application,    'food_ordering'
+set :application,    'foodordering'
 set :login,          'pasha'
 set :user,           'hosting_pasha'
 
@@ -16,8 +16,10 @@ set :unicorn_pid,    "/var/run/unicorn/#{fetch(:user)}/" \
 set :bundle_without, %w{development test}.join(' ')             # this is default
 set :use_sudo,       false
 
-set :repo_url,       "#{fetch(:user)}@phosphorus.locum.ru:" \
-                     "git/#{fetch(:application)}.git"
+#set :repo_url,       "#{fetch(:user)}@phosphorus.locum.ru:" \
+ #                    "git/#{fetch(:application)}.git"
+
+set :repo_url,        'git@github.com:kirylpl/food_ordering.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -30,7 +32,7 @@ set :pty, true
 set :log_level, :info
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/application.rb')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/application.yml')
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w(log tmp/cache tmp/pids vendor/bundle public/system)
