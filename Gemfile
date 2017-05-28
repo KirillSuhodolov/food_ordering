@@ -13,6 +13,7 @@ gem 'jquery-rails', '3.1.4'
 gem 'parser', '2.1.9'
 
 gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails'
 gem 'less-rails'
 gem 'devise', '>= 3.0', '< 3.2'
 gem 'therubyracer', platforms: :ruby

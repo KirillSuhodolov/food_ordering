@@ -55,6 +55,13 @@ GEM
       xpath (~> 2.0)
     cliver (0.3.2)
     coderay (1.1.1)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     commonjs (0.2.7)
     daemons (1.2.4)
     debug_inspector (0.0.3)
@@ -202,6 +209,7 @@ DEPENDENCIES
   binding_of_caller (= 0.7.2)
   bower-rails
   capybara (= 2.3.0)
+  coffee-rails
   devise (>= 3.0, < 3.2)
   ember-appkit-rails (= 0.5.0)
   ember-data-source (= 1.0.0.beta.8)
