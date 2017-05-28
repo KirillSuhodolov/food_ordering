@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.5'
+gem 'rails', '4.1.6'
+gem 'sprockets', '2.12.4'
 gem 'thin'
 gem 'pg'
 
@@ -10,7 +11,7 @@ gem 'ember-data-source', '1.0.0.beta.8'
 gem 'handlebars-source', '1.3.0'
 gem 'active_model_serializers', '0.9.0.alpha1'
 gem 'jquery-rails', '3.1.4'
-gem 'parser', '2.1.9'
+gem 'parser', '2.2.2.6'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
