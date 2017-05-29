@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
     mail(
         from: 'kuskusscf@gmail.com',
         to: @user.email,
-        subject: 'Поздравляем с регистрацией на КусКус',
+        subject: 'Регистрация на сервисе корпоративного питания Бифалторг',
     )
   end
 
@@ -15,7 +15,7 @@ class UserMailer < ActionMailer::Base
     mail(
         from: 'kuskusscf@gmail.com',
         to: @user.email,
-        subject: 'Ваш заказ на КусКус',
+        subject: 'Ваш заказ на сервисе корпоративного питания Бифалторг',
     )
   end
 
@@ -25,7 +25,7 @@ class UserMailer < ActionMailer::Base
     mail(
         from: 'kuskusscf@gmail.com',
         to: email,
-        subject: 'Ваш новый пароль на КусКус',
+        subject: 'Ваш новый пароль на сервисе корпоративного питания Бифалторг',
     )
   end
 end
