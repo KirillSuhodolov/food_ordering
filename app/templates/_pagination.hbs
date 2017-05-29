@@ -1,33 +1,48 @@
 {{#if date}}
-    <div class="btn-group btn-group-lg calendar days hidden-print">
-        {{link-to '&laquo;' routeName (query-params date=prev) classNames="hidden-xs btn btn-embossed"}}
-        {{#link-to routeName (query-params date=monday) classNames="btn btn-embossed week-day"}}
+    <ul class="pagination calendar days hidden-print">
+        <li>
+        {{link-to '&laquo;' routeName (query-params date=prev) classNames="hidden-xs"}}
+        </li>
+        <li>
+        {{#link-to routeName (query-params date=monday) classNames="week-day"}}
             <span class='hidden-lg pull-left'>Пн</span>
             <span class='visible-lg pull-left'>Понедельник</span>
             <span class='hidden-vertical pull-left'>({{date monday calendarFormat}})</span>
         {{/link-to}}
-        {{#link-to routeName (query-params date=tuesday) classNames="btn btn-embossed week-day"}}
+        </li>
+        <li>
+        {{#link-to routeName (query-params date=tuesday) classNames="week-day"}}
             <span class='visible-lg pull-left'>Вторник</span>
             <span class='hidden-lg pull-left'>Вт</span>
             <span class='hidden-vertical pull-left'>({{date tuesday calendarFormat}})</span>
         {{/link-to}}
-        {{#link-to routeName (query-params date=wednesday) classNames="btn btn-embossed week-day"}}
+        </li>
+        <li>
+        {{#link-to routeName (query-params date=wednesday) classNames="week-day"}}
             <span class='visible-lg pull-left'>Среда</span>
             <span class='hidden-lg pull-left'>Ср</span>
             <span class='hidden-vertical pull-left'>({{date wednesday calendarFormat}})</span>
         {{/link-to}}
-        {{#link-to routeName (query-params date=thursday) classNames="btn btn-embossed week-day"}}
+        </li>
+        <li>
+            
+        {{#link-to routeName (query-params date=thursday) classNames="week-day"}}
             <span class='visible-lg pull-left'>Четверг</span>
             <span class='hidden-lg pull-left'>Чт</span>
             <span class='hidden-vertical pull-left'>({{date thursday calendarFormat}})</span>
         {{/link-to}}
-        {{#link-to routeName (query-params date=friday) classNames="btn btn-embossed week-day"}}
+        </li>
+        <li>
+        {{#link-to routeName (query-params date=friday) classNames="week-day"}}
             <span class='visible-lg pull-left'>Пятница</span>
             <span class='hidden-lg pull-left'>Пт</span>
             <span class='hidden-vertical pull-left'>({{date friday calendarFormat}})</span>
         {{/link-to}}
-        {{link-to '&raquo;' routeName (query-params date=next) classNames="hidden-xs btn btn-embossed"}}
-    </div>
+        </li>
+        <li>
+        {{link-to '&raquo;' routeName (query-params date=next) classNames="hidden-xs"}}
+        </li>
+    </ul>
 
     <div class="visible-xs btn-group btn-group-lg calendar hidden-print">
         {{link-to '&laquo;' routeName (query-params date=prev) classNames="btn btn-embossed"}}

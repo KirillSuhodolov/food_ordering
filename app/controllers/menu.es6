@@ -22,7 +22,7 @@ export default Em.ArrayController.extend(
 
     resultCost: function() {
       return this.get('content').reduce(function(previousValue, obj){
-        return previousValue + obj.get("resultCost");
+        return Math.trunc( (previousValue + obj.get("resultCost")) * 100) / 100;
       }, 0);
     }.property('@each.resultCost'),
 

@@ -27,22 +27,15 @@ module FoodOrdering
     config.time_zone = 'Minsk'
 
     config.i18n.enforce_available_locales = false
-    # config.assets.paths << Rails.root.join('bower_components')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'bower_components')
+    config.assets.precompile += %w( .svg .eot .woff .ttf)
+    
     config.autoload_paths << "#{Rails.root}/app/enumerations"
     config.autoload_paths += %W["#{config.root}/app/validators/"]
 
-    config.action_mailer.default_url_options = {
-        :host => 'kuskus.by'
-    }
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-        :address              => "smtp.mandrillapp.com",
-        :port                 => 587,
-        :domain               => 'kuskus.by',
-        :user_name            => 'k.suhodolov@sumatosoft.com',
-        :password             => 'fjYjxPYWJNR6yoPNPl8NSw',
-        :authentication       => 'login',
-        :enable_starttls_auto => true
+    config.action_mailer.delivery_method = :sendgrid_actionmailer
+    config.action_mailer.sendgrid_actionmailer_settings = {
+      api_key: ENV['SENDGRID_API_KEY']
     }
   end
 end

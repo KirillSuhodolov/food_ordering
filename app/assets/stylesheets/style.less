@@ -1,18 +1,68 @@
-// .navbar {
-// 	background-color: transparent;
-// 	border-color: none;
-// 	border: none;
-// 	.container {
-// 		border: 1px solid transparent;
-// 		background-color: #f8f8f8;
-// 		border-color: #e7e7e7;
-// 		border-radius: 4px;
-// 	}
-// }
+body {
+    font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
 
-// .navbar-collapse.collapse {
-// 	padding: 0;
-// }
+.navbar {
+border-radius: 0;
+}
+
+/* Fonts fix load */
+
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato/lato-black.eot');
+  src: font-url('lato/lato-black.eot?#iefix') format('embedded-opentype'), url('lato/lato-black.woff') format('woff'), url('lato/lato-black.ttf') format('truetype'), url('lato/lato-black.svg#latoblack') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato/lato-bold.eot');
+  src: font-url('lato/lato-bold.eot?#iefix') format('embedded-opentype'), url('lato/lato-bold.woff') format('woff'), url('lato/lato-bold.ttf') format('truetype'), url('lato/lato-bold.svg#latobold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato/lato-bolditalic.eot');
+  src: font-url('lato/lato-bolditalic.eot?#iefix') format('embedded-opentype'), url('lato/lato-bolditalic.woff') format('woff'), url('lato/lato-bolditalic.ttf') format('truetype'), url('lato/lato-bolditalic.svg#latobold-italic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato/lato-italic.eot');
+  src: font-url('lato/lato-italic.eot?#iefix') format('embedded-opentype'), url('lato/lato-italic.woff') format('woff'), url('lato/lato-italic.ttf') format('truetype'), url('lato/lato-italic.svg#latoitalic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato/lato-light.eot');
+  src: font-url('lato/lato-light.eot?#iefix') format('embedded-opentype'), url('lato/lato-light.woff') format('woff'), url('lato/lato-light.ttf') format('truetype'), url('lato/lato-light.svg#latolight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato/lato-regular.eot');
+  src: font-url('lato/lato-regular.eot?#iefix') format('embedded-opentype'), url('lato/lato-regular.woff') format('woff'), url('lato/lato-regular.ttf') format('truetype'), url('lato/lato-regular.svg#latoregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Flat-UI-Icons";
+  src: font-url('flat-ui-icons-regular.eot');
+  src: font-url('flat-ui-icons-regular.eot?#iefix') format('embedded-opentype'), url('flat-ui-icons-regular.woff') format('woff'), url('flat-ui-icons-regular.ttf') format('truetype'), url('flat-ui-icons-regular.svg#flat-ui-icons-regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Other */
+
+.navbar-collapse.collapse {
+	padding: 0;
+}
 
 .navbar-fixed-bottom {
   @media (min-width: 1200px) {
@@ -202,13 +252,13 @@ body {
     }
     &:hover:not(.active) {
       color: #ffffff;
-      background-color: #bdc3c7;
+      background-color: #16a085;
+      // background-color: #bdc3c7;
     }
   }
   /*a.active {
       border-width: 2px !important;
       color: #d6dbdf;
-      background-color: #16a085;
       border-color: #16a085;
       margin: 10px 5px 9px;
       &:hover {

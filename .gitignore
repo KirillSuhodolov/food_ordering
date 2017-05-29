@@ -52,4 +52,4 @@
 atlassian-ide-plugin.xml
 
 /vendor/assets/bower_components
-Gemfile.lock
+.locum

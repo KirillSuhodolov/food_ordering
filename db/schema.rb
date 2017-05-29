@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140411192505) do
     t.string  "name"
     t.text    "composition"
     t.integer "food_category_id"
-    t.integer "cost",             default: 0
+    t.decimal "cost",             default: 0.0
     t.integer "position"
     t.integer "user_id"
     t.boolean "is_deleted",       default: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140411192505) do
     t.string   "phone"
     t.string   "address"
     t.boolean  "is_subscribe",           default: true
-    t.integer  "position",               default: 1
+    t.integer  "position"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
